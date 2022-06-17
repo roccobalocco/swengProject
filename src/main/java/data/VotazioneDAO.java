@@ -1,5 +1,6 @@
 package data;
 
+import models.Votazione;
 import java.util.*;
 
 /**

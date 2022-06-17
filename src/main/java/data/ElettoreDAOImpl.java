@@ -1,5 +1,7 @@
 package data;
 
+import models.Elettore;
+
 import java.util.*;
 
 /**
@@ -29,14 +31,6 @@ public class ElettoreDAOImpl implements ElettoreDAO {
     public List getAllElettori() {
         // TODO implement here
         return null;
-    }
-
-    /**
-     * @param user 
-     * @param psw
-     */
-    public void getElettore(String user, String psw) {
-        // TODO implement here
     }
 
 }

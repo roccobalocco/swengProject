@@ -10,7 +10,7 @@ public abstract class Utente {
     /**
      * Default constructor
      */
-    public Utente() {
+    protected Utente() {
     }
 
     /**

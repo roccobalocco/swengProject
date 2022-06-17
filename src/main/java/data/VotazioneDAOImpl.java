@@ -1,5 +1,7 @@
 package data;
 
+import models.Votazione;
+
 import java.util.*;
 
 /**
@@ -16,12 +18,8 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
     /**
      * 
      */
-    private List votazioniClassica;
+    private List<Votazione> votazioni;
 
-    /**
-     * 
-     */
-    public void Attribute1;
 
     /**
      * @return
@@ -35,7 +33,7 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
      * @param id String 
      * @return
      */
-    public Votazione getVotazione(void id String) {
+    public Votazione getVotazione(String id) {
         // TODO implement here
         return null;
     }
@@ -44,7 +42,7 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
      * @param v Votazione 
      * @return
      */
-    public Boolean addVotazione(void v Votazione) {
+    public Boolean addVotazione(Votazione v) {
         // TODO implement here
         return null;
     }
@@ -54,7 +52,7 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
      * @param v Votazione 
      * @return
      */
-    public Boolean updateVotazione(void id String, void v Votazione) {
+    public Boolean updateVotazione(String id, Votazione v) {
         // TODO implement here
         return null;
     }
@@ -62,16 +60,9 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
     /**
      * @return
      */
-    public Boolean deleteVotazione() {
+    public boolean deleteVotazione() {
         // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
+        return true;
     }
 
     /**
@@ -94,13 +85,6 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
      * 
      */
     public void addVotazione() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void deleteVotazione() {
         // TODO implement here
     }
 

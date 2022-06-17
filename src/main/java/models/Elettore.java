@@ -10,7 +10,7 @@ public class Elettore extends Utente {
     /**
      * Default constructor
      */
-    public Elettore() {
+    private Elettore() {
     }
 
     /**

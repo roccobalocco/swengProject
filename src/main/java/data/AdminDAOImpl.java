@@ -1,5 +1,7 @@
 package data;
 
+import models.Admin;
+
 import java.util.*;
 
 /**
@@ -23,12 +25,6 @@ public class AdminDAOImpl implements AdminDAO {
         return null;
     }
 
-    /**
-     * @param user 
-     * @param psw
-     */
-    public void getAdmin(String user, String psw) {
-        // TODO implement here
-    }
+
 
 }

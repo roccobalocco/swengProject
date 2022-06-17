@@ -10,7 +10,8 @@ public class Admin extends Utente {
     /**
      * Default constructor
      */
-    public Admin() {
+    private Admin() {
+        super();
     }
 
     /**
@@ -29,9 +30,10 @@ public class Admin extends Utente {
     /**
      * @return
      */
-    private Boolean logAction() {
+    private boolean logAction() {
         // TODO implement here
-        return null;
+
+        return true;
     }
 
 }

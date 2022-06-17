@@ -21,7 +21,7 @@ public abstract class Votazione {
     /**
      * 
      */
-    private void scadenza;
+    private Date scadenza;
 
     /**
      * 

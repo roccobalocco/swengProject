@@ -17,18 +17,18 @@ public class DbManager {
      * @param v Votazione 
      * @return
      */
-    public Boolean addVotazione(void v Votazione) {
+    public boolean addVotazione(Votazione v ) {
         // TODO implement here
-        return null;
+        return true;
     }
 
     /**
      * @param v Votazione 
      * @return
      */
-    public Boolean removeVotazione(void v Votazione) {
+    public boolean removeVotazione(Votazione v) {
         // TODO implement here
-        return null;
+        return true;
     }
 
     /**
