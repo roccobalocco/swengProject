@@ -1,5 +1,6 @@
 package data;
 
+import models.Risultati;
 import models.Votazione;
 import java.util.*;
 
@@ -27,5 +28,7 @@ public interface VotazioneDAO {
      * 
      */
     public boolean deleteVotazione();
+
+    public Risultati getRisultati();
 
 }

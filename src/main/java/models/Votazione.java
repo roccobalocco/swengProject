@@ -15,15 +15,8 @@ public abstract class Votazione {
         scadenza = scad;
     }
 
-    /**
-     * 
-     */
-    public String descrizione;
-
-    /**
-     * 
-     */
-    private Date scadenza;
+    public final String descrizione;
+    public final Date scadenza;
 
     /**
      * 

@@ -1,5 +1,7 @@
 package data;
 
+import models.Risultati;
+
 import java.util.*;
 
 /**
@@ -34,4 +36,8 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
         return null;
     }
 
+    @Override
+    public Risultati getRisultati() {
+        return null;
+    }
 }
