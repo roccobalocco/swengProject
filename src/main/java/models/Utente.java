@@ -10,7 +10,8 @@ public abstract class Utente {
     /**
      * Default constructor
      */
-    protected Utente() {
+    protected Utente(String cf) {
+        this.cf = cf;
     }
 
     /**
@@ -22,8 +23,7 @@ public abstract class Utente {
      * @return
      */
     public String getCF() {
-        // TODO implement here
-        return "";
+        return cf;
     }
 
 }

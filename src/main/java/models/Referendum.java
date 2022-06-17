@@ -10,7 +10,9 @@ public class Referendum extends Votazione {
     /**
      * Default constructor
      */
-    public Referendum() {
+    public Referendum(String desc, Date scad, boolean q) {
+        super(desc, scad);
+        quorum = q;
     }
 
     /**

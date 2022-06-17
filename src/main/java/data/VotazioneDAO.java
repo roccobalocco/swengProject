@@ -21,11 +21,11 @@ public interface VotazioneDAO {
     /**
      * 
      */
-    public void addVotazione();
+    public boolean addVotazione();
 
     /**
      * 
      */
-    public void deleteVotazione();
+    public boolean deleteVotazione();
 
 }

@@ -10,7 +10,9 @@ public abstract class Votazione {
     /**
      * Default constructor
      */
-    public Votazione() {
+    public Votazione(String desc, Date scad) {
+        descrizione = desc;
+        scadenza = scad;
     }
 
     /**

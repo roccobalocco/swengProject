@@ -10,7 +10,9 @@ public class Classica extends Votazione {
     /**
      * Default constructor
      */
-    public Classica() {
+    public Classica(String desc, Date scad, boolean o) {
+        super(desc, scad);
+        ordinale = o;
     }
 
     /**

@@ -10,21 +10,25 @@ public class Admin extends Utente {
     /**
      * Default constructor
      */
-    private Admin() {
-        super();
+    private Admin(String cf, String mail) {
+        super(cf);
+        this.mail = mail;
     }
 
     /**
      * 
      */
     private static Admin uniqueInstance;
+    private String mail;
 
     /**
      * @return
      */
-    public static Admin getInstance() {
-        // TODO implement here
-        return null;
+    public static Admin getInstance(String cf, String mail) {
+        if(uniqueInstance == null) {
+            uniqueInstance = new Admin(cf, mail);
+        }
+        return uniqueInstance;
     }
 
     /**

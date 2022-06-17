@@ -1,5 +1,7 @@
 package data;
 
+import models.Elettore;
+
 import java.util.*;
 
 /**
@@ -16,6 +18,6 @@ public interface ElettoreDAO {
      * @param user 
      * @param psw
      */
-    public void getElettore(String user, String psw);
+    public Elettore getElettore(String user, String psw);
 
 }

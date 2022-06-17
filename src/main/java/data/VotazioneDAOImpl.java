@@ -82,10 +82,11 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
     }
 
     /**
-     * 
+     * @return
      */
-    public void addVotazione() {
+    public boolean addVotazione() {
         // TODO implement here
+        return false;
     }
 
 }
