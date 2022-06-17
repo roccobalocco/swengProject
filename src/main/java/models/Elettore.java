@@ -15,7 +15,6 @@ public class Elettore extends Utente {
         this.nome = nome;
         this.cognome = cognome;
         this.dn = dn;
-        this.mail = mail;
 
     }
 
@@ -23,7 +22,7 @@ public class Elettore extends Utente {
      * 
      */
     private static Elettore uniqueInstance;
-    private String nome, cognome, cf, mail;
+    private String nome, cognome, cf;
     private Date dn;
 
     /**
