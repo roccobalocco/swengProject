@@ -4,41 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="first branch">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/SetupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/VotationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/DbManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/SuperClassDataManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Elettore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Referendum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Utente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/CF.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/StatsVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/SuperClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/chooseVotation.fxml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/infos.fxml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/logged.fxml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/login.fxml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/setup.fxml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/votation.fxml.java" afterDir="false" />
-    </list>
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="first push" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +28,8 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -74,6 +41,14 @@
       <option name="presentableId" value="Default" />
       <updated>1655456012963</updated>
     </task>
+    <task id="LOCAL-00001" summary="first push">
+      <created>1655457534063</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655457534063</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -90,6 +65,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="first branch" />
+    <MESSAGE value="first push" />
+    <option name="LAST_COMMIT_MESSAGE" value="first push" />
   </component>
 </project>
