@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="first branch">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/SetupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/VotationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/DbManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/SuperClassDataManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Elettore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Referendum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Utente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/CF.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/StatsVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/SuperClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/views/chooseVotation.fxml.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/views/infos.fxml.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/views/logged.fxml.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/views/login.fxml.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/views/setup.fxml.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/views/votation.fxml.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AhJi88Gt3JLGoum04i9WPazjbc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="" />
+      <created>1655456012963</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655456012963</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="first branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="first branch" />
+  </component>
+</project>
