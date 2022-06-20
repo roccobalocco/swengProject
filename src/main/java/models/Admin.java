@@ -12,7 +12,6 @@ public class Admin extends Utente {
      */
     private Admin(String cf, String mail) {
         super(cf);
-        this.mail = mail;
     }
 
     /**
