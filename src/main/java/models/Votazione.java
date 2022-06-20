@@ -1,5 +1,6 @@
 package models;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -16,7 +17,14 @@ public abstract class Votazione {
     }
 
     public final String descrizione;
-    public final Date scadenza;
+    private final Date scadenza;
+
+    /**
+     * @return true se é passata la data di scadenza, false altrimenti
+     */
+    public boolean fineVotazione(){
+        return scadenza.after(new Date());
+    }
 
     /**
      * 

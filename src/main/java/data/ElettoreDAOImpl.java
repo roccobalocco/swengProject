@@ -5,6 +5,7 @@ import models.Votazione;
 
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 
 /**
  * @author Piemme
@@ -14,29 +15,34 @@ public class ElettoreDAOImpl implements ElettoreDAO {
     /**
      * Default constructor
      */
-    public ElettoreDAOImpl() {
+    private ElettoreDAOImpl() {
     }
 
-    /**
-     * @param user 
-     * @param psw 
-     * @return
-     */
-    public Elettore getElettore(String user, String psw) {
+    private static ElettoreDAOImpl uniqueInstance;
+
+    public static ElettoreDAOImpl getInstance() {
+        if(uniqueInstance == null){
+            uniqueInstance = new ElettoreDAOImpl();
+        }// TODO implement here
+        return uniqueInstance;
+    }
+
+    public Elettore getElettore(String cf, String psw) {
         Elettore utente = null;
         try{
             //apro connessione
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/votazioni?user=root&password=admin");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "SELECT * FROM utenti WHERE username = \"" + user + "\" AND password = \"" + psw + "\"";
+            String query = "SELECT * FROM utenti WHERE cf = \"" + cf + "\" AND password = \"" + psw + "\"";
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
-            if(resultSet.next())
-                if (!resultSet.getBoolean(4))
-                    utente = Elettore.getInstance(/*resultSet.getString(2), resultSet.getInt(1)*/);
+            if(resultSet.next()){
+                utente = Elettore.getInstance(resultSet.getString(2), resultSet.getString(3), resultSet.getString(1), resultSet.getDate(4));
+                System.out.println("Ci sono dei risultati");
+            }
             //chiudo resultset e connessione
             resultSet.close();
             conn.close();
@@ -49,9 +55,7 @@ public class ElettoreDAOImpl implements ElettoreDAO {
     }
 
     @Override
-    public boolean haVotato(String user, String psw, Votazione v) {
-
+    public boolean haVotato(String cf, String psw, Votazione v) {
         return true;
     }
-
 }

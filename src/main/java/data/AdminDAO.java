@@ -10,9 +10,9 @@ import java.util.*;
 public interface AdminDAO {
 
     /**
-     * @param user 
+     * @param cf
      * @param psw
      */
-    public Admin getAdmin(String user, String psw);
+    public Admin getAdmin(String cf, String psw);
 
 }

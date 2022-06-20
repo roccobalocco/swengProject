@@ -12,20 +12,17 @@ public class Referendum extends Votazione {
      */
     public Referendum(String desc, Date scad, boolean q) {
         super(desc, scad);
-        quorum = q;
+        this.quorum = q;
     }
 
     /**
      * 
      */
-    public Boolean quorum;
+    public boolean quorum;
 
     /**
      * @return
      */
-    public Boolean hasQuorum() {
-        // TODO implement here
-        return null;
-    }
+    public boolean hasQuorum() { return quorum; }
 
 }

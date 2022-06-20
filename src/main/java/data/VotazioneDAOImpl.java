@@ -1,7 +1,10 @@
 package data;
 
+import models.Classica;
+import models.Referendum;
 import models.Votazione;
 
+import java.sql.*;
 import java.util.*;
 
 /**
@@ -12,81 +15,42 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
     /**
      * Default constructor
      */
-    public VotazioneDAOImpl() {
-    }
-
-    /**
-     * 
-     */
-    private List<Votazione> votazioni;
-
+    public VotazioneDAOImpl() { }
 
     /**
      * @return
      */
-    public List getAllVotazione() {
-        // TODO implement here
-        return null;
-    }
+    public List<Votazione> getAllVotazioni() {
+        List<Votazione> votazioni = new LinkedList<>();
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
 
-    /**
-     * @param id String 
-     * @return
-     */
-    public Votazione getVotazione(String id) {
-        // TODO implement here
-        return null;
-    }
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement("SELECT distinct * FROM votazioni");
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            //guarda se ci sono risultati
+            while(resultSet.next())
+                votazioni.add(new Classica(resultSet.getString(6),resultSet.getDate(5), resultSet.getBoolean(7), resultSet.getBoolean(8)));
 
-    /**
-     * @param v Votazione 
-     * @return
-     */
-    public Boolean addVotazione(Votazione v) {
-        // TODO implement here
-        return null;
-    }
+            //creo oggetto statement per esecuzione query
+            statement = conn.prepareStatement("SELECT * FROM referendum");
+            //eseguo la query
+            resultSet = statement.executeQuery();
+            //guarda se ci sono risultati
+            while(resultSet.next())
+                votazioni.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6)));
 
-    /**
-     * @param id String 
-     * @param v Votazione 
-     * @return
-     */
-    public Boolean updateVotazione(String id, Votazione v) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public boolean deleteVotazione() {
-        // TODO implement here
-        return true;
-    }
-
-    /**
-     * @return
-     */
-    public List getAllVotazioni() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public Votazione getVotazione() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public boolean addVotazione() {
-        // TODO implement here
-        return false;
+            //chiudo resultset e connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return votazioni;
     }
 
 }

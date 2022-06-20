@@ -26,4 +26,7 @@ public abstract class Utente {
         return cf;
     }
 
+    public String toString(){
+        return "Codice fiscale: " + cf;
+    }
 }

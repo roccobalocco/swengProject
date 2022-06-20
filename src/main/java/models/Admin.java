@@ -10,7 +10,7 @@ public class Admin extends Utente {
     /**
      * Default constructor
      */
-    private Admin(String cf, String mail) {
+    private Admin(String cf) {
         super(cf);
     }
 
@@ -18,14 +18,13 @@ public class Admin extends Utente {
      * 
      */
     private static Admin uniqueInstance;
-    private String mail;
 
     /**
      * @return
      */
-    public static Admin getInstance(String cf, String mail) {
+    public static Admin getInstance(String cf) {
         if(uniqueInstance == null) {
-            uniqueInstance = new Admin(cf, mail);
+            uniqueInstance = new Admin(cf);
         }
         return uniqueInstance;
     }
@@ -33,7 +32,7 @@ public class Admin extends Utente {
     /**
      * @return
      */
-    private boolean logAction() {
+    private boolean logAction(String s) {
         // TODO implement here
 
         return true;

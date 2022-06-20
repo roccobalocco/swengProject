@@ -9,26 +9,16 @@ import java.util.*;
  */
 public interface VotazioneDAO {
 
-    /**
-     * @return
-     */
-    public List getAllVotazioni();
+    public List<Votazione> getAllVotazioni();
 
-    /**
-     * @return
-     */
-    public Votazione getVotazione();
+    public abstract Votazione getVotazione(String id);
 
-    /**
-     * 
-     */
-    public boolean addVotazione();
+    public abstract boolean updateVotazione(String id, Votazione v);
 
-    /**
-     * 
-     */
-    public boolean deleteVotazione();
+    public abstract boolean addVotazione(Votazione v);
 
-    public Risultati getRisultati();
+    public abstract boolean deleteVotazione(Votazione v);
+
+    public abstract Risultati getRisultati(Votazione v);
 
 }

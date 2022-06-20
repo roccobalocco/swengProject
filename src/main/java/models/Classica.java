@@ -10,22 +10,23 @@ public class Classica extends Votazione {
     /**
      * Default constructor
      */
-    public Classica(String desc, Date scad, boolean o) {
+    public Classica(String desc, Date scad, boolean o, boolean p) {
         super(desc, scad);
         ordinale = o;
+        preferenza = p;
     }
 
-    /**
-     * 
-     */
-    public Boolean ordinale;
+    private boolean ordinale = false;
+    private boolean preferenza = false;
 
     /**
-     * @return
+     * @return 0 se é ordinale, 1 se categorico, 2 se categorico con preferenza
      */
-    public Boolean isOrdinale() {
-        // TODO implement here
-        return null;
+    public int whichType(){
+        if (ordinale)
+            return 0;
+        else if (preferenza)
+            return 2;
+        return 1;
     }
-
 }
