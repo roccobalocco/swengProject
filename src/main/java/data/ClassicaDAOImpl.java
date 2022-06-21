@@ -44,19 +44,19 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
         return null;
     }
 
-    public Votazione getVotazione(String id) {
+    public <T extends Votazione> T getVotazione(String id) {
         return null;
     }
 
-    public boolean updateVotazione(String id, Votazione v) {
+    public <T extends Votazione> boolean updateVotazione(String id, T v) {
         return false;
     }
 
-    public boolean addVotazione(Votazione v) {
+    public <T extends Votazione> boolean addVotazione(T v) {
         return false;
     }
 
-    public boolean deleteVotazione(Votazione v) {
+    public boolean deleteVotazione(String id) {
         return false;
     }
 

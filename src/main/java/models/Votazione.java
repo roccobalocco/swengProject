@@ -33,4 +33,7 @@ public abstract class Votazione {
         // TODO implement here
     }
 
+    public String getScadenza() {
+        return scadenza.toString();
+    }
 }
