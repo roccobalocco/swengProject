@@ -24,4 +24,5 @@ public interface ElettoreDAO {
      */
     public boolean haVotato(String cf, String psw, Votazione v);
 
+    public boolean isElettore(String cf, String psw);
 }

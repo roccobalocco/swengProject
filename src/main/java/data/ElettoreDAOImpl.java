@@ -58,4 +58,8 @@ public class ElettoreDAOImpl implements ElettoreDAO {
     public boolean haVotato(String cf, String psw, Votazione v) {
         return true;
     }
+
+    public boolean isElettore(String cf, String psw){
+        return getElettore(cf, psw) != null;
+    }
 }

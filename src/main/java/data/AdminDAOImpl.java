@@ -58,5 +58,10 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
 
+    public boolean isAdmin(String cf, String psw){
+        if(this.getAdmin(cf, psw) == null)
+            return false;
+        return true;
+    }
 
 }

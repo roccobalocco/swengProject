@@ -15,4 +15,5 @@ public interface AdminDAO {
      */
     public Admin getAdmin(String cf, String psw);
 
+    public boolean isAdmin(String cf, String psw);
 }
