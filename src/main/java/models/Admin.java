@@ -29,6 +29,10 @@ public class Admin extends Utente {
         return uniqueInstance;
     }
 
+    public static Admin getInstance(){
+        return uniqueInstance;
+    }
+
     /**
      * @return
      */

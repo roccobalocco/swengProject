@@ -9,7 +9,7 @@ import java.util.*;
  */
 public interface VotazioneDAO {
 
-    public <T extends Votazione> List<T> getAllVotazioni();
+    public List<List<? extends Votazione>> getAllVotazioni();
 
     public abstract <T extends Votazione> T getVotazione(String id);
 

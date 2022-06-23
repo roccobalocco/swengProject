@@ -18,10 +18,13 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
     public VotazioneDAOImpl() { }
 
     /**
-     * @return
+     * @return una lista con al suo intero due liste, la prima con le votazioni Classiche, la seconda con i referendum
      */
-    public List<Votazione> getAllVotazioni() {
-        List<Votazione> votazioni = new LinkedList<>();
+    public List<List<? extends Votazione>> getAllVotazioni() {
+        List<List<? extends Votazione>> votazioni = new LinkedList<>();
+        List<Classica> classica = new LinkedList<>();
+        List<Referendum> referendum = new LinkedList<>();
+        new LinkedList<Referendum>();
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
@@ -32,7 +35,7 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
             while(resultSet.next())
-                votazioni.add(new Classica(resultSet.getString(6),resultSet.getDate(5), resultSet.getBoolean(7), resultSet.getBoolean(8)));
+                classica.add(new Classica(resultSet.getString(6),resultSet.getDate(5), resultSet.getBoolean(7), resultSet.getBoolean(8)));
 
             //creo oggetto statement per esecuzione query
             statement = conn.prepareStatement("SELECT * FROM referendum");
@@ -40,11 +43,13 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
             resultSet = statement.executeQuery();
             //guarda se ci sono risultati
             while(resultSet.next())
-                votazioni.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6)));
+                referendum.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6)));
 
             //chiudo resultset e connessione
             resultSet.close();
             conn.close();
+            votazioni.add(classica);
+            votazioni.add(referendum);
         }catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());

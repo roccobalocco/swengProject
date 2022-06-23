@@ -33,19 +33,18 @@
 -->
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.PasswordField?>
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ElettoreController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -87,30 +86,16 @@
       </menus>
     </MenuBar>
     <AnchorPane VBox.vgrow="ALWAYS">
-         <children>
-            <Button fx:id="loginButton" layoutX="347.0" layoutY="182.0" mnemonicParsing="false" onAction="#login" text="Login">
+      <children>
+            <Text fx:id="benvenutoText" layoutX="47.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui ci va il benvenuto">
                <font>
                   <Font size="14.0" />
                </font>
-            </Button>
-            <TextField fx:id="cf_TextField" layoutX="299.0" layoutY="97.0" promptText="Insert your alfanumeric id..." />
-            <PasswordField fx:id="psw_TextField" layoutX="299.0" layoutY="136.0" promptText="Insert your password..." />
-            <Label layoutX="191.0" layoutY="101.0" text="Codice Fiscale:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="191.0" layoutY="140.0" text="Password:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <CheckBox fx:id="admin_CheckBox" layoutX="250.0" layoutY="187.0" mnemonicParsing="false" text="Admin">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </CheckBox>
-         </children>
+            </Text>
+            <ListView fx:id="votationListView" layoutX="55.0" layoutY="75.0" prefHeight="223.0" prefWidth="530.0" />
+            <Button layoutX="300.0" layoutY="316.0" mnemonicParsing="false" onAction="#vota" text="Vota" />
+            <Label layoutX="424.0" layoutY="57.0" text="Una sola selezione é ammessa" textAlignment="RIGHT" textFill="#615b5b" />
+      </children>
     </AnchorPane>
   </children>
 </VBox>

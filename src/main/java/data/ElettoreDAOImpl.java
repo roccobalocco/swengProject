@@ -21,9 +21,8 @@ public class ElettoreDAOImpl implements ElettoreDAO {
     private static ElettoreDAOImpl uniqueInstance;
 
     public static ElettoreDAOImpl getInstance() {
-        if(uniqueInstance == null){
+        if(uniqueInstance == null)
             uniqueInstance = new ElettoreDAOImpl();
-        }// TODO implement here
         return uniqueInstance;
     }
 
