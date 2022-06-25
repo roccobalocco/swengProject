@@ -9,16 +9,16 @@ import java.util.*;
  */
 public interface VotazioneDAO {
 
-    public List<List<? extends Votazione>> getAllVotazioni();
+    List<List<? extends Votazione>> getAllVotazioni();
 
-    public abstract <T extends Votazione> T getVotazione(String id);
+    <T extends Votazione> T getVotazione(String id);
 
-    public abstract <T extends Votazione> boolean updateVotazione(String id, T v);
+    <T extends Votazione> boolean updateVotazione(String id, T v);
 
-    public abstract <T extends Votazione> boolean addVotazione(T v);
+    <T extends Votazione> boolean addVotazione(T v);
 
-    public abstract boolean deleteVotazione(String id);
+    boolean deleteVotazione(String id);
 
-    public abstract Risultati getRisultati(Votazione v);
+    Risultati getRisultati(Votazione v);
 
 }

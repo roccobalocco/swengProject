@@ -4,8 +4,6 @@ import models.Elettore;
 import models.Votazione;
 
 import java.sql.*;
-import java.util.*;
-import java.util.Date;
 
 /**
  * @author Piemme
@@ -32,7 +30,7 @@ public class ElettoreDAOImpl implements ElettoreDAO {
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "SELECT * FROM utenti WHERE cf = \"" + cf + "\" AND password = \"" + psw + "\"";
+            String query = "SELECT * FROM utenti WHERE `cf` = '" + cf + "' AND `password` = '" + psw + "'";
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query

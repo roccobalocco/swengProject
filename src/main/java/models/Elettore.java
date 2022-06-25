@@ -1,11 +1,11 @@
 package models;
 
-import java.time.Period;
 import java.util.*;
 
 /**
  * @author Piemme
  */
+@SuppressWarnings({"deprecation", "FieldMayBeFinal"})
 public class Elettore extends Utente {
 
     /**
@@ -42,9 +42,9 @@ public class Elettore extends Utente {
     }
     public String toString(){
         StringBuilder s = new StringBuilder("Nome: ");
-        s.append(nome + "\n");
-        s.append("Cognome: " + cognome + "\n");
-        s.append("Data di nascita: " + dn.toString() + "\n");
+        s.append(nome).append("\n");
+        s.append("Cognome: ").append(cognome).append("\n");
+        s.append("Data di nascita: ").append(dn.toString()).append("\n");
         return s.toString() + super.toString();
     }
 

@@ -1,6 +1,6 @@
 package models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -11,27 +11,26 @@ public abstract class Votazione {
     /**
      * Default constructor
      */
-    public Votazione(String desc, Date scad) {
+    public Votazione(String desc, LocalDate scad, int id) {
         descrizione = desc;
         scadenza = scad;
+        this.id = id;
     }
 
+    private final int id;
     public final String descrizione;
-    private final Date scadenza;
+    private final LocalDate scadenza;
 
     /**
      * @return true se é passata la data di scadenza, false altrimenti
      */
     public boolean fineVotazione(){
-        return scadenza.after(new Date());
+        return scadenza.isBefore(LocalDate.now());
     }
 
-    /**
-     * 
-     */
-    public void getRisultati() {
-        // TODO implement here
-    }
+    public int getId(){ return id; }
+
+    public abstract Risultati getRisultati();
 
     public String getScadenza() {
         return scadenza.toString();

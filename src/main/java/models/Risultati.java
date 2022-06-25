@@ -2,16 +2,13 @@ package models;
 
 import java.util.List;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class Risultati {
-    private Votazione v;
+    private String descrizione;
     private List candidati;
 
-    public Risultati(Votazione v, List c){
-        this.v = v;
+    public Risultati(String d, List c){
+        descrizione = d;
         candidati = c;
-    }
-
-    public Risultati() {
-        //temporaneo
     }
 }

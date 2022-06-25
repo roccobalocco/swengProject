@@ -1,5 +1,6 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -10,8 +11,8 @@ public class Classica extends Votazione {
     /**
      * Default constructor
      */
-    public Classica(String desc, Date scad, boolean o, boolean p) {
-        super(desc, scad);
+    public Classica(String desc, LocalDate scad, boolean o, boolean p, int id) {
+        super(desc, scad, id);
         ordinale = o;
         preferenza = p;
     }
@@ -28,5 +29,21 @@ public class Classica extends Votazione {
         else if (preferenza)
             return 2;
         return 1;
+    }
+
+    public String toString(){
+        StringBuilder s = new StringBuilder("Votazione per " + descrizione + "\n");
+        switch (whichType()) {
+            case 0 -> s.append("Votazione ordinale\n");
+            case 1 -> s.append("Votazione categorica non preferenziale\n");
+            case 2 -> s.append("Votazione categorica preferenziale\n");
+        }
+        s.append(getScadenza());
+        return s.toString();
+    }
+
+    @Override
+    public Risultati getRisultati() {
+        return null;
     }
 }

@@ -3,8 +3,6 @@ package data;
 import models.Elettore;
 import models.Votazione;
 
-import java.util.*;
-
 /**
  * 
  */
@@ -14,7 +12,7 @@ public interface ElettoreDAO {
      * @param cf
      * @param psw
      */
-    public Elettore getElettore(String cf, String psw);
+    Elettore getElettore(String cf, String psw);
 
     /**
      *
@@ -22,7 +20,7 @@ public interface ElettoreDAO {
      * @param psw
      * @return
      */
-    public boolean haVotato(String cf, String psw, Votazione v);
+    boolean haVotato(String cf, String psw, Votazione v);
 
-    public boolean isElettore(String cf, String psw);
+    boolean isElettore(String cf, String psw);
 }

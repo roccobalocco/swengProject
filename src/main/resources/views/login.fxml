@@ -45,72 +45,62 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.PasswordField?>
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
-  <children>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.LoginController">
     <MenuBar VBox.vgrow="NEVER">
-      <menus>
         <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
+            <MenuItem mnemonicParsing="false" text="New"/>
+            <MenuItem mnemonicParsing="false" text="Open…"/>
+            <Menu mnemonicParsing="false" text="Open Recent"/>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem mnemonicParsing="false" text="Close"/>
+            <MenuItem mnemonicParsing="false" text="Save"/>
+            <MenuItem mnemonicParsing="false" text="Save As…"/>
+            <MenuItem mnemonicParsing="false" text="Revert"/>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem mnemonicParsing="false" text="Preferences…"/>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem mnemonicParsing="false" text="Quit"/>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
+            <MenuItem mnemonicParsing="false" text="Undo"/>
+            <MenuItem mnemonicParsing="false" text="Redo"/>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem mnemonicParsing="false" text="Cut"/>
+            <MenuItem mnemonicParsing="false" text="Copy"/>
+            <MenuItem mnemonicParsing="false" text="Paste"/>
+            <MenuItem mnemonicParsing="false" text="Delete"/>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem mnemonicParsing="false" text="Select All"/>
+            <MenuItem mnemonicParsing="false" text="Unselect All"/>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp"/>
         </Menu>
-      </menus>
     </MenuBar>
     <AnchorPane VBox.vgrow="ALWAYS">
-         <children>
-            <Button fx:id="loginButton" layoutX="347.0" layoutY="182.0" mnemonicParsing="false" onAction="#login" text="Login">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <TextField fx:id="cf_TextField" layoutX="299.0" layoutY="97.0" promptText="Insert your alfanumeric id..." />
-            <PasswordField fx:id="psw_TextField" layoutX="299.0" layoutY="136.0" promptText="Insert your password..." />
-            <Label layoutX="191.0" layoutY="101.0" text="Codice Fiscale:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="191.0" layoutY="140.0" text="Password:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <CheckBox fx:id="admin_CheckBox" layoutX="250.0" layoutY="187.0" mnemonicParsing="false" text="Admin">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </CheckBox>
-         </children>
+        <Button fx:id="loginButton" layoutX="347.0" layoutY="182.0" mnemonicParsing="false" onAction="#login"
+                text="Login">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <TextField fx:id="cf_TextField" layoutX="299.0" layoutY="97.0" promptText="Insert your alfanumeric id..."/>
+        <PasswordField fx:id="psw_TextField" layoutX="299.0" layoutY="136.0" promptText="Insert your password..."/>
+        <Label layoutX="191.0" layoutY="101.0" text="Codice Fiscale:">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="191.0" layoutY="140.0" text="Password:">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <CheckBox fx:id="admin_CheckBox" layoutX="250.0" layoutY="187.0" mnemonicParsing="false" text="Admin">
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </CheckBox>
     </AnchorPane>
-  </children>
 </VBox>

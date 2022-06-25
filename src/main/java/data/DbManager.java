@@ -3,8 +3,6 @@ package data;
 import models.Utente;
 import models.Votazione;
 
-import java.util.*;
-
 /**
  * @author Piemme
  */
