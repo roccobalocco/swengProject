@@ -4,49 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Created two fondamental GUI fxml file and started their controllers.">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/inserimento1Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Candidato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Gruppo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Persona.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/inserimento.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/inserimentoCandidati.fxml" afterDir="false" />
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="modified mail in Elettore">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/GUI_diagram_sketch.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SetupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SetupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/VotationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/VotationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/VotationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/inserimento1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Elettore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Elettore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Referendum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Referendum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Votazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/CF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/CF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/StatsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/StatsVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db_dump/swengdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db_dump/swengdb.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/chooseVotation.fxml.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/infos.fxml.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/logged.fxml.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/sceltaAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/sceltaAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/sceltaElettore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/sceltaElettore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/setup.fxml.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/votation.fxml.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/inserimento.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/inserimento.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/inserimentoCandidati.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/inserimentoCandidati.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +42,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -120,7 +95,15 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main this pc">
+    <configuration name="Main this pc" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="swengProject" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\rocco\Downloads\javafx-sdk-18.0.1\lib --add-modules=javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="swengProject" />
@@ -156,6 +139,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Main this pc" />
       <item itemvalue="Maven.swengProject [compile]" />
     </list>
   </component>
@@ -181,6 +165,7 @@
       <workItem from="1656059485912" duration="6753000" />
       <workItem from="1656149595390" duration="2894000" />
       <workItem from="1656152947724" duration="657000" />
+      <workItem from="1656274750759" duration="3275000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>

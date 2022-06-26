@@ -1,0 +1,275 @@
+Index: src/main/java/models/Classica.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models;\r\n\r\nimport java.util.*;\r\n\r\n/**\r\n * @author Piemme\r\n */\r\npublic class Classica extends Votazione {\r\n\r\n    /**\r\n     * Default constructor\r\n     */\r\n    public Classica(String desc, Date scad, boolean o, boolean p) {\r\n        super(desc, scad);\r\n        ordinale = o;\r\n        preferenza = p;\r\n    }\r\n\r\n    private boolean ordinale = false;\r\n    private boolean preferenza = false;\r\n\r\n    /**\r\n     * @return 0 se é ordinale, 1 se categorico, 2 se categorico con preferenza\r\n     */\r\n    public int whichType(){\r\n        if (ordinale)\r\n            return 0;\r\n        else if (preferenza)\r\n            return 2;\r\n        return 1;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/Classica.java b/src/main/java/models/Classica.java
+--- a/src/main/java/models/Classica.java	(revision 4328bd45d5a814ab281a46bb5f4b799fa94b5591)
++++ b/src/main/java/models/Classica.java	(date 1655898478247)
+@@ -10,8 +10,8 @@
+     /**
+      * Default constructor
+      */
+-    public Classica(String desc, Date scad, boolean o, boolean p) {
+-        super(desc, scad);
++    public Classica(String desc, Date scad, boolean o, boolean p, int id) {
++        super(desc, scad, id);
+         ordinale = o;
+         preferenza = p;
+     }
+Index: src/main/java/models/Referendum.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models;\r\n\r\nimport java.util.*;\r\n\r\n/**\r\n * @author Piemme\r\n */\r\npublic class Referendum extends Votazione {\r\n\r\n    /**\r\n     * Default constructor\r\n     */\r\n    public Referendum(String desc, Date scad, boolean q) {\r\n        super(desc, scad);\r\n        this.quorum = q;\r\n    }\r\n\r\n    /**\r\n     * \r\n     */\r\n    public boolean quorum;\r\n\r\n    /**\r\n     * @return\r\n     */\r\n    public boolean hasQuorum() { return quorum; }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/Referendum.java b/src/main/java/models/Referendum.java
+--- a/src/main/java/models/Referendum.java	(revision 4328bd45d5a814ab281a46bb5f4b799fa94b5591)
++++ b/src/main/java/models/Referendum.java	(date 1655898466965)
+@@ -10,8 +10,8 @@
+     /**
+      * Default constructor
+      */
+-    public Referendum(String desc, Date scad, boolean q) {
+-        super(desc, scad);
++    public Referendum(String desc, Date scad, boolean q, int id) {
++        super(desc, scad, id);
+         this.quorum = q;
+     }
+ 
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>org</groupId>\r\n    <artifactId>swengProject</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-fxml</artifactId>\r\n            <version>11.0.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-graphics</artifactId>\r\n            <version>11</version>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <properties>\r\n        <maven.compiler.source>18</maven.compiler.source>\r\n        <maven.compiler.target>18</maven.compiler.target>\r\n    </properties>\r\n\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 4328bd45d5a814ab281a46bb5f4b799fa94b5591)
++++ b/pom.xml	(date 1655898283292)
+@@ -7,6 +7,18 @@
+     <groupId>org</groupId>
+     <artifactId>swengProject</artifactId>
+     <version>1.0-SNAPSHOT</version>
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++                <configuration>
++                    <source>17</source>
++                    <target>17</target>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
+     <dependencies>
+         <dependency>
+             <groupId>org.openjfx</groupId>
+Index: src/main/java/models/Votazione.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models;\r\n\r\nimport java.time.LocalDateTime;\r\nimport java.util.*;\r\n\r\n/**\r\n * @author Piemme\r\n */\r\npublic abstract class Votazione {\r\n\r\n    /**\r\n     * Default constructor\r\n     */\r\n    public Votazione(String desc, Date scad) {\r\n        descrizione = desc;\r\n        scadenza = scad;\r\n    }\r\n\r\n    public final String descrizione;\r\n    private final Date scadenza;\r\n\r\n    /**\r\n     * @return true se é passata la data di scadenza, false altrimenti\r\n     */\r\n    public boolean fineVotazione(){\r\n        return scadenza.after(new Date());\r\n    }\r\n\r\n    /**\r\n     * \r\n     */\r\n    public void getRisultati() {\r\n        // TODO implement here\r\n    }\r\n\r\n    public String getScadenza() {\r\n        return scadenza.toString();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/Votazione.java b/src/main/java/models/Votazione.java
+--- a/src/main/java/models/Votazione.java	(revision 4328bd45d5a814ab281a46bb5f4b799fa94b5591)
++++ b/src/main/java/models/Votazione.java	(date 1655898453544)
+@@ -11,14 +11,15 @@
+     /**
+      * Default constructor
+      */
+-    public Votazione(String desc, Date scad) {
++    public Votazione(String desc, Date scad, int id) {
+         descrizione = desc;
+         scadenza = scad;
++        this.id = id;
+     }
+ 
+     public final String descrizione;
+     private final Date scadenza;
+-
++    private final int id;
+     /**
+      * @return true se é passata la data di scadenza, false altrimenti
+      */
+Index: src/main/java/data/ReferendumDAOImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package data;\r\n\r\nimport models.Elettore;\r\nimport models.Referendum;\r\nimport models.Risultati;\r\nimport models.Votazione;\r\n\r\nimport java.sql.*;\r\nimport java.util.*;\r\n\r\n/**\r\n * @author Piemme\r\n */\r\npublic class ReferendumDAOImpl extends VotazioneDAOImpl {\r\n\r\n    /**\r\n     * Default constructor\r\n     */\r\n    private ReferendumDAOImpl() { }\r\n\r\n    private static ReferendumDAOImpl uniqueInstance;\r\n\r\n    public static ReferendumDAOImpl getInstance(){\r\n        if(uniqueInstance == null)\r\n            uniqueInstance = new ReferendumDAOImpl();\r\n        return uniqueInstance;\r\n    }\r\n\r\n    public List<Referendum> getAll(){\r\n        List<Referendum> referendums = new LinkedList<>();\r\n        try{\r\n            //apro connessione\r\n            Connection conn = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/swengdb?useSSL=false\", \"root\", \"root\");\r\n            //scrivo query\r\n            String query = \"SELECT * FROM referendum\";\r\n            //creo oggetto statement per esecuzione query\r\n            PreparedStatement statement = conn.prepareStatement(query);\r\n            //eseguo la query\r\n            ResultSet resultSet = statement.executeQuery();\r\n            //guarda se ci sono risultati\r\n            while(resultSet.next())\r\n                referendums.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6)));\r\n\r\n            //chiudo resultset e connessione\r\n            resultSet.close();\r\n            conn.close();\r\n        }catch(SQLException e){\r\n            System.out.println(\"SQLException: \" + e.getMessage());\r\n            System.out.println(\"SQLState: \" + e.getSQLState());\r\n            System.out.println(\"VendorError: \" + e.getErrorCode());\r\n        }\r\n        return referendums;\r\n    }\r\n\r\n    public List<Referendum> getAllQuorum() {\r\n        List<Referendum> aq = new LinkedList<>();\r\n        this.getAll().forEach((Referendum r) -> { if(r.hasQuorum()){ aq.add(r); } });\r\n        return aq;\r\n    }\r\n\r\n    /**\r\n     * @return\r\n     */\r\n    public <T extends Votazione> List<T> getAllNoQuorum() {\r\n        List<T> aq = new LinkedList<>();\r\n        this.getAll().forEach((Referendum r) -> { if(!r.hasQuorum()){ aq.add((T) r); } });\r\n        return aq;\r\n    }\r\n\r\n    public <T extends Votazione> T getVotazione(String id) {\r\n        T referendum = null;\r\n        try{\r\n            //apro connessione\r\n            Connection conn = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/swengdb?useSSL=false\", \"root\", \"root\");\r\n            //scrivo query\r\n            String query = \"SELECT * FROM referendum WHERE id = \\\"\" + id + \"\\\"\";\r\n            //creo oggetto statement per esecuzione query\r\n            PreparedStatement statement = conn.prepareStatement(query);\r\n            //eseguo la query\r\n            ResultSet resultSet = statement.executeQuery();\r\n            //guarda se ci sono risultati\r\n            while(resultSet.next())\r\n                referendum = (T) new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6));\r\n\r\n            //chiudo resultset e connessione\r\n            resultSet.close();\r\n            conn.close();\r\n        }catch(SQLException e){\r\n            System.out.println(\"SQLException: \" + e.getMessage());\r\n            System.out.println(\"SQLState: \" + e.getSQLState());\r\n            System.out.println(\"VendorError: \" + e.getErrorCode());\r\n        }\r\n        return referendum;\r\n    }\r\n\r\n    public <T extends Votazione> boolean updateVotazione(String id, T t) {\r\n        boolean up = false;\r\n        Referendum v = (Referendum) t;\r\n        try{\r\n            //apro connessione\r\n            Connection conn = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/swengdb?useSSL=false\", \"root\", \"root\");\r\n            //scrivo query\r\n            String query = \"UPDATE referendum SET 'descrizione' = \\\"\" + v.descrizione + \"\\\", quorum = \\\"\" + v.hasQuorum()  + \"\\\", 'scadenza' = \\\"\" + v.getScadenza() + \"\\\", WHERE id = \\\"\" + id + \"\\\"\";\r\n            //creo oggetto statement per esecuzione query\r\n            PreparedStatement statement = conn.prepareStatement(query);\r\n            //eseguo la query\r\n            ResultSet resultSet = statement.executeQuery();\r\n            //guarda se ci sono risultati\r\n            resultSet.next();\r\n            up = resultSet.getBoolean(1);\r\n            //chiudo resultset e connessione\r\n            resultSet.close();\r\n            conn.close();\r\n        }catch(SQLException e){\r\n            System.out.println(\"SQLException: \" + e.getMessage());\r\n            System.out.println(\"SQLState: \" + e.getSQLState());\r\n            System.out.println(\"VendorError: \" + e.getErrorCode());\r\n        }\r\n        return up;\r\n    }\r\n\r\n    public <T extends Votazione> boolean addVotazione(T t) {\r\n        boolean av = false;\r\n        Referendum v = (Referendum) t;\r\n        try{\r\n            //apro connessione\r\n            Connection conn = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/swengdb?useSSL=false\", \"root\", \"root\");\r\n            //scrivo query\r\n            String query = \"INSERT INTO refendum ('id', 'descrizione', 'quorum', 'scadenza')\";\r\n            query += \" VALUES (\\\"\" + getNextId() + \"\\\", \\\"\" + v.descrizione + \"\\\", \\\"\" + v.hasQuorum() + \"\\\", \\\"\" + v.getScadenza() + \"\\\" )\";\r\n            //creo oggetto statement per esecuzione query\r\n            PreparedStatement statement = conn.prepareStatement(query);\r\n            //eseguo la query\r\n            ResultSet resultSet = statement.executeQuery();\r\n            //guarda se ci sono risultati\r\n            resultSet.next();\r\n            av = resultSet.getBoolean(1);\r\n            //chiudo resultset e connessione\r\n            resultSet.close();\r\n            conn.close();\r\n        }catch(SQLException e){\r\n            System.out.println(\"SQLException: \" + e.getMessage());\r\n            System.out.println(\"SQLState: \" + e.getSQLState());\r\n            System.out.println(\"VendorError: \" + e.getErrorCode());\r\n        }\r\n        return av;\r\n    }\r\n\r\n\r\n    public boolean deleteVotazione(String id){\r\n        boolean dv = false;\r\n        try{\r\n            //apro connessione\r\n            Connection conn = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/swengdb?useSSL=false\", \"root\", \"root\");\r\n            //scrivo query\r\n            String query = \"DELETE FROM referendum WHERE 'id' = \\\"\" + id + \"\\\"\";\r\n            //creo oggetto statement per esecuzione query\r\n            PreparedStatement statement = conn.prepareStatement(query);\r\n            //eseguo la query\r\n            ResultSet resultSet = statement.executeQuery();\r\n            //guarda se ci sono risultati\r\n            resultSet.next();\r\n            dv = resultSet.getBoolean(1);\r\n            //chiudo resultset e connessione\r\n            resultSet.close();\r\n            conn.close();\r\n        }catch(SQLException e){\r\n            System.out.println(\"SQLException: \" + e.getMessage());\r\n            System.out.println(\"SQLState: \" + e.getSQLState());\r\n            System.out.println(\"VendorError: \" + e.getErrorCode());\r\n        }\r\n        return dv;\r\n    }\r\n\r\n\r\n    public Risultati getRisultati(Votazione r) {\r\n        if(r.fineVotazione()){\r\n            return new Risultati();\r\n        }else {\r\n            return null;\r\n        }\r\n    }\r\n\r\n    private String getNextId(){\r\n        int id = -1;\r\n        try{\r\n            //apro connessione\r\n            Connection conn = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/swengdb?useSSL=false\", \"root\", \"root\");\r\n            //scrivo query\r\n            String query = \"SELECT id FROM referendum WHERE MAX(id)\";\r\n            //creo oggetto statement per esecuzione query\r\n            PreparedStatement statement = conn.prepareStatement(query);\r\n            //eseguo la query\r\n            ResultSet resultSet = statement.executeQuery();\r\n            //guarda se ci sono risultati\r\n            resultSet.next();\r\n            id = resultSet.getInt(1) + 1;\r\n            //chiudo resultset e connessione\r\n            resultSet.close();\r\n            conn.close();\r\n        }catch(SQLException e){\r\n            System.out.println(\"SQLException: \" + e.getMessage());\r\n            System.out.println(\"SQLState: \" + e.getSQLState());\r\n            System.out.println(\"VendorError: \" + e.getErrorCode());\r\n        }\r\n        return \"\" + id;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/data/ReferendumDAOImpl.java b/src/main/java/data/ReferendumDAOImpl.java
+--- a/src/main/java/data/ReferendumDAOImpl.java	(revision 4328bd45d5a814ab281a46bb5f4b799fa94b5591)
++++ b/src/main/java/data/ReferendumDAOImpl.java	(date 1655898526399)
+@@ -39,7 +39,7 @@
+             ResultSet resultSet = statement.executeQuery();
+             //guarda se ci sono risultati
+             while(resultSet.next())
+-                referendums.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6)));
++                referendums.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6), resultSet.getInt(1)));
+ 
+             //chiudo resultset e connessione
+             resultSet.close();
+@@ -80,7 +80,7 @@
+             ResultSet resultSet = statement.executeQuery();
+             //guarda se ci sono risultati
+             while(resultSet.next())
+-                referendum = (T) new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6));
++                referendum = (T) new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6), resultSet.getInt(1));
+ 
+             //chiudo resultset e connessione
+             resultSet.close();
+Index: src/main/java/data/VotazioneDAOImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package data;\r\n\r\nimport models.Classica;\r\nimport models.Referendum;\r\nimport models.Votazione;\r\n\r\nimport java.sql.*;\r\nimport java.util.*;\r\n\r\n/**\r\n * @author Piemme\r\n */\r\npublic abstract class VotazioneDAOImpl implements VotazioneDAO {\r\n\r\n    /**\r\n     * Default constructor\r\n     */\r\n    public VotazioneDAOImpl() { }\r\n\r\n    /**\r\n     * @return\r\n     */\r\n    public List<Votazione> getAllVotazioni() {\r\n        List<Votazione> votazioni = new LinkedList<>();\r\n        try{\r\n            //apro connessione\r\n            Connection conn = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/swengdb?useSSL=false\", \"root\", \"root\");\r\n\r\n            //creo oggetto statement per esecuzione query\r\n            PreparedStatement statement = conn.prepareStatement(\"SELECT distinct * FROM votazioni\");\r\n            //eseguo la query\r\n            ResultSet resultSet = statement.executeQuery();\r\n            //guarda se ci sono risultati\r\n            while(resultSet.next())\r\n                votazioni.add(new Classica(resultSet.getString(6),resultSet.getDate(5), resultSet.getBoolean(7), resultSet.getBoolean(8)));\r\n\r\n            //creo oggetto statement per esecuzione query\r\n            statement = conn.prepareStatement(\"SELECT * FROM referendum\");\r\n            //eseguo la query\r\n            resultSet = statement.executeQuery();\r\n            //guarda se ci sono risultati\r\n            while(resultSet.next())\r\n                votazioni.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6)));\r\n\r\n            //chiudo resultset e connessione\r\n            resultSet.close();\r\n            conn.close();\r\n        }catch(SQLException e){\r\n            System.out.println(\"SQLException: \" + e.getMessage());\r\n            System.out.println(\"SQLState: \" + e.getSQLState());\r\n            System.out.println(\"VendorError: \" + e.getErrorCode());\r\n        }\r\n        return votazioni;\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/data/VotazioneDAOImpl.java b/src/main/java/data/VotazioneDAOImpl.java
+--- a/src/main/java/data/VotazioneDAOImpl.java	(revision 4328bd45d5a814ab281a46bb5f4b799fa94b5591)
++++ b/src/main/java/data/VotazioneDAOImpl.java	(date 1655898501797)
+@@ -32,7 +32,7 @@
+             ResultSet resultSet = statement.executeQuery();
+             //guarda se ci sono risultati
+             while(resultSet.next())
+-                votazioni.add(new Classica(resultSet.getString(6),resultSet.getDate(5), resultSet.getBoolean(7), resultSet.getBoolean(8)));
++                votazioni.add(new Classica(resultSet.getString(6),resultSet.getDate(5), resultSet.getBoolean(7), resultSet.getBoolean(8), resultSet.getInt(1)));
+ 
+             //creo oggetto statement per esecuzione query
+             statement = conn.prepareStatement("SELECT * FROM referendum");
+@@ -40,7 +40,7 @@
+             resultSet = statement.executeQuery();
+             //guarda se ci sono risultati
+             while(resultSet.next())
+-                votazioni.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6)));
++                votazioni.add(new Referendum(resultSet.getString(2), resultSet.getDate(7), resultSet.getBoolean(6), resultSet.getInt(1)));
+ 
+             //chiudo resultset e connessione
+             resultSet.close();
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"10063e4c-8e0c-4c57-b3b3-8d0a0b658077\" name=\"Changes\" comment=\"Implemented some DAO methods, but without testing it, REMEMBER to do it later!\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/views/login.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllers/LoginController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllers/LoginController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/data/AdminDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/data/AdminDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/views/login.fxml.java\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2AhJi88Gt3JLGoum04i9WPazjbc\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n    <option name=\"showMembers\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Downloaded.Files.Path.Enabled\": \"false\",\r\n    \"Repository.Attach.Annotations\": \"false\",\r\n    \"Repository.Attach.JavaDocs\": \"false\",\r\n    \"Repository.Attach.Sources\": \"false\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Users/Pietro/Downloads/openjfx-18.0.1_windows-x64_bin-sdk/javafx-sdk-18.0.1/lib/javafx.fxml.jar\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs.jest.jest_package\": \"\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.3218391\",\r\n    \"settings.editor.selected.configurable\": \"preferences.JavaFX\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"swengProject\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path C:\\Users\\Pietro\\Downloads\\openjfx-18.0.1_windows-x64_bin-sdk\\javafx-sdk-18.0.1\\lib --add-modules=javafx.controls,javafx.fxml\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"swengProject [compile]\" type=\"MavenRunConfiguration\" factoryName=\"Maven\" nameIsGenerated=\"true\">\r\n      <MavenSettings>\r\n        <option name=\"myGeneralSettings\" />\r\n        <option name=\"myRunnerSettings\" />\r\n        <option name=\"myRunnerParameters\">\r\n          <MavenRunnerParameters>\r\n            <option name=\"profiles\">\r\n              <set />\r\n            </option>\r\n            <option name=\"goals\">\r\n              <list>\r\n                <option value=\"compile\" />\r\n              </list>\r\n            </option>\r\n            <option name=\"pomFileName\" />\r\n            <option name=\"profilesMap\">\r\n              <map />\r\n            </option>\r\n            <option name=\"resolveToWorkspace\" value=\"false\" />\r\n            <option name=\"workingDirPath\" value=\"$PROJECT_DIR$\" />\r\n          </MavenRunnerParameters>\r\n        </option>\r\n      </MavenSettings>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Main\" />\r\n      <item itemvalue=\"Maven.swengProject [compile]\" />\r\n    </list>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"10063e4c-8e0c-4c57-b3b3-8d0a0b658077\" name=\"Changes\" comment=\"\" />\r\n      <created>1655456012963</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1655456012963</updated>\r\n      <workItem from=\"1655504382378\" duration=\"437000\" />\r\n      <workItem from=\"1655668356962\" duration=\"16000\" />\r\n      <workItem from=\"1655702445511\" duration=\"1219000\" />\r\n      <workItem from=\"1655712208417\" duration=\"8009000\" />\r\n      <workItem from=\"1655731692156\" duration=\"4490000\" />\r\n      <workItem from=\"1655801494379\" duration=\"2839000\" />\r\n      <workItem from=\"1655827276880\" duration=\"4847000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"first push\">\r\n      <created>1655457534063</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1655457534063</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"second push\">\r\n      <created>1655457836112</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1655457836112</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"changed some package intestations\">\r\n      <created>1655458009496</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1655458009496</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"changed some package intestations\">\r\n      <created>1655458759995</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1655458759995</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"changed some package intestations\">\r\n      <created>1655703130482</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1655703130482</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Small straight steps\">\r\n      <created>1655735818888</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1655735818888</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Implemented some DAO methods, but without testing it, REMEMBER to do it later!\">\r\n      <created>1655804344645</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1655804344645</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"first branch\" />\r\n    <MESSAGE value=\"first push\" />\r\n    <MESSAGE value=\"second push\" />\r\n    <MESSAGE value=\"changed some package intestations\" />\r\n    <MESSAGE value=\"Small straight steps\" />\r\n    <MESSAGE value=\"Implemented some DAO methods, but without testing it, REMEMBER to do it later!\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Implemented some DAO methods, but without testing it, REMEMBER to do it later!\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NullPointerException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4328bd45d5a814ab281a46bb5f4b799fa94b5591)
++++ b/.idea/workspace.xml	(date 1656269465521)
+@@ -4,17 +4,16 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Implemented some DAO methods, but without testing it, REMEMBER to do it later!">
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/login.fxml" afterDir="false" />
++    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="modified mail in Elettore">
++      <change afterPath="$PROJECT_DIR$/src/main/resources/images/GUI_diagram_sketch.jpg" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/login.fxml.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/models/Referendum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Referendum.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/models/Votazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -53,33 +52,33 @@
+     <option name="showLibraryContents" value="true" />
+     <option name="showMembers" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "Downloaded.Files.Path.Enabled": "false",
+-    "Repository.Attach.Annotations": "false",
+-    "Repository.Attach.JavaDocs": "false",
+-    "Repository.Attach.Sources": "false",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "C:/Users/Pietro/Downloads/openjfx-18.0.1_windows-x64_bin-sdk/javafx-sdk-18.0.1/lib/javafx.fxml.jar",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs.jest.jest_package": "",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.3218391",
+-    "settings.editor.selected.configurable": "preferences.JavaFX"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
++    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.27.jar&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs.jest.jest_package&quot;: &quot;&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager" selected="Application.Main">
+     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="Main" />
+       <module name="swengProject" />
+-      <option name="VM_PARAMETERS" value="--module-path C:\Users\Pietro\Downloads\openjfx-18.0.1_windows-x64_bin-sdk\javafx-sdk-18.0.1\lib --add-modules=javafx.controls,javafx.fxml" />
++      <option name="VM_PARAMETERS" value="--module-path C:\Users\rocco\Documents\javafx-sdk-18.0.1\lib --add-modules=javafx.controls,javafx.fxml" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -129,6 +128,7 @@
+       <workItem from="1655731692156" duration="4490000" />
+       <workItem from="1655801494379" duration="2839000" />
+       <workItem from="1655827276880" duration="4847000" />
++      <workItem from="1656109913797" duration="27000" />
+     </task>
+     <task id="LOCAL-00001" summary="first push">
+       <created>1655457534063</created>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_17\" project-jdk-name=\"openjdk-18\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 4328bd45d5a814ab281a46bb5f4b799fa94b5591)
++++ b/.idea/misc.xml	(date 1655899272805)
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="openjdk-18" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="openjdk-18" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file

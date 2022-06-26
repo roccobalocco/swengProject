@@ -32,19 +32,11 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.inserimento1Controller">
+<VBox prefHeight="467.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InserimentoVotazioniController">
   <MenuBar VBox.vgrow="NEVER">
       <Menu mnemonicParsing="false" text="File">
         <MenuItem mnemonicParsing="false" text="New" />
@@ -76,14 +68,37 @@
         <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
       </Menu>
   </MenuBar>
-  <AnchorPane VBox.vgrow="ALWAYS">
-    <CheckBox fx:id="referendumCheckBox" layoutX="41.0" layoutY="32.0" mnemonicParsing="false" onAction="#disable" selected="true" text="Referendum" />
-    <TextArea fx:id="descrizioneTextArea" layoutX="41.0" layoutY="69.0" prefHeight="126.0" prefWidth="552.0" promptText="Descrizione..." />
-    <CheckBox fx:id="quorumCheckBox" layoutX="142.0" layoutY="32.0" mnemonicParsing="false" text="Quorum" />
-    <DatePicker fx:id="scadenzaDatePicker" layoutX="345.0" layoutY="218.0" promptText="Scadenza" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="120.0" />
-    <ChoiceBox fx:id="tipoChoiceBox" layoutX="129.0" layoutY="218.0" prefHeight="26.0" prefWidth="175.0" AnchorPane.leftAnchor="120.0" />
-    <Button cancelButton="true" layoutX="291.0" layoutY="317.0" mnemonicParsing="false" onAction="#goBack" text="Indietro" AnchorPane.rightAnchor="291.4" />
-    <Button fx:id="candidatiButton" layoutX="136.0" layoutY="278.0" mnemonicParsing="false" onAction="#inserisciCandidati" text="Procedi a inserire candidati" AnchorPane.leftAnchor="136.0" />
-    <Button fx:id="referendumButton" layoutX="349.0" layoutY="277.0" mnemonicParsing="false" onAction="#inserisciReferendum" prefHeight="26.0" prefWidth="159.0" text="Inserisci Referendum" AnchorPane.rightAnchor="136.0" />
+  <AnchorPane prefHeight="434.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+    <CheckBox fx:id="referendumCheckBox" layoutX="41.0" layoutY="31.0" mnemonicParsing="false" onAction="#disable" selected="true" text="Referendum">
+         <font>
+            <Font size="14.0" />
+         </font></CheckBox>
+    <TextArea fx:id="descrizioneTextArea" layoutX="41.0" layoutY="91.0" prefHeight="183.0" prefWidth="552.0" promptText="Descrizione...">
+         <font>
+            <Font size="14.0" />
+         </font></TextArea>
+    <CheckBox fx:id="quorumCheckBox" layoutX="169.0" layoutY="31.0" mnemonicParsing="false" text="Quorum">
+         <font>
+            <Font size="14.0" />
+         </font></CheckBox>
+    <DatePicker fx:id="scadenzaDatePicker" layoutX="330.0" layoutY="298.0" promptText="Scadenza" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="135.0" />
+    <ChoiceBox fx:id="tipoChoiceBox" layoutX="135.0" layoutY="298.0" prefHeight="26.0" prefWidth="175.0" AnchorPane.leftAnchor="135.0" />
+    <Button cancelButton="true" layoutX="284.0" layoutY="388.0" mnemonicParsing="false" onAction="#goBack" text="Indietro" AnchorPane.rightAnchor="289.0">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+    <Button fx:id="candidatiButton" layoutX="130.0" layoutY="342.0" mnemonicParsing="false" onAction="#inserisciCandidati" text="Procedi a inserire candidati" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="325.0">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+    <Button fx:id="referendumButton" layoutX="325.0" layoutY="342.0" mnemonicParsing="false" onAction="#inserisciReferendum" prefHeight="26.0" prefWidth="159.0" text="Inserisci Referendum" AnchorPane.leftAnchor="325.0" AnchorPane.rightAnchor="130.0">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label fx:id="infoLabel" layoutX="42.0" layoutY="59.0" text="Info Text">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
   </AnchorPane>
 </VBox>

@@ -14,7 +14,16 @@ import javafx.stage.Stage;
 import util.CF;
 
 import javax.imageio.IIOException;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
+
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author Piemme
@@ -64,11 +73,15 @@ public class LoginController {
         }
     }
 
+    /**
+     * Applica un controllo alla checkbox Admin ed alle due stringhe che l'utente inserisce, bloccando tentativi di accessi con password nulle o con codici fiscali non validi
+     * @throws IIOException
+     */
     @FXML
-    public void login() throws IIOException {
-        String userString = cf_TextField.getText();
+    public void login() throws IIOException, NoSuchAlgorithmException {
+        String userString = cf_TextField.getText().toUpperCase();
         String pswString = psw_TextField.getText();
-        if (CF.check(userString)){
+        if (!CF.check(userString)){
             a.setAlertType(Alert.AlertType.ERROR);
             a.setContentText("Inserire un Codice Fiscale valido");
             a.show();
@@ -76,7 +89,7 @@ public class LoginController {
             a.setAlertType(Alert.AlertType.ERROR);
             a.setContentText("Inserire una password valida");
             a.show();
-        }else if(existInDb(userString, pswString)) {
+        }else if(existInDb(userString, PassEncTech2.toHexString(PassEncTech2.getSHA(pswString)))) {
 			logged(new Stage());
             ((Stage) cf_TextField.getScene().getWindow()).close();
         }else {
@@ -84,7 +97,40 @@ public class LoginController {
             a.setContentText("Login non effettuato " + userString);
             a.show();
         }
-
+        //System.out.println("The password encripted is:\n" + PassEncTech2.toHexString(PassEncTech2.getSHA(pswString)));
+        //Theangel23 --> 9675e7a7ad9d1c09d08e60b1ca898085faaeaa59c795cdd635b6f47ec1ed7ab9
     }
 
+
+    private class PassEncTech2
+    {
+        public static byte[] getSHA(String input) throws NoSuchAlgorithmException
+        {
+            /* MessageDigest instance for hashing using SHA256 */
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+            /* digest() method called to calculate message digest of an input and return array of byte */
+            return md.digest(input.getBytes(StandardCharsets.UTF_8));
+        }
+
+        public static String toHexString(byte[] hash)
+        {
+            /* Convert byte array of hash into digest */
+            BigInteger number = new BigInteger(1, hash);
+
+            /* Convert the digest into hex value */
+            StringBuilder hexString = new StringBuilder(number.toString(16));
+
+            /* Pad with leading zeros */
+            while (hexString.length() < 32)
+            {
+                hexString.insert(0, '0');
+            }
+
+            return hexString.toString();
+        }
+
+        /* Driver code */
+
+    }
 }

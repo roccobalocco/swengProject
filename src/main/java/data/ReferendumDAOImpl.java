@@ -102,7 +102,7 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl {
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "UPDATE referendum SET `descrizione` = '" + v.descrizione + "', `quorum` = " + v.hasQuorum()  + ", `scadenza` = '" + v.getScadenza() + "', WHERE `id` = " + id;
+            String query = "UPDATE referendum SET `descrizione` = \"" + v.descrizione + "\", `quorum` = " + v.hasQuorum()  + ", `scadenza` = '" + v.getScadenza() + "', WHERE `id` = " + id;
             System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
@@ -126,7 +126,7 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "INSERT INTO referendum (`id`, `descrizione`, `quorum`, `scadenza`)";
-            query += " VALUES (" + v.getId() + ", '" + v.descrizione + "', " + (v.hasQuorum() ? 1 : 0) + ", '" + v.getScadenza() + " 00:00:00' );";
+            query += " VALUES (" + v.getId() + ", \"" + v.descrizione + "\", " + (v.hasQuorum() ? 1 : 0) + ", '" + v.getScadenza() + " 00:00:00' );";
             System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);

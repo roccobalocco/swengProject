@@ -18,8 +18,10 @@ public class CF {
     public static boolean check(String cf){
         if(cf == null)
             return false;
-        if(cf.length() != 16)
+        if(cf.length() != 16) {
+            System.out.println("A quanto pare '" + cf + "' non ha 16 caratteri ma ne ha " + cf.length());
             return false;
+        }
         //TODO recupera da vecchio progetto per controllo
         return true;
     }
