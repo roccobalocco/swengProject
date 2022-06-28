@@ -59,21 +59,21 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl {
     }
 
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("unchecked")
     public <T extends Votazione> List<T> getAllNoQuorum() {
         List<T> aq = new LinkedList<>();
         this.getAll().forEach((Referendum r) -> { if(!r.hasQuorum()){ aq.add((T) r); } });
         return aq;
     }
 
-    @SuppressWarnings("all")
-    public <T extends Votazione> T getVotazione(String id) {
+    @SuppressWarnings("unchecked")
+    public <T extends Votazione> T getVotazione(int id) {
         T referendum = null;
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "SELECT * FROM referendum WHERE `id` = \"" + id + "\"";
+            String query = "SELECT * FROM referendum WHERE `id` = " + id;
             System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
@@ -144,7 +144,7 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl {
     }
 
 
-    public boolean deleteVotazione(String id){
+    public boolean deleteVotazione(int id){
         boolean dv = false;
         try{
             //apro connessione

@@ -43,7 +43,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             while(resultSet.next())
                 lg.add(new Gruppo(resultSet.getInt(1), resultSet.getString(2)));
 
-            query = "SELECT * FROM candidati";
+            query = "SELECT * FROM persone";
             //creo oggetto statement per esecuzione query
             statement = conn.prepareStatement(query);
             //eseguo la query
@@ -186,7 +186,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "DELETE FROM candidati WHERE `id` = " + id;
+            String query = "DELETE FROM persone WHERE `id` = " + id;
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -224,13 +224,77 @@ public class CandidatoDAOImpl implements CandidatoDAO{
         return true;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Gruppo> getGruppi() {
         return (List<Gruppo>) getAllCandidati().get(0);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Persona> getPersone() {
         return (List<Persona>) getAllCandidati().get(1);
     }
+
+    public int getNextIdGruppo() {
+        int i = 0;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT MAX(id) FROM gruppi";
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next())
+                i = resultSet.getInt(1) + 1;
+            //chiudo resultset e connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return i;
+    }
+
+    @Override
+    public int getNextIdPersona() {
+        int i = 0;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT MAX(id) FROM persone";
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next())
+                i = resultSet.getInt(1) + 1;
+            //chiudo resultset e connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return i;
+    }
+
+    @Override
+    public List<Persona> getPersone(Classica c) {
+
+        return null;
+    }
+
+    @Override
+    public List<Gruppo> getGruppi(Classica c) {
+
+        return null;
+    }
+
 }

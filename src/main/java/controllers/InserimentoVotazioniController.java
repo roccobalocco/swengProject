@@ -40,6 +40,7 @@ public class InserimentoVotazioniController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("ENTRIAMO NELL'INSERIMENTO VOTAZIONE");
         ObservableList<String> votationsList = FXCollections.observableArrayList();
         tipoChoiceBox.setItems(votationsList);
         votationsList.addAll("Ordinale", "Categorico senza preferenze", "Categorico con preferenze");
@@ -119,31 +120,31 @@ public class InserimentoVotazioniController implements Initializable {
             a.setAlertType(Alert.AlertType.CONFIRMATION);
             a.setContentText("Sicuro di voler procedere all'inserimento dei candidati per la votazione (non ancora inserita): " + c);
             Optional<ButtonType> r = a.showAndWait();
-            if(r.get() == ButtonType.OK) {
-                Stage primaryStage = new Stage();
-                Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/inserimentoCandidati.fxml")));
-                Scene scene = new Scene(root);
+            if(r.isPresent())
+                if(r.get() == ButtonType.OK) {
+                    ClassicaDAOImpl.getInstance().setAppoggio(c);
+                    Stage primaryStage = new Stage();
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/inserimentoCandidati.fxml")));
+                    Scene scene = new Scene(root);
 
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Inserimento Candidati Votazione");
-                primaryStage.setResizable(true);
-                primaryStage.setUserData(c);
-                System.out.println("Inserita la votazione in UserData come: \n" + c.toString());
-                primaryStage.show();
-                ((Stage) descrizioneTextArea.getScene().getWindow()).close();
-            }
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Inserimento Candidati Votazione");
+                    primaryStage.setResizable(true);
+                    ((Stage) scadenzaDatePicker.getScene().getWindow()).close();
+                    primaryStage.show();
+                }
         }
         a.setAlertType(Alert.AlertType.ERROR);
     }
 
     private boolean isPreferenziale() {
         if(!isOrdinale())
-            return tipoChoiceBox.getTypeSelector().equals("Categorico con preferenze");
+            return tipoChoiceBox.getSelectionModel().getSelectedItem().equals("Categorico con preferenze");
         return false;
     }
 
     private boolean isOrdinale() {
-        return tipoChoiceBox.getTypeSelector().equals("Ordinale");
+        return tipoChoiceBox.getSelectionModel().getSelectedItem().equals("Ordinale");
     }
 
     private boolean isOkRef(){
@@ -161,18 +162,19 @@ public class InserimentoVotazioniController implements Initializable {
             a.setAlertType(Alert.AlertType.CONFIRMATION);
             a.setContentText("Sicuro di voler procedere all'inserimento del Referendum: " + ref);
             Optional<ButtonType> r = a.showAndWait();
-            if(r.get() == ButtonType.OK) {
-                if (ReferendumDAOImpl.getInstance().addVotazione(ref)) {
-                    a.setContentText("Inserimento eseguito con successo!");
-                    a.setAlertType(Alert.AlertType.INFORMATION);
-                    goBack();
-                    a.show();
-                } else {
-                    a.setContentText("Inserimento fallito");
-                    a.setAlertType(Alert.AlertType.INFORMATION);
-                    a.show();
+            if(r.isPresent())
+                if(r.get() == ButtonType.OK) {
+                    if (ReferendumDAOImpl.getInstance().addVotazione(ref)) {
+                        a.setContentText("Inserimento eseguito con successo!");
+                        a.setAlertType(Alert.AlertType.INFORMATION);
+                        goBack();
+                        a.show();
+                    } else {
+                        a.setContentText("Inserimento fallito");
+                        a.setAlertType(Alert.AlertType.INFORMATION);
+                        a.show();
+                    }
                 }
-            }
         }
         a.setAlertType(Alert.AlertType.ERROR);
     }

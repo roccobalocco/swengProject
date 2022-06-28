@@ -14,9 +14,6 @@ public class Persona extends Candidato{
     public int getGruppo(){ return gruppoFK; }
 
     public String toString(){
-        StringBuilder s = new StringBuilder("Candidato politico ");
-        s.append(getNome()).append("\n");
-        s.append(CandidatoDAOImpl.getInstance().getCandidato(getId()).getNome());
-        return s.toString();
+        return "Candidato politico " + getNome() + "\n" + CandidatoDAOImpl.getInstance().getPersona(getId()).getNome();
     }
 }

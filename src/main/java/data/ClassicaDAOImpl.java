@@ -13,6 +13,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
 
     private ClassicaDAOImpl() { }
 
+    private Classica appoggio;
     private static ClassicaDAOImpl uniqueInstance;
 
     public static ClassicaDAOImpl getInstance(){
@@ -21,6 +22,19 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
         return uniqueInstance;
     }
 
+    public void setAppoggio(Classica c){ uniqueInstance.appoggio = c; }
+    public Classica getAppoggio(){ return uniqueInstance.appoggio; }
+
+    /**
+     * Inserisci la votazione presente nel Singleton
+     */
+    public boolean addVotazione(){
+        if(uniqueInstance.appoggio != null && (ClassicaDAOImpl.uniqueInstance.getVotazione(uniqueInstance.appoggio.getId())) == null)
+            return this.addVotazione(uniqueInstance.appoggio);
+        assert uniqueInstance.appoggio != null;
+        System.out.println("Appoggio NON inserito: " + uniqueInstance.appoggio);
+        return false;
+    }
     /**
      * Il metodo inserisce il Gruppo nel DB e lo collega alla votazione 'c'
      * @param c votazione di competenza
@@ -28,7 +42,10 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
      */
     public void addGruppo(Classica c, Gruppo g){
         try{
-            CandidatoDAOImpl.getInstance().addGruppo(g);
+            if(CandidatoDAOImpl.getInstance().addGruppo(g))
+                System.out.println("Inserimento Gruppo andato a buon fine");
+            else
+                System.out.println("Inserimento Gruppo NON andato a buon fine");
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
@@ -56,7 +73,10 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
      * @param p persona da inserire, facente parte del partito 'g'
      */
     public void addPersona(Classica c, Gruppo g, Persona p){
-        CandidatoDAOImpl.getInstance().addPersona(c, g, p);
+        if(CandidatoDAOImpl.getInstance().addPersona(c, g, p))
+            System.out.println("Inserimento Persona andato a buon fine");
+        else
+            System.out.println("Inserimento Persona NON andato a buon fine");
     }
 
     public List<Classica> getAllOrdinale() {
@@ -126,7 +146,8 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
      * @return null se non esiste la votazione corrispondente, la votazione altrimenti
      * @param <T> la sottoclasse di Votazione --> Classica
      */
-    public <T extends Votazione> T getVotazione(String id) {
+    @SuppressWarnings("unchecked")
+    public <T extends Votazione> T getVotazione(int id) {
         Classica c = null;
         try{
             //apro connessione
@@ -157,7 +178,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
 
     public <T extends Votazione> boolean updateVotazione(T v) {
         Classica c = (Classica) v;
-        if(getVotazione("" + c.getId()) == null)
+        if(getVotazione(c.getId()) == null)
             return false;
         try{
             //apro connessione
@@ -203,6 +224,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             statement.executeUpdate();
+
             //chiudo connessione
             conn.close();
         }catch(SQLException e){
@@ -214,7 +236,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
         return true;
     }
 
-    public boolean deleteVotazione(String id) {
+    public boolean deleteVotazione(int id) {
         if(getVotazione(id) == null)
                 return false;
         try{

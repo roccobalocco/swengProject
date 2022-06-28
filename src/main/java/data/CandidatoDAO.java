@@ -20,7 +20,15 @@ public interface CandidatoDAO {
 
     boolean  deleteGruppo(int id);
 
+    int getNextIdGruppo();
+
+    int getNextIdPersona();
+
+    List<Gruppo> getGruppi(Classica c);
+
     List<Gruppo> getGruppi();
+
+    List<Persona> getPersone(Classica c);
 
     List<Persona> getPersone();
 }

@@ -4,25 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="done some testing for gui insertion, login and some SQL queries. &#10;After this commit i will set password encryption!">
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Now the insertion of Votazione subclass Classica is supported">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_06_2022_10_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_06_2022_10_38__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_06_2022_20_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_06_2022_20_51__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/CandidatoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db_dump/swengdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db_dump/swengdb.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/inserimento.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/inserimento.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/inserimentoCandidati.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/inserimentoCandidati.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,6 +163,9 @@
       <workItem from="1656152947724" duration="657000" />
       <workItem from="1656274750759" duration="3275000" />
       <workItem from="1656342013048" duration="3041000" />
+      <workItem from="1656401915915" duration="235000" />
+      <workItem from="1656431400544" duration="5624000" />
+      <workItem from="1656441174355" duration="4733000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -233,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655979709073</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="first steps to insert Candidati in the mySQL db and a new DB dump">
+      <created>1656402134310</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1656402134311</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +264,9 @@
     <MESSAGE value="Implemented some DAO methods, but without testing it, REMEMBER to do it later!" />
     <MESSAGE value="Dump of db." />
     <MESSAGE value="Created two fondamental GUI fxml file and started their controllers." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created two fondamental GUI fxml file and started their controllers." />
+    <MESSAGE value="first steps to insert Candidati in the mySQL db and a new DB dump" />
+    <MESSAGE value="Now the insertion of Votazione subclass Classica is supported" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now the insertion of Votazione subclass Classica is supported" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
