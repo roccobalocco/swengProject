@@ -82,19 +82,19 @@
                 <Font size="16.0"/>
             </font>
         </Text>
-        <Button fx:id="sceltaModifica" layoutX="56.0" layoutY="174.0" mnemonicParsing="false" onAction="#modifica"
+        <Button layoutX="56.0" layoutY="174.0" mnemonicParsing="false" onAction="#modifica"
                 text="Modifica votazione" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="440.0">
             <font>
                 <Font size="14.0"/>
             </font>
         </Button>
-        <Button fx:id="eliminaScelta" layoutX="449.0" layoutY="174.0" mnemonicParsing="false" onAction="#elimina"
+        <Button layoutX="449.0" layoutY="174.0" mnemonicParsing="false" onAction="#elimina"
                 text="Elimina votazione" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="60.0">
             <font>
                 <Font size="14.0"/>
             </font>
         </Button>
-        <Button fx:id="aggiungiScelta" layoutX="258.0" layoutY="175.0" mnemonicParsing="false" onAction="#aggiungi"
+        <Button layoutX="258.0" layoutY="175.0" mnemonicParsing="false" onAction="#aggiungi"
                 text="Aggiungi votazione">
             <font>
                 <Font size="14.0"/>

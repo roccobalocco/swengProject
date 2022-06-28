@@ -18,7 +18,6 @@ public class Admin extends Utente {
     private static Admin uniqueInstance;
 
     /**
-     * @return
      */
     public static Admin getInstance(String cf) {
         if(uniqueInstance == null) {
@@ -32,7 +31,6 @@ public class Admin extends Utente {
     }
 
     /**
-     * @return
      */
     private boolean logAction(String s) {
         // TODO implement here

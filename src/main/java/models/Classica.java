@@ -1,7 +1,6 @@
 package models;
 
 import java.time.LocalDate;
-import java.util.*;
 
 /**
  * @author Piemme
@@ -18,9 +17,9 @@ public class Classica extends Votazione {
         assoluta = a;
     }
 
-    private boolean ordinale = false;
-    private boolean preferenza = false;
-    private boolean assoluta = false;
+    private boolean ordinale;
+    private boolean preferenza;
+    private boolean assoluta;
 
     public boolean  isAssoluta(){ return assoluta; }
 

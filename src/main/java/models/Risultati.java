@@ -4,8 +4,8 @@ import java.util.List;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class Risultati {
-    private String descrizione;
-    private List candidati;
+    private final String descrizione;
+    private final List candidati;
 
     public Risultati(String d, List c){
         descrizione = d;

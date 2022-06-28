@@ -20,11 +20,11 @@ public class Elettore extends Utente {
     }
 
     private static Elettore uniqueInstance;
-    private String nome, cognome;
-    private Date dn;
+    private final String nome;
+    private final String cognome;
+    private final Date dn;
 
     /**
-     * @return
      */
     public static Elettore getInstance(String nome, String cognome, String cf, Date dn) {
         if(uniqueInstance == null){
@@ -40,12 +40,9 @@ public class Elettore extends Utente {
     public static Elettore getInstance(){
         return uniqueInstance;
     }
+
     public String toString(){
-        StringBuilder s = new StringBuilder("Nome: ");
-        s.append(nome).append("\n");
-        s.append("Cognome: ").append(cognome).append("\n");
-        s.append("Data di nascita: ").append(dn.toString()).append("\n");
-        return s.toString() + super.toString();
+        return "Nome: " + nome + "\nCognome: " + cognome + "\nData di nascita: " + dn.toString() + "\n" + super.toString();
     }
 
     /**

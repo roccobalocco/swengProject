@@ -15,10 +15,9 @@ public abstract class Utente {
     /**
      * 
      */
-    private String cf;
+    private final String cf;
 
     /**
-     * @return
      */
     public String getCF() {
         return cf;

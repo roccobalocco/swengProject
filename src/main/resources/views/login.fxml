@@ -79,7 +79,7 @@
         </Menu>
     </MenuBar>
     <AnchorPane VBox.vgrow="ALWAYS">
-        <Button fx:id="loginButton" layoutX="347.0" layoutY="182.0" mnemonicParsing="false" onAction="#login"
+        <Button layoutX="347.0" layoutY="182.0" mnemonicParsing="false" onAction="#login"
                 text="Login">
             <font>
                 <Font size="14.0"/>

@@ -15,8 +15,7 @@ public class DbManager {
     }
 
     /**
-     * @param v Votazione 
-     * @return
+     * @param v Votazione
      */
     public boolean addVotazione(Votazione v ) {
         // TODO implement here
@@ -24,8 +23,7 @@ public class DbManager {
     }
 
     /**
-     * @param v Votazione 
-     * @return
+     * @param v Votazione
      */
     public boolean removeVotazione(Votazione v) {
         // TODO implement here
@@ -33,9 +31,6 @@ public class DbManager {
     }
 
     /**
-     * @param user 
-     * @param psw 
-     * @return
      */
     public Utente login(String user, String psw) {
         // TODO implement here

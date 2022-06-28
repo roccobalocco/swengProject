@@ -16,7 +16,7 @@ public class Referendum extends Votazione {
 
     }
 
-    public boolean quorum;
+    public final boolean quorum;
     public boolean hasQuorum() { return quorum; }
 
     public String toString(){

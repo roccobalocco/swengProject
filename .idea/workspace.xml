@@ -5,18 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Now the insertion of Votazione subclass Classica is supported">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/CandidatoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/inserimentoCandidati.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/inserimentoCandidati.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/DbManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Elettore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Elettore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Referendum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Referendum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Votazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db_dump/swengdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db_dump/swengdb.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/sceltaAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/sceltaAdmin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +57,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2AhJi88Gt3JLGoum04i9WPazjbc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -165,7 +171,7 @@
       <workItem from="1656342013048" duration="3041000" />
       <workItem from="1656401915915" duration="235000" />
       <workItem from="1656431400544" duration="5624000" />
-      <workItem from="1656441174355" duration="4733000" />
+      <workItem from="1656441174355" duration="5257000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -237,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656402134311</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Now the insertion of Votazione subclass Classica is supported">
+      <created>1656446024099</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656446024099</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -5,7 +5,6 @@ import models.Referendum;
 import models.Votazione;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 

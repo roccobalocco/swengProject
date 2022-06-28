@@ -18,7 +18,7 @@ public class ElettoreController implements Initializable {
     @FXML
     ListView<String> votationListView;
 
-    Alert a = new Alert(Alert.AlertType.NONE);
+    final Alert a = new Alert(Alert.AlertType.NONE);
 
 
     @Override
@@ -28,13 +28,13 @@ public class ElettoreController implements Initializable {
         List<List<? extends Votazione>> l = ClassicaDAOImpl.getInstance().getAllVotazioni();
         for (Votazione c : l.get(0)){
             if(!c.fineVotazione()) {
-                System.out.println("Classica: " + ((Classica) c).toString());
+                System.out.println("Classica: " + ((Classica) c));
                 votationListView.getItems().add(((Classica) c).toString());
             }
         }
         for(Votazione c : l.get(1)) {
             if(!c.fineVotazione()) {
-                System.out.println("Referendum: " + ((Referendum) c).toString());
+                System.out.println("Referendum: " + ((Referendum) c));
                 votationListView.getItems().add(((Referendum) c).toString());
             }
         }
