@@ -24,8 +24,9 @@ import java.util.ResourceBundle;
 public class InserimentoVotazioniController implements Initializable {
 
     private final Alert a = new Alert(Alert.AlertType.ERROR);
+
     @FXML
-    CheckBox referendumCheckBox, quorumCheckBox;
+    CheckBox referendumCheckBox, quorumCheckBox, assolutaCheckBox;
     @FXML
     ChoiceBox<String> tipoChoiceBox;
     @FXML
@@ -45,6 +46,7 @@ public class InserimentoVotazioniController implements Initializable {
         tipoChoiceBox.setValue(votationsList.get(1));
         infoLabel.setText("Togliere la spunta a 'Referendum' per inserire un altro tipo di votazione");
 
+        assolutaCheckBox.setDisable(true);
         tipoChoiceBox.setDisable(true);
         candidatiButton.setDisable(true);
     }
@@ -55,15 +57,17 @@ public class InserimentoVotazioniController implements Initializable {
             referendumCheckBox.setText("Referendum");
             infoLabel.setText("Togliere la spunta a 'Referendum' per inserire un altro tipo di votazione");
 
+            assolutaCheckBox.setDisable(true);
             tipoChoiceBox.setDisable(true);
             candidatiButton.setDisable(true);
 
             quorumCheckBox.setDisable(false);
             referendumButton.setDisable(false);
         }else{
-            infoLabel.setText("Togliere la spunta a 'Votazione' per inserire un referndum");
+            infoLabel.setText("Mettere la spunta a 'Votazione' per inserire un referndum");
             referendumCheckBox.setText("Votazione");
 
+            assolutaCheckBox.setDisable(false);
             tipoChoiceBox.setDisable(false);
             candidatiButton.setDisable(false);
 
@@ -111,7 +115,7 @@ public class InserimentoVotazioniController implements Initializable {
     @FXML
     public void inserisciCandidati() throws IOException {
         if(isOkVot()) {
-            Classica c = new Classica(descrizioneTextArea.getText(),scadenzaDatePicker.getValue(), isOrdinale(), isPreferenziale(), ClassicaDAOImpl.getInstance().getNextId());
+            Classica c = new Classica(descrizioneTextArea.getText(),scadenzaDatePicker.getValue(), isOrdinale(), isPreferenziale(), ClassicaDAOImpl.getInstance().getNextId(), assolutaCheckBox.isSelected());
             a.setAlertType(Alert.AlertType.CONFIRMATION);
             a.setContentText("Sicuro di voler procedere all'inserimento dei candidati per la votazione (non ancora inserita): " + c);
             Optional<ButtonType> r = a.showAndWait();
@@ -124,6 +128,7 @@ public class InserimentoVotazioniController implements Initializable {
                 primaryStage.setTitle("Inserimento Candidati Votazione");
                 primaryStage.setResizable(true);
                 primaryStage.setUserData(c);
+                System.out.println("Inserita la votazione in UserData come: \n" + c.toString());
                 primaryStage.show();
                 ((Stage) descrizioneTextArea.getScene().getWindow()).close();
             }

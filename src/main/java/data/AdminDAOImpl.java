@@ -19,11 +19,11 @@ public class AdminDAOImpl implements AdminDAO {
     private static AdminDAOImpl uniqueInstance;
 
     public static AdminDAOImpl getInstance() {
-        if(uniqueInstance == null){
+        if(uniqueInstance == null)
             uniqueInstance = new AdminDAOImpl();
-        }// TODO implement here
         return uniqueInstance;
     }
+
     /**
      * @param cf un codice alfanumerico di 16 caratteri che venga trovato all'interno della base di dati, non nullo
      * @param psw stringa non nulla ne vuota

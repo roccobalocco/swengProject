@@ -20,11 +20,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * @author Piemme
  */
@@ -102,8 +97,7 @@ public class LoginController {
     }
 
 
-    private class PassEncTech2
-    {
+    private static class PassEncTech2 {
         public static byte[] getSHA(String input) throws NoSuchAlgorithmException
         {
             /* MessageDigest instance for hashing using SHA256 */

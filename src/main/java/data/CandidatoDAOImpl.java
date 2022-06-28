@@ -1,9 +1,9 @@
 package data;
 
 import models.Candidato;
+import models.Classica;
 import models.Gruppo;
 import models.Persona;
-import models.Referendum;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -34,7 +34,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "SELECT * FROM candidati WHERE id = gruppi_fk";
+            String query = "SELECT * FROM gruppi";
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -43,7 +43,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             while(resultSet.next())
                 lg.add(new Gruppo(resultSet.getInt(1), resultSet.getString(2)));
 
-            query = "SELECT * FROM candidati WHERE id <> gruppi_fk";
+            query = "SELECT * FROM candidati";
             //creo oggetto statement per esecuzione query
             statement = conn.prepareStatement(query);
             //eseguo la query
@@ -67,28 +67,24 @@ public class CandidatoDAOImpl implements CandidatoDAO{
 
     /**
      *
-     * @param id identificatore del candidato (persona o gruppo politico)
-     * @return null se id non corrisponde a nessun candidato, Gruppo o Persona identificata altrimenti
-     * @param <T> possibile sottitipo di Candidato
+     * @param id non-negative int
+     * @return null se non esiste il gruppo, il gruppo corrispondente altrimenti
      */
     @Override
-    public <T extends Candidato> T getCandidato(int id) {
-        Candidato c = null;
+    public Gruppo getGruppo(int id) {
+        Gruppo g = null;
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "SELECT * FROM candidati WHERE `id` = " + id;
+            String query = "SELECT * FROM gruppi WHERE `id` = " + id;
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
-            resultSet.next();
-            if(resultSet.getInt(1) == resultSet.getInt(3))
-                c = new Gruppo(resultSet.getInt(1), resultSet.getString(2));
-            else
-                c = new Persona(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3));
+            if(resultSet.next())
+                g = new Gruppo(resultSet.getInt(1), resultSet.getString(2));
             //chiudo resultset e connessione
             resultSet.close();
             conn.close();
@@ -97,18 +93,51 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        return (T) c;
+        return g;
     }
+
+
+    /**
+     *
+     * @param id non-negative int
+     * @return null se non esiste il candidato, il candidato corrispondente altrimenti
+     */
+    @Override
+    public Persona getPersona(int id) {
+        Persona p = null;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT * FROM gruppi WHERE `id` = " + id;
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            //guarda se ci sono risultati
+            if(resultSet.next())
+                p = new Persona(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3));
+            //chiudo resultset e connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return p;
+    }
+
 
     @Override
     public boolean addGruppo(Gruppo c) {
-        if(getCandidato(c.getId()) != null)
+        if(getGruppo(c.getId()) != null)
             return false;
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "INSERT INTO candidati (`id`, `nome`, `gruppi_fk`) VALUES ( "+ c.getId() +", '" + c.getNome() + "', " + c.getId() + ")";
+            String query = "INSERT INTO gruppi (`id`, `nome`) VALUES (" + c.getId() +", '" + c.getNome() + "')";
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -124,18 +153,21 @@ public class CandidatoDAOImpl implements CandidatoDAO{
     }
 
     @Override
-    public boolean addPersona(Persona p) {
-        if(getCandidato(p.getId()) != null)
+    public boolean addPersona(Classica c, Gruppo g, Persona p){
+        if(getPersona(p.getId()) != null)
             return false;
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "INSERT INTO candidati (`id`, `nome`, `gruppi_fk`) VALUES ( "+ p.getId() +", '" + p.getNome() + "', " + p.getGruppo() + ")";
+            String query = "INSERT INTO `persone` (`id`, `nome`, `voti`, `voti_gruppiFK`, `gruppoFK`) " +
+                    "VALUES( " + p.getId() + ", '" + p.getNome() + "', 0, '" + c.getId() + "', '" + g.getId() +"')";
+            System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             statement.executeUpdate();
+
             //chiudo connessione
             conn.close();
         }catch(SQLException e){
@@ -147,14 +179,37 @@ public class CandidatoDAOImpl implements CandidatoDAO{
     }
 
     @Override
-    public boolean deleteCandidato(int id) {
-        if(getCandidato(id) == null)
+    public boolean deletePersona(int id) {
+        if(getPersona(id) == null)
             return false;
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "DELETE FROM candidati WHERE `id` = " + id;
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deleteGruppo(int id) {
+        if(getGruppo(id) == null)
+            return false;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "DELETE FROM gruppi WHERE `id` = " + id;
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query

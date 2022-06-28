@@ -34,7 +34,7 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
             while(resultSet.next())
                 classica.add(new Classica(resultSet.getString(6), resultSet.getDate(5).toInstant()
                         .atZone(ZoneId.systemDefault())
-                        .toLocalDate(), resultSet.getBoolean(7), resultSet.getBoolean(8), resultSet.getInt(1)));
+                        .toLocalDate(), resultSet.getBoolean(7), resultSet.getBoolean(8), resultSet.getInt(1), resultSet.getBoolean(3)));
 
             //creo oggetto statement per esecuzione query
             statement = conn.prepareStatement("SELECT * FROM referendum");

@@ -13,7 +13,7 @@ public interface VotazioneDAO {
 
     <T extends Votazione> T getVotazione(String id);
 
-    <T extends Votazione> boolean updateVotazione(String id, T v);
+    <T extends Votazione> boolean updateVotazione(T v);
 
     <T extends Votazione> boolean addVotazione(T v);
 

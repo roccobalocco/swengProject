@@ -11,14 +11,18 @@ public class Classica extends Votazione {
     /**
      * Default constructor
      */
-    public Classica(String desc, LocalDate scad, boolean o, boolean p, int id) {
+    public Classica(String desc, LocalDate scad, boolean o, boolean p, int id, boolean a) {
         super(desc, scad, id);
         ordinale = o;
         preferenza = p;
+        assoluta = a;
     }
 
     private boolean ordinale = false;
     private boolean preferenza = false;
+    private boolean assoluta = false;
+
+    public boolean  isAssoluta(){ return assoluta; }
 
     /**
      * @return 0 se é ordinale, 1 se categorico, 2 se categorico con preferenza

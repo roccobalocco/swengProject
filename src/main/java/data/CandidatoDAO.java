@@ -9,13 +9,16 @@ public interface CandidatoDAO {
 
     List<List<? extends Candidato>> getAllCandidati();
 
-    <T extends Candidato> T getCandidato(int id);
+    Gruppo getGruppo(int id);
+    Persona getPersona(int id);
 
     boolean addGruppo(Gruppo g);
 
-    boolean addPersona(Persona p);
+    boolean addPersona(Classica c, Gruppo g, Persona p);
 
-    boolean deleteCandidato(int id);
+    boolean deletePersona(int id);
+
+    boolean  deleteGruppo(int id);
 
     List<Gruppo> getGruppi();
 
