@@ -1,7 +1,10 @@
 package data;
 
 import models.*;
+import util.Observer;
+import util.Observable;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.ZoneId;
 import java.util.*;
@@ -9,10 +12,11 @@ import java.util.*;
 /**
  * @author Piemme
  */
-public class ClassicaDAOImpl extends VotazioneDAOImpl {
+public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
 
-    private ClassicaDAOImpl() { }
+    private ClassicaDAOImpl() { obs = new LinkedList<>(); }
 
+    private final List<Observer> obs;
     private Classica appoggio;
     private static ClassicaDAOImpl uniqueInstance;
 
@@ -28,7 +32,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
     /**
      * Inserisci la votazione presente nel Singleton
      */
-    public boolean addVotazione(){
+    public boolean addVotazione() throws IOException {
         if(uniqueInstance.appoggio != null && (ClassicaDAOImpl.uniqueInstance.getVotazione(uniqueInstance.appoggio.getId())) == null)
             return this.addVotazione(uniqueInstance.appoggio);
         assert uniqueInstance.appoggio != null;
@@ -40,7 +44,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
      * @param c votazione di competenza
      * @param g gruppo da inserire nel db
      */
-    public void addGruppo(Classica c, Gruppo g){
+    public void addGruppo(Classica c, Gruppo g) throws IOException {
         try{
             if(CandidatoDAOImpl.getInstance().addGruppo(g))
                 System.out.println("Inserimento Gruppo andato a buon fine");
@@ -64,6 +68,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers("[Aggiunta Gruppo: " + g + " a Votazione: " + c + "]");
     }
 
     /**
@@ -72,14 +77,16 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
      * @param g gruppo di appartenenza del parametro 'p'
      * @param p persona da inserire, facente parte del partito 'g'
      */
-    public void addPersona(Classica c, Gruppo g, Persona p){
+    public void addPersona(Classica c, Gruppo g, Persona p) throws IOException {
         if(CandidatoDAOImpl.getInstance().addPersona(c, g, p))
             System.out.println("Inserimento Persona andato a buon fine");
         else
             System.out.println("Inserimento Persona NON andato a buon fine");
+
+        getInstance().notifyObservers("[Aggiunta Persona: " + p + ", a Gruppo: " + g + " a Votazione: " + c + "]");
     }
 
-    public List<Classica> getAllOrdinale() {
+    public List<Classica> getAllOrdinale() throws IOException {
         List<Classica> l = new LinkedList<>();
         try{
             //apro connessione
@@ -104,10 +111,11 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers("[Richiesta Votazioni Ordinali]");
         return l;
     }
 
-    public List<Classica> getAllCategorico() {
+    public List<Classica> getAllCategorico() throws IOException {
         List<Classica> l = new LinkedList<>();
         try{
             //apro connessione
@@ -132,11 +140,13 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers("[Richiesta Votazioni categoriche]");
         return l;
     }
 
-    public Risultati getRisultati() {
+    public Risultati getRisultati() throws IOException {
         //TODO
+        getInstance().notifyObservers("[Richiesta Risultati]");
         return null;
     }
 
@@ -147,7 +157,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
      * @param <T> la sottoclasse di Votazione --> Classica
      */
     @SuppressWarnings("unchecked")
-    public <T extends Votazione> T getVotazione(int id) {
+    public <T extends Votazione> T getVotazione(int id) throws IOException {
         Classica c = null;
         try{
             //apro connessione
@@ -172,11 +182,12 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers("[Richiesta Votazione con id: " + id + "]");
         return (T) c;
     }
 
 
-    public <T extends Votazione> boolean updateVotazione(T v) {
+    public <T extends Votazione> boolean updateVotazione(T v) throws IOException {
         Classica c = (Classica) v;
         if(getVotazione(c.getId()) == null)
             return false;
@@ -204,10 +215,11 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             System.out.println("VendorError: " + e.getErrorCode());
             return false;
         }
+        getInstance().notifyObservers("[Aggiornamento Votazione: " + c + "]");
         return true;
     }
 
-    public <T extends Votazione> boolean addVotazione(T v) {
+    public <T extends Votazione> boolean addVotazione(T v) throws IOException {
         Classica c = (Classica) v;
         System.out.println("Inserimento di votazione: \n" + c.toString());
         try{
@@ -233,10 +245,11 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             System.out.println("VendorError: " + e.getErrorCode());
             return false;
         }
+        getInstance().notifyObservers(" [Aggiunta Votazione: " + c + "]");
         return true;
     }
 
-    public boolean deleteVotazione(int id) {
+    public boolean deleteVotazione(int id) throws IOException {
         if(getVotazione(id) == null)
                 return false;
         try{
@@ -258,15 +271,17 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             System.out.println("VendorError: " + e.getErrorCode());
             return false;
         }
+        getInstance().notifyObservers(" [Cancellazione Votazione con id: " + id + "]");
         return true;
     }
 
-    public Risultati getRisultati(Votazione v) {
+    public Risultati getRisultati(Votazione v) throws IOException {
         //TODO
+        getInstance().notifyObservers(" [Richiesta Risultati per Votazione: " + v + "]");
         return null;
     }
 
-    public int getNextId(){
+    public int getNextId() throws IOException {
         int id = 0;
         try{
             //apro connessione
@@ -290,7 +305,20 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         System.out.println("Next id --> " + id);
+        getInstance().notifyObservers(" [Richiesta prossimo id per Votazione]");
         return id;
+    }
+
+    @Override
+    public void subscribe(Observer o) { uniqueInstance.obs.add(o); }
+
+    @Override
+    public void unsubcribe(Observer o) { uniqueInstance.obs.remove(o); }
+
+    @Override
+    public void notifyObservers(String s) throws IOException {
+        for(Observer o : uniqueInstance.obs)
+            o.update(s);
     }
 
 }

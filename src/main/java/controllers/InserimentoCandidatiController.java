@@ -41,23 +41,31 @@ public class InserimentoCandidatiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(getCurrentVotazione() != null) {
-            if(ClassicaDAOImpl.getInstance().addVotazione())
-                System.out.println("VOTAZIONE INSERITA");
-            else 
-                System.out.println("VOTAZIONE NON INSERITA");
+            try {
+                if(ClassicaDAOImpl.getInstance().addVotazione())
+                    System.out.println("VOTAZIONE INSERITA");
+                else
+                    System.out.println("VOTAZIONE NON INSERITA");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             if (getCurrentVotazione().whichType() != 2) {
                 gruppoCheckBox.setDisable(true);
                 gruppoListView.setDisable(false);
             } else {
                 gruppoListView.setDisable(false);
-                updateGroup();
+                try {
+                    updateGroup();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }else{
             throw new IllegalCallerException("metodo chiamato senza aver settato ClassicaDAOImpl.setAppoggio con una votazione");
         }
     }
 
-    private void updateGroup(){
+    private void updateGroup() throws IOException {
         this.lg = CandidatoDAOImpl.getInstance().getGruppi(ClassicaDAOImpl.getInstance().getAppoggio());
         for (Gruppo g : lg){
             System.out.println("Classica: " + g.toString());
@@ -71,7 +79,7 @@ public class InserimentoCandidatiController implements Initializable {
     }
 
     @FXML
-    public void inserisci() {
+    public void inserisci() throws IOException {
         //TODO inserisici il candidato in corrispondenza della votazione
         if(nomeTextField.getText().length() < 3) {
             a.setAlertType(Alert.AlertType.ERROR);

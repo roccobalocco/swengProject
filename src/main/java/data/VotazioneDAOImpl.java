@@ -58,4 +58,5 @@ public abstract class VotazioneDAOImpl implements VotazioneDAO {
         return votazioni;
     }
 
+
 }

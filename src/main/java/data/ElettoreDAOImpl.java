@@ -2,20 +2,27 @@ package data;
 
 import models.Elettore;
 import models.Votazione;
+import util.Observable;
+import util.Observer;
 
+import java.io.IOException;
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Piemme
  */
-public class ElettoreDAOImpl implements ElettoreDAO {
+public class ElettoreDAOImpl implements ElettoreDAO, Observable {
 
     /**
      * Default constructor
      */
     private ElettoreDAOImpl() {
+        obs = new LinkedList<>();
     }
 
+    private final List<Observer> obs;
     private static ElettoreDAOImpl uniqueInstance;
 
     public static ElettoreDAOImpl getInstance() {
@@ -58,5 +65,17 @@ public class ElettoreDAOImpl implements ElettoreDAO {
 
     public boolean isElettore(String cf, String psw){
         return getElettore(cf, psw) != null;
+    }
+
+    @Override
+    public void subscribe(Observer o) { uniqueInstance.obs.add(o); }
+
+    @Override
+    public void unsubcribe(Observer o) { uniqueInstance.obs.remove(o); }
+
+    @Override
+    public void notifyObservers(String s) throws IOException {
+        for(Observer o : uniqueInstance.obs)
+            o.update(s);
     }
 }

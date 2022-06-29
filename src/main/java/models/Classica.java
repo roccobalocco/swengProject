@@ -17,9 +17,9 @@ public class Classica extends Votazione {
         assoluta = a;
     }
 
-    private boolean ordinale;
-    private boolean preferenza;
-    private boolean assoluta;
+    private final boolean ordinale;
+    private final boolean preferenza;
+    private final boolean assoluta;
 
     public boolean  isAssoluta(){ return assoluta; }
 

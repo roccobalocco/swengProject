@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import util.CF;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -32,7 +33,7 @@ public class LoginController {
 
     final Alert a = new Alert(Alert.AlertType.NONE);
 
-    private boolean existInDb(String cf, String psw){
+    private boolean existInDb(String cf, String psw) throws IOException {
         System.out.println("Checkbox admin pari a :" + admin_CheckBox.isSelected());
         if(admin_CheckBox.isSelected()){
             return AdminDAOImpl.getInstance().isAdmin(cf, psw);
@@ -71,7 +72,7 @@ public class LoginController {
      * Applica un controllo alla checkbox Admin ed alle due stringhe che l'utente inserisce, bloccando tentativi di accessi con password nulle o con codici fiscali non validi
      */
     @FXML
-    public void login() throws NoSuchAlgorithmException {
+    public void login() throws NoSuchAlgorithmException, IOException {
         String userString = cf_TextField.getText().toUpperCase();
         String pswString = psw_TextField.getText();
         if (!CF.check(userString)){

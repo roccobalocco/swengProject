@@ -26,16 +26,18 @@ public class ElettoreController implements Initializable {
         benvenutoText.setText("Benvenut*: \n" + Elettore.getInstance().toString());
 
         List<List<? extends Votazione>> l = ClassicaDAOImpl.getInstance().getAllVotazioni();
-        for (Votazione c : l.get(0)){
+        List<Classica> lc = (List<Classica>) l.get(0);
+        for (Classica c : lc){
             if(!c.fineVotazione()) {
-                System.out.println("Classica: " + ((Classica) c));
-                votationListView.getItems().add(((Classica) c).toString());
+                System.out.println("Classica: " +  c);
+                votationListView.getItems().add(c.toString());
             }
         }
-        for(Votazione c : l.get(1)) {
+        List<Referendum> lr = (List<Referendum>) l.get(1);
+        for(Referendum c : lr) {
             if(!c.fineVotazione()) {
-                System.out.println("Referendum: " + ((Referendum) c));
-                votationListView.getItems().add(((Referendum) c).toString());
+                System.out.println("Referendum: " + c);
+                votationListView.getItems().add(c.toString());
             }
         }
     }

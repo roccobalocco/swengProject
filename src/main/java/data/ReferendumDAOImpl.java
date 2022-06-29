@@ -1,6 +1,10 @@
 package data;
 
 import models.*;
+import util.Observable;
+import util.Observer;
+
+import java.io.IOException;
 import java.sql.*;
 import java.time.ZoneId;
 import java.util.*;
@@ -8,13 +12,16 @@ import java.util.*;
 /**
  * @author Piemme
  */
-public class ReferendumDAOImpl extends VotazioneDAOImpl {
+public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
 
     /**
      * Default constructor
      */
-    private ReferendumDAOImpl() { }
+    private ReferendumDAOImpl() {
+        obs = new LinkedList<>();
+    }
 
+    private final List<Observer> obs;
     private static ReferendumDAOImpl uniqueInstance;
 
     public static ReferendumDAOImpl getInstance(){
@@ -202,4 +209,18 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl {
         System.out.println("Next id --> " + id);
         return id;
     }
+
+
+    @Override
+    public void subscribe(util.Observer o) { uniqueInstance.obs.add(o); }
+
+    @Override
+    public void unsubcribe(util.Observer o) { uniqueInstance.obs.remove(o); }
+
+    @Override
+    public void notifyObservers(String s) throws IOException {
+        for(Observer o : uniqueInstance.obs)
+            o.update(s);
+    }
+
 }

@@ -4,16 +4,20 @@ import models.Candidato;
 import models.Classica;
 import models.Gruppo;
 import models.Persona;
+import util.Observable;
+import util.Observer;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CandidatoDAOImpl implements CandidatoDAO{
+public class CandidatoDAOImpl implements CandidatoDAO, Observable {
 
+    private final List<Observer> obs;
     private static CandidatoDAOImpl uniqueInstance;
 
-    private CandidatoDAOImpl(){ }
+    private CandidatoDAOImpl(){ obs = new LinkedList<>(); }
 
     public static CandidatoDAOImpl getInstance(){
         if(uniqueInstance == null)
@@ -26,7 +30,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
      * @return una lista con al suo interno due liste, la prima di tipo Gruppo e la seconda di tipo Persona
      */
     @Override
-    public List<List<? extends Candidato>> getAllCandidati() {
+    public List<List<? extends Candidato>> getAllCandidati() throws IOException {
         List<Gruppo>  lg = new LinkedList<>();
         List<Persona> lp = new LinkedList<>();
         List<List<? extends Candidato>> lc = new LinkedList<>();
@@ -62,6 +66,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
         }
         lc.add(lg);
         lc.add(lp);
+        getInstance().notifyObservers(" [Richiesta di tutti i candidati (Gruppi e Persone)]");
         return lc;
     }
 
@@ -71,7 +76,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
      * @return null se non esiste il gruppo, il gruppo corrispondente altrimenti
      */
     @Override
-    public Gruppo getGruppo(int id) {
+    public Gruppo getGruppo(int id) throws IOException {
         Gruppo g = null;
         try{
             //apro connessione
@@ -93,6 +98,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers(" [Richiesta Gruppo con id: " + id + "]");
         return g;
     }
 
@@ -103,7 +109,7 @@ public class CandidatoDAOImpl implements CandidatoDAO{
      * @return null se non esiste il candidato, il candidato corrispondente altrimenti
      */
     @Override
-    public Persona getPersona(int id) {
+    public Persona getPersona(int id) throws IOException {
         Persona p = null;
         try{
             //apro connessione
@@ -125,12 +131,13 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers(" [Richiesta Persona con id: " + id + "]");
         return p;
     }
 
 
     @Override
-    public boolean addGruppo(Gruppo c) {
+    public boolean addGruppo(Gruppo c) throws IOException {
         if(getGruppo(c.getId()) != null)
             return false;
         try{
@@ -149,11 +156,12 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers(" [Aggiunta Gruppo: " + c + "]");
         return true;
     }
 
     @Override
-    public boolean addPersona(Classica c, Gruppo g, Persona p){
+    public boolean addPersona(Classica c, Gruppo g, Persona p) throws IOException {
         if(getPersona(p.getId()) != null)
             return false;
         try{
@@ -175,11 +183,12 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers(" [Aggiunta Persona: " + p + ", di Gruppo: " + g + " per Votazione: " + c + "]");
         return true;
     }
 
     @Override
-    public boolean deletePersona(int id) {
+    public boolean deletePersona(int id) throws IOException {
         if(getPersona(id) == null)
             return false;
         try{
@@ -198,11 +207,12 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers(" [Cancellazione persona con id: " + id + " ]");
         return true;
     }
 
     @Override
-    public boolean deleteGruppo(int id) {
+    public boolean deleteGruppo(int id) throws IOException {
         if(getGruppo(id) == null)
             return false;
         try{
@@ -221,22 +231,25 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers(" [Cancellazione gruppo con id: " + id + " ]");
         return true;
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Gruppo> getGruppi() {
+    public List<Gruppo> getGruppi() throws IOException {
+        getInstance().notifyObservers(" [Richiesta lista gruppi]");
         return (List<Gruppo>) getAllCandidati().get(0);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Persona> getPersone() {
+    public List<Persona> getPersone() throws IOException {
+        getInstance().notifyObservers(" [Richiesta lista persone]");
         return (List<Persona>) getAllCandidati().get(1);
     }
 
-    public int getNextIdGruppo() {
+    public int getNextIdGruppo() throws IOException {
         int i = 0;
         try{
             //apro connessione
@@ -257,11 +270,12 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers(" [Richiesta prossimo id per gruppo]");
         return i;
     }
 
     @Override
-    public int getNextIdPersona() {
+    public int getNextIdPersona() throws IOException {
         int i = 0;
         try{
             //apro connessione
@@ -282,19 +296,33 @@ public class CandidatoDAOImpl implements CandidatoDAO{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        getInstance().notifyObservers(" [Richiesta prossimo id per persona]");
         return i;
     }
 
     @Override
-    public List<Persona> getPersone(Classica c) {
-
+    public List<Persona> getPersone(Classica c) throws IOException {
+        getInstance().notifyObservers(" [Richiesta persone per votazione " + c + " ]");
         return null;
     }
 
     @Override
-    public List<Gruppo> getGruppi(Classica c) {
-
+    public List<Gruppo> getGruppi(Classica c) throws IOException {
+        getInstance().notifyObservers(" [Richiesta gruppi per votazione " + c + " ]");
         return null;
+    }
+
+
+    @Override
+    public void subscribe(Observer o) { uniqueInstance.obs.add(o); }
+
+    @Override
+    public void unsubcribe(Observer o) { uniqueInstance.obs.remove(o); }
+
+    @Override
+    public void notifyObservers(String s) throws IOException {
+        for(Observer o : uniqueInstance.obs)
+            o.update(s);
     }
 
 }

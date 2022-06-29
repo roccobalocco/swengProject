@@ -2,6 +2,8 @@ package models;
 
 import data.CandidatoDAOImpl;
 
+import java.io.IOException;
+
 public class Persona extends Candidato{
 
     private final int gruppoFK;
@@ -14,6 +16,10 @@ public class Persona extends Candidato{
     public int getGruppo(){ return gruppoFK; }
 
     public String toString(){
-        return "Candidato politico " + getNome() + "\n" + CandidatoDAOImpl.getInstance().getPersona(getId()).getNome();
+        try {
+            return "Candidato politico " + getNome() + "\n" + CandidatoDAOImpl.getInstance().getPersona(getId()).getNome();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

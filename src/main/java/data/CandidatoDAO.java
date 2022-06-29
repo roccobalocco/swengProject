@@ -2,33 +2,34 @@ package data;
 
 import models.*;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface CandidatoDAO {
 
 
-    List<List<? extends Candidato>> getAllCandidati();
+    List<List<? extends Candidato>> getAllCandidati() throws IOException;
 
-    Gruppo getGruppo(int id);
-    Persona getPersona(int id);
+    Gruppo getGruppo(int id) throws IOException;
+    Persona getPersona(int id) throws IOException;
 
-    boolean addGruppo(Gruppo g);
+    boolean addGruppo(Gruppo g) throws IOException;
 
-    boolean addPersona(Classica c, Gruppo g, Persona p);
+    boolean addPersona(Classica c, Gruppo g, Persona p) throws IOException;
 
-    boolean deletePersona(int id);
+    boolean deletePersona(int id) throws IOException;
 
-    boolean  deleteGruppo(int id);
+    boolean  deleteGruppo(int id) throws IOException;
 
-    int getNextIdGruppo();
+    int getNextIdGruppo() throws IOException;
 
-    int getNextIdPersona();
+    int getNextIdPersona() throws IOException;
 
-    List<Gruppo> getGruppi(Classica c);
+    List<Gruppo> getGruppi(Classica c) throws IOException;
 
-    List<Gruppo> getGruppi();
+    List<Gruppo> getGruppi() throws IOException;
 
-    List<Persona> getPersone(Classica c);
+    List<Persona> getPersone(Classica c) throws IOException;
 
-    List<Persona> getPersone();
+    List<Persona> getPersone() throws IOException;
 }

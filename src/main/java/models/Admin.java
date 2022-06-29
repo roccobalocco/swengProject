@@ -1,9 +1,16 @@
 package models;
 
+import util.Observer;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+
 /**
  * @author Piemme
  */
-public class Admin extends Utente {
+public class Admin extends Utente implements Observer {
 
     /**
      * Default constructor
@@ -30,12 +37,14 @@ public class Admin extends Utente {
         return uniqueInstance;
     }
 
-    /**
-     */
-    private boolean logAction(String s) {
-        // TODO implement here
-
-        return true;
+    @Override
+    public void update(String s) throws IOException {
+        File f = new File("/java/resources/logFiles/adminLogs.log");
+        FileWriter fw = new FileWriter(f);
+        fw.write(LocalDate.now().toString());
+        fw.write(Admin.getInstance().toString());
+        fw.write(s);
+        fw.write("\n");
     }
 
 }
