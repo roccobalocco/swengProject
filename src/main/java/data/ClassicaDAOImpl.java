@@ -14,7 +14,10 @@ import java.util.*;
  */
 public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
 
-    private ClassicaDAOImpl() { obs = new LinkedList<>(); }
+    private ClassicaDAOImpl() {
+        obs = new LinkedList<>();
+        obs.add(Admin.getInstance());
+    }
 
     private final List<Observer> obs;
     private Classica appoggio;
@@ -54,7 +57,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "INSERT INTO `voti_gruppi` (`votazione_fk2`, `gruppi_fk`, `voti_gruppo`) " +
-                    "VALUES( " + c.getId() + ", '" + g.getId() + "', 0)";
+                    "VALUES( " + c.getId() + ", " + g.getId() + ", 0)";
             System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
@@ -69,21 +72,6 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             System.out.println("VendorError: " + e.getErrorCode());
         }
         getInstance().notifyObservers("[Aggiunta Gruppo: " + g + " a Votazione: " + c + "]");
-    }
-
-    /**
-     * Il meotodo inserisce la Persona nel DB e la collega alla votazione e al suo gruppo, SOLO PER CATEGORICO PREFERENZIALE
-     * @param c votazione di competenza
-     * @param g gruppo di appartenenza del parametro 'p'
-     * @param p persona da inserire, facente parte del partito 'g'
-     */
-    public void addPersona(Classica c, Gruppo g, Persona p) throws IOException {
-        if(CandidatoDAOImpl.getInstance().addPersona(c, g, p))
-            System.out.println("Inserimento Persona andato a buon fine");
-        else
-            System.out.println("Inserimento Persona NON andato a buon fine");
-
-        getInstance().notifyObservers("[Aggiunta Persona: " + p + ", a Gruppo: " + g + " a Votazione: " + c + "]");
     }
 
     public List<Classica> getAllOrdinale() throws IOException {
@@ -228,8 +216,8 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             //scrivo query
             String query = "INSERT INTO `votazione`" +
                 "(`id`, `assoluta`, `scadenza`, `descrizione`,`ordinale`, `preferenza`) VALUES" +
-                "(" + c.getId() + ", " + (c.isAssoluta() ? 1 : 0) + ", '" + c.getScadenza() + " 00:00:00'," +
-                c.descrizione + ", " + (c.whichType() == 0) + ", " + (c.whichType() == 2) + ")";
+                "(" + c.getId() + ", " + (c.isAssoluta() ? 1 : 0) + ", '" + c.getScadenza() + " 00:00:00', '" +
+                c.descrizione + "', " + (c.whichType() == 0) + ", " + (c.whichType() == 2) + ")";
 
             System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query

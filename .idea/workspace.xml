@@ -4,29 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Now the insertion of Votazione subclass Classica is supported">
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/Observable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_06_2022_11_06__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_06_2022_11_06__Changes_.xml" afterDir="false" />
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Observable things and logFiles with SQLInjection protection inserted (finally)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/AntiInjection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_06_2022_10_38_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_06_2022_10_38__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/CandidatoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/DbManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Gruppo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Gruppo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +36,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -101,8 +96,8 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Maven.swengProject [compile]">
-    <configuration name="Main this pc" type="Application" factoryName="Application">
+  <component name="RunManager" selected="Application.MainASUS">
+    <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="swengProject" />
       <option name="VM_PARAMETERS" value="--module-path C:\Users\rocco\Downloads\javafx-sdk-18.0.1\lib --add-modules=javafx.controls,javafx.fxml" />
@@ -145,7 +140,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.MainBMAX" />
-      <item itemvalue="Application.Main this pc" />
+      <item itemvalue="Application.MainASUS" />
       <item itemvalue="Maven.swengProject [compile]" />
     </list>
   </component>
@@ -176,6 +171,7 @@
       <workItem from="1656401915915" duration="235000" />
       <workItem from="1656431400544" duration="5624000" />
       <workItem from="1656441174355" duration="5257000" />
+      <workItem from="1656503052133" duration="14965000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -254,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656446024099</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Observable things">
+      <created>1656498760771</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1656498760772</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +286,9 @@
     <MESSAGE value="Created two fondamental GUI fxml file and started their controllers." />
     <MESSAGE value="first steps to insert Candidati in the mySQL db and a new DB dump" />
     <MESSAGE value="Now the insertion of Votazione subclass Classica is supported" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now the insertion of Votazione subclass Classica is supported" />
+    <MESSAGE value="Observable things" />
+    <MESSAGE value="Observable things and logFiles with SQLInjection protection inserted (finally)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Observable things and logFiles with SQLInjection protection inserted (finally)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

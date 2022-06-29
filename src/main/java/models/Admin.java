@@ -2,10 +2,9 @@ package models;
 
 import util.Observer;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.util.Scanner;
 
 /**
  * @author Piemme
@@ -39,12 +38,15 @@ public class Admin extends Utente implements Observer {
 
     @Override
     public void update(String s) throws IOException {
-        File f = new File("/java/resources/logFiles/adminLogs.log");
-        FileWriter fw = new FileWriter(f);
-        fw.write(LocalDate.now().toString());
-        fw.write(Admin.getInstance().toString());
-        fw.write(s);
-        fw.write("\n");
+        File f = new File("src/main/resources/logFiles/adminLogs.log");
+        FileWriter fw = new FileWriter(f, true);
+        BufferedWriter bw =  new BufferedWriter(fw);
+
+        bw.write(LocalDateTime.now() + " - ");
+        bw.write(Admin.getInstance().toString() + " - ");
+        bw.write(s);
+        bw.write("\n");
+        bw.close();
     }
 
 }

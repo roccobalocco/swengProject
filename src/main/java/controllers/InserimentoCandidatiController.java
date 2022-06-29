@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import models.Classica;
 import models.Gruppo;
 import models.Persona;
+import util.AntiInjection;
 
 import java.io.IOException;
 import java.net.URL;
@@ -42,18 +43,15 @@ public class InserimentoCandidatiController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(getCurrentVotazione() != null) {
             try {
-                if(ClassicaDAOImpl.getInstance().addVotazione())
-                    System.out.println("VOTAZIONE INSERITA");
-                else
-                    System.out.println("VOTAZIONE NON INSERITA");
+                ClassicaDAOImpl.getInstance().addVotazione();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             if (getCurrentVotazione().whichType() != 2) {
                 gruppoCheckBox.setDisable(true);
-                gruppoListView.setDisable(false);
+                gruppoListView.setDisable(true);
             } else {
-                gruppoListView.setDisable(false);
+                gruppoListView.setDisable(true);
                 try {
                     updateGroup();
                 } catch (IOException e) {
@@ -66,11 +64,14 @@ public class InserimentoCandidatiController implements Initializable {
     }
 
     private void updateGroup() throws IOException {
-        this.lg = CandidatoDAOImpl.getInstance().getGruppi(ClassicaDAOImpl.getInstance().getAppoggio());
-        for (Gruppo g : lg){
-            System.out.println("Classica: " + g.toString());
+        for(int i = 0; i < gruppoListView.getItems().size(); i++)
+            gruppoListView.getItems().remove(i);
+
+        Classica c = ClassicaDAOImpl.getInstance().getAppoggio();
+        this.lg = CandidatoDAOImpl.getInstance().getGruppi(c);
+        for (Gruppo g : lg)
             gruppoListView.getItems().add(g.toString());
-        }
+
     }
 
     @FXML
@@ -80,32 +81,39 @@ public class InserimentoCandidatiController implements Initializable {
 
     @FXML
     public void inserisci() throws IOException {
-        //TODO inserisici il candidato in corrispondenza della votazione
-        if(nomeTextField.getText().length() < 3) {
+        if(nomeTextField.getText().length() < 2) {
             a.setAlertType(Alert.AlertType.ERROR);
             a.setContentText("Inserisci un nome valido");
             a.show();
         }else if(gruppoCheckBox.isSelected()){
-            Gruppo g = new Gruppo(CandidatoDAOImpl.getInstance().getNextIdGruppo(), nomeTextField.getText());
+            //INSERISCI GRUPPO
+            Gruppo g = new Gruppo(CandidatoDAOImpl.getInstance().getNextIdGruppo(), AntiInjection.bonify(nomeTextField.getText()));
             ClassicaDAOImpl.getInstance().addGruppo(getCurrentVotazione(), g);
             a.setAlertType(Alert.AlertType.INFORMATION);
             a.setContentText("Inserito Partito/Gruuppo " + g +" \n Per la votazione " + getCurrentVotazione().toString());
             a.show();
             updateGroup();
         }else{
+            //INSERISCI CANDIDATO
             int ix = gruppoListView.getSelectionModel().getSelectedIndex();
-            if(ix < 0 || ix > this.lg.size()){
-                Persona p = new Persona(CandidatoDAOImpl.getInstance().getNextIdPersona(), nomeTextField.getText(), lg.get(ix).getId());
-                ClassicaDAOImpl.getInstance().addPersona(getCurrentVotazione(), lg.get(ix), p);
+            System.out.println("Selezionato il numero: " + ix);
+            if(ix != -1){
+                Persona p = new Persona(CandidatoDAOImpl.getInstance().getNextIdPersona(), AntiInjection.bonify(nomeTextField.getText()), lg.get(ix).getId());
+                System.out.println("Gruppo preso: " + lg.get(ix));
+
+                System.out.println("Persona da inserire: " + p + ", collegato a gruppo: " + lg.get(ix).getId() + " - " + p.getGruppo());
+                CandidatoDAOImpl.getInstance().addPersona(getCurrentVotazione(), lg.get(ix), p);
+
                 a.setAlertType(Alert.AlertType.INFORMATION);
                 a.setContentText("Inserito Persona " + p +" \n Per la votazione " + getCurrentVotazione().toString());
                 a.show();
+
+                updateGroup();
             }else{
                 a.setAlertType(Alert.AlertType.ERROR);
                 a.setContentText("Seleziona un Partito/Gruppo");
                 a.show();
             }
-        // Returns the index of the currently selected items in a single-selection mode
         }
     }
 

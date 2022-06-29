@@ -19,6 +19,7 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
      */
     private ReferendumDAOImpl() {
         obs = new LinkedList<>();
+        obs.add(Admin.getInstance());
     }
 
     private final List<Observer> obs;

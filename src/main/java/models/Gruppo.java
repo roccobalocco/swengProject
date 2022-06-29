@@ -7,6 +7,6 @@ public class Gruppo extends Candidato{
     }
 
     public String toString(){
-        return "Unione Politica " + getNome() + "/n";
+        return "Unione Politica " + getNome() + "\n";
     }
 }

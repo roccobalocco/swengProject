@@ -20,6 +20,7 @@ public class AdminDAOImpl implements AdminDAO, Observable {
      */
     private AdminDAOImpl() {
         obs = new LinkedList<>();
+        obs.add(Admin.getInstance());
     }
 
     private final List<Observer> obs;
@@ -82,7 +83,8 @@ public class AdminDAOImpl implements AdminDAO, Observable {
     @Override
     public void notifyObservers(String s) throws IOException {
         for(Observer o : uniqueInstance.obs)
-            o.update(s);
+            if(o != null)
+                o.update(s);
     }
 
 }

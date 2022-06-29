@@ -17,7 +17,7 @@ public class Persona extends Candidato{
 
     public String toString(){
         try {
-            return "Candidato politico " + getNome() + "\n" + CandidatoDAOImpl.getInstance().getPersona(getId()).getNome();
+            return "Candidato politico " + this.getNome() + " \n " + CandidatoDAOImpl.getInstance().getPersona(this.getId()).getNome();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

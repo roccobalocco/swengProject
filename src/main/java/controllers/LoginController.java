@@ -11,6 +11,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.Admin;
+import util.AntiInjection;
 import util.CF;
 
 import java.io.IOException;
@@ -53,6 +55,7 @@ public class LoginController {
                 primaryStage.setTitle("Admin menu");
                 primaryStage.setResizable(true);
                 primaryStage.show();
+                Admin.getInstance().update("[Login effettuato]");
             }else{
                 System.out.println("Siamo arrivati prima del caricamento GUI elettore");
                 Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/sceltaElettore.fxml")));
@@ -83,7 +86,8 @@ public class LoginController {
             a.setAlertType(Alert.AlertType.ERROR);
             a.setContentText("Inserire una password valida");
             a.show();
-        }else if(existInDb(userString, PassEncTech2.toHexString(PassEncTech2.getSHA(pswString)))) {
+        }else if(existInDb(AntiInjection.bonify(userString), PassEncTech2.toHexString(PassEncTech2.getSHA(AntiInjection.bonify(pswString))))) {
+            AdminDAOImpl.getInstance();
 			logged(new Stage());
             ((Stage) cf_TextField.getScene().getWindow()).close();
         }else {

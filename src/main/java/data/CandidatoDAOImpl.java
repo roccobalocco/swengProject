@@ -1,9 +1,6 @@
 package data;
 
-import models.Candidato;
-import models.Classica;
-import models.Gruppo;
-import models.Persona;
+import models.*;
 import util.Observable;
 import util.Observer;
 
@@ -17,7 +14,10 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
     private final List<Observer> obs;
     private static CandidatoDAOImpl uniqueInstance;
 
-    private CandidatoDAOImpl(){ obs = new LinkedList<>(); }
+    private CandidatoDAOImpl(){
+        obs = new LinkedList<>();
+        obs.add(Admin.getInstance());
+    }
 
     public static CandidatoDAOImpl getInstance(){
         if(uniqueInstance == null)
@@ -115,19 +115,19 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "SELECT * FROM gruppi WHERE `id` = " + id;
+            String query = "SELECT * FROM persone WHERE `id` = " + id;
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
             if(resultSet.next())
-                p = new Persona(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3));
+                p = new Persona(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(5));
             //chiudo resultset e connessione
             resultSet.close();
             conn.close();
         }catch(SQLException e){
-            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("ERRORE ROW130-SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
@@ -168,8 +168,7 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "INSERT INTO `persone` (`id`, `nome`, `voti`, `voti_gruppiFK`, `gruppoFK`) " +
-                    "VALUES( " + p.getId() + ", '" + p.getNome() + "', 0, '" + c.getId() + "', '" + g.getId() +"')";
+            String query = "INSERT INTO `persone` (`id`, `nome`, `voti`, `voti_gruppiFK`, `gruppoFK`) VALUES( " + p.getId() + ", '" + p.getNome() + "', 0, " + c.getId() + ", " + g.getId() +")";
             System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
@@ -179,11 +178,11 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
             //chiudo connessione
             conn.close();
         }catch(SQLException e){
-            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("ROW 181 CandidatoDAOImpl--SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        getInstance().notifyObservers(" [Aggiunta Persona: " + p + ", di Gruppo: " + g + " per Votazione: " + c + "]");
+        this.notifyObservers(" [Aggiunta Persona: " + p + ", di Gruppo: " + g + " per Votazione: " + c + "]");
         return true;
     }
 
@@ -302,14 +301,56 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
 
     @Override
     public List<Persona> getPersone(Classica c) throws IOException {
+        List<Persona> lp = new LinkedList<>();
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT persone.id, persone.nome, persone.gruppoFK FROM persone JOIN voti_gruppi ON persone.voti_gruppiFK = voti_gruppi.votazione_fk2";
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            //guarda se ci sono risultati
+            while(resultSet.next())
+                lp.add(new Persona(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3)));
+            //chiudo resultset e connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
         getInstance().notifyObservers(" [Richiesta persone per votazione " + c + " ]");
-        return null;
+        return lp;
     }
 
     @Override
     public List<Gruppo> getGruppi(Classica c) throws IOException {
+        List<Gruppo> lg = new LinkedList<>();
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT gruppi.id, gruppi.nome FROM gruppi JOIN voti_gruppi ON gruppi.id = voti_gruppi.gruppi_fk WHERE voti_gruppi.votazione_fk2 = " + c.getId();
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            //guarda se ci sono risultati
+            while(resultSet.next())
+                lg.add(new Gruppo(resultSet.getInt(1), resultSet.getString(2)));
+            //chiudo resultset e connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
         getInstance().notifyObservers(" [Richiesta gruppi per votazione " + c + " ]");
-        return null;
+        return lg;
     }
 
 

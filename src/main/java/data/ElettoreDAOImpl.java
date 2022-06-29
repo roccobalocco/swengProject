@@ -1,5 +1,6 @@
 package data;
 
+import models.Admin;
 import models.Elettore;
 import models.Votazione;
 import util.Observable;
@@ -19,7 +20,10 @@ public class ElettoreDAOImpl implements ElettoreDAO, Observable {
      * Default constructor
      */
     private ElettoreDAOImpl() {
+
         obs = new LinkedList<>();
+        obs.add(Admin.getInstance());
+
     }
 
     private final List<Observer> obs;
