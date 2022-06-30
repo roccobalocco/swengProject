@@ -53,10 +53,10 @@ public class AdminDAOImpl implements AdminDAO, Observable {
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
-            if(resultSet.next()){
+            if(resultSet.next())
                 utente = Admin.getInstance(resultSet.getString(1));
-                System.out.println("Ci sono dei risultati");
-            }
+                //System.out.println("Ci sono dei risultati: " +Admin.getInstance().toString());
+
             //chiudo resultset e connessione
             resultSet.close();
             conn.close();

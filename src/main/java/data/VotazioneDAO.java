@@ -11,7 +11,7 @@ import java.util.*;
  */
 public interface VotazioneDAO {
 
-    List<List<? extends Votazione>> getAllVotazioni();
+    List<List<? extends Votazione>> getAllVotazioni() throws IOException;
 
     <T extends Votazione> T getVotazione(int id) throws IOException;
 

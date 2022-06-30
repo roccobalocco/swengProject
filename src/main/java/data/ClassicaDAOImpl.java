@@ -3,6 +3,7 @@ package data;
 import models.*;
 import util.Observer;
 import util.Observable;
+import util.Util;
 
 import java.io.IOException;
 import java.sql.*;
@@ -39,7 +40,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
         if(uniqueInstance.appoggio != null && (ClassicaDAOImpl.uniqueInstance.getVotazione(uniqueInstance.appoggio.getId())) == null)
             return this.addVotazione(uniqueInstance.appoggio);
         assert uniqueInstance.appoggio != null;
-        System.out.println("Appoggio NON inserito: " + uniqueInstance.appoggio);
+        //System.out.println("Appoggio NON inserito: " + uniqueInstance.appoggio);
         return false;
     }
     /**
@@ -58,7 +59,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             //scrivo query
             String query = "INSERT INTO `voti_gruppi` (`votazione_fk2`, `gruppi_fk`, `voti_gruppo`) " +
                     "VALUES( " + c.getId() + ", " + g.getId() + ", 0)";
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -81,16 +82,14 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "SELECT * FROM votazione WHERE `ordinale` = 1";
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
             while(resultSet.next())
-                l.add(new Classica(resultSet.getString(5), resultSet.getDate(4).toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate(), true, false, resultSet.getInt(1), resultSet.getBoolean(3) ));
+                l.add(new Classica(resultSet.getString(5), Util.toDateTime(resultSet.getDate(4)), true, false, resultSet.getInt(1), resultSet.getBoolean(3) ));
             //chiudo resultset e connession
             resultSet.close();
             conn.close();
@@ -110,17 +109,15 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "SELECT * FROM votazione WHERE `ordinale` = 0";
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
             while(resultSet.next())
-                l.add(new Classica(resultSet.getString(5), resultSet.getDate(4).toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate(), false, resultSet.getBoolean(7), resultSet.getInt(1),  resultSet.getBoolean(3) ));
-            //chiudo resultset e connession
+                l.add(new Classica(resultSet.getString(5), Util.toDateTime(resultSet.getDate(4)), false, resultSet.getBoolean(7), resultSet.getInt(1),  resultSet.getBoolean(3) ));
+            //chiudo resultset e connessione
             resultSet.close();
             conn.close();
         }catch(SQLException e){
@@ -152,16 +149,14 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "SELECT * FROM votazione WHERE `id` = " + id;
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
             if(resultSet.next())
-                c = new Classica(resultSet.getString(5), resultSet.getDate(4).toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate(), false, resultSet.getBoolean(7), resultSet.getInt(1), resultSet.getBoolean(3));
+                c = new Classica(resultSet.getString(5), Util.toDateTime(resultSet.getDate(4)), false, resultSet.getBoolean(7), resultSet.getInt(1), resultSet.getBoolean(3));
             //chiudo resultset e connession
             resultSet.close();
             conn.close();
@@ -190,7 +185,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
                     "`ordinale` = " + (c.whichType()  == 0) + ", " +
                     "`preferenza` " + (c.whichType()  == 2) + ", " +
                     "WHERE `id` = " + c.getId();
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -209,7 +204,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
 
     public <T extends Votazione> boolean addVotazione(T v) throws IOException {
         Classica c = (Classica) v;
-        System.out.println("Inserimento di votazione: \n" + c.toString());
+        //System.out.println("Inserimento di votazione: \n" + c.toString());
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
@@ -219,7 +214,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
                 "(" + c.getId() + ", " + (c.isAssoluta() ? 1 : 0) + ", '" + c.getScadenza() + " 00:00:00', '" +
                 c.descrizione + "', " + (c.whichType() == 0) + ", " + (c.whichType() == 2) + ")";
 
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -245,8 +240,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "DELETE FROM votazione WHERE `id` = " + id;
-
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -276,7 +270,7 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "SELECT MAX(id) FROM votazione";
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -292,9 +286,14 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        System.out.println("Next id --> " + id);
+        //System.out.println("Next id --> " + id);
         getInstance().notifyObservers(" [Richiesta prossimo id per Votazione]");
         return id;
+    }
+
+    public boolean canVote(Referendum r){
+        boolean cv = false;
+        return cv;
     }
 
     @Override
@@ -306,7 +305,8 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
     @Override
     public void notifyObservers(String s) throws IOException {
         for(Observer o : uniqueInstance.obs)
-            o.update(s);
+            if(o != null)
+                o.update(s);
     }
 
 }

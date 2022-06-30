@@ -1,14 +1,28 @@
 package models;
 
+import java.util.Iterator;
 import java.util.List;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class Risultati {
-    private final String descrizione;
-    private final List candidati;
 
-    public Risultati(String d, List c){
-        descrizione = d;
-        candidati = c;
+    public Risultati(){
+    }
+
+    public Iterator<Risultati> iteratorAnon(){
+        return new Iterator<Risultati>(){
+            private int index = 0;
+            @Override
+            public boolean hasNext() {
+                //TODO
+                return true;
+            }
+
+            @Override
+            public Risultati next() {
+                //TODO
+                return null;
+            }
+
+        };
     }
 }

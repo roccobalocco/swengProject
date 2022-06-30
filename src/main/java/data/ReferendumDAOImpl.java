@@ -3,6 +3,7 @@ package data;
 import models.*;
 import util.Observable;
 import util.Observer;
+import util.Util;
 
 import java.io.IOException;
 import java.sql.*;
@@ -38,16 +39,14 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "SELECT * FROM referendum";
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
             while(resultSet.next())
-                referendums.add(new Referendum(resultSet.getString(2), resultSet.getDate(7).toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate(), resultSet.getBoolean(6), resultSet.getInt(1)));
+                referendums.add(new Referendum(resultSet.getString(2), Util.toDateTime(resultSet.getDate(7)), resultSet.getBoolean(6), resultSet.getInt(1)));
 
             //chiudo resultset e connessione
             resultSet.close();
@@ -82,17 +81,14 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "SELECT * FROM referendum WHERE `id` = " + id;
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
             while(resultSet.next())
-                referendum = (T) new Referendum(resultSet.getString(2), resultSet.getDate(7).toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate(), resultSet.getBoolean(6), resultSet.getInt(1));
-
+                referendum = (T) new Referendum(resultSet.getString(2), Util.toDateTime(resultSet.getDate(7)), resultSet.getBoolean(6), resultSet.getInt(1));
             //chiudo resultset e connessione
             resultSet.close();
             conn.close();
@@ -111,7 +107,7 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "UPDATE referendum SET `descrizione` = \"" + v.descrizione + "\", `quorum` = " + v.hasQuorum()  + ", `scadenza` = '" + v.getScadenza() + "', WHERE `id` = " + v.getId();
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -135,7 +131,7 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
             //scrivo query
             String query = "INSERT INTO referendum (`id`, `descrizione`, `quorum`, `scadenza`)";
             query += " VALUES (" + v.getId() + ", \"" + v.descrizione + "\", " + (v.hasQuorum() ? 1 : 0) + ", '" + v.getScadenza() + " 00:00:00' );";
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -159,7 +155,7 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "DELETE FROM referendum WHERE `id` = " + id;
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -178,10 +174,15 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
 
     public Risultati getRisultati(Votazione r) {
         if(r.fineVotazione()){
-            return new Risultati(r.toString(), new LinkedList<>());
+            return null; //TODO new Risultati(r.toString(), new LinkedList<>());
         }else {
             return null;
         }
+    }
+
+    public boolean canVote(Referendum r){
+        boolean cv = false;
+        return cv;
     }
 
     public int getNextId(){
@@ -191,7 +192,7 @@ public class ReferendumDAOImpl extends VotazioneDAOImpl implements Observable {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
             String query = "SELECT MAX(id) FROM referendum";
-            System.out.println("Query che sta per essere eseguita:\n" + query);
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query

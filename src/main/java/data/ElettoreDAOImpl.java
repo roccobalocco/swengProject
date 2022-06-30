@@ -20,10 +20,8 @@ public class ElettoreDAOImpl implements ElettoreDAO, Observable {
      * Default constructor
      */
     private ElettoreDAOImpl() {
-
         obs = new LinkedList<>();
-        obs.add(Admin.getInstance());
-
+        obs.add(Elettore.getInstance());
     }
 
     private final List<Observer> obs;
@@ -47,10 +45,10 @@ public class ElettoreDAOImpl implements ElettoreDAO, Observable {
             //eseguo la query
             ResultSet resultSet = statement.executeQuery();
             //guarda se ci sono risultati
-            if(resultSet.next()){
+            if(resultSet.next())
                 utente = Elettore.getInstance(resultSet.getString(2), resultSet.getString(3), resultSet.getString(1), resultSet.getDate(4));
-                System.out.println("Ci sono dei risultati");
-            }
+                //System.out.println("Ci sono dei risultati: " + Elettore.getInstance().toString());
+
             //chiudo resultset e connessione
             resultSet.close();
             conn.close();
