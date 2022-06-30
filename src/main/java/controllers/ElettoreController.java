@@ -1,8 +1,6 @@
 package controllers;
 
-import com.mysql.cj.util.TimeUtil;
 import data.ClassicaDAOImpl;
-import data.VotazioneDAOImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -13,7 +11,6 @@ import util.Util;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 

@@ -4,29 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="finally finished Classica insertion without errors (AT A FIRST SIGHT), next thing //TODO is the votation for Referendum">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/VotaClasController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/VotaRefController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/votaClassica.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/votaReferendum.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="first steps for votation. Done GUI's for Elettore Referendum and Classica.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/VotazioneDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Elettore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Elettore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Referendum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Referendum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/CF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/sceltaElettore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/sceltaElettore.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +71,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs.jest.jest_package": "",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3218391",
@@ -102,7 +84,14 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="Application.MainBMAX">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn site" />
+      <command value="mvn compile" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Maven.swengProject [compile]">
     <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="swengProject" />
@@ -178,7 +167,7 @@
       <workItem from="1656431400544" duration="5624000" />
       <workItem from="1656441174355" duration="5257000" />
       <workItem from="1656503052133" duration="14965000" />
-      <workItem from="1656591193775" duration="8240000" />
+      <workItem from="1656591193775" duration="9253000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -271,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656584816256</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="first steps for votation. Done GUI's for Elettore Referendum and Classica.">
+      <created>1656600307949</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1656600307949</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +299,8 @@
     <MESSAGE value="Observable things" />
     <MESSAGE value="Observable things and logFiles with SQLInjection protection inserted (finally)" />
     <MESSAGE value="finally finished Classica insertion without errors (AT A FIRST SIGHT), next thing //TODO is the votation for Referendum" />
-    <option name="LAST_COMMIT_MESSAGE" value="finally finished Classica insertion without errors (AT A FIRST SIGHT), next thing //TODO is the votation for Referendum" />
+    <MESSAGE value="first steps for votation. Done GUI's for Elettore Referendum and Classica." />
+    <option name="LAST_COMMIT_MESSAGE" value="first steps for votation. Done GUI's for Elettore Referendum and Classica." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
