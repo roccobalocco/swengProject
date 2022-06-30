@@ -15,5 +15,13 @@
     <inspection_tool class="JavadocDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ADDITIONAL_TAGS" value="requires" />
     </inspection_tool>
+    <inspection_tool class="MavenPackageUpdate" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="excludeList">
+        <list>
+          <option value="org.openjfx:javafx-fxml" />
+          <option value="org.openjfx:javafx-graphics" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

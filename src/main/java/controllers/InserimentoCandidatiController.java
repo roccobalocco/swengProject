@@ -64,13 +64,17 @@ public class InserimentoCandidatiController implements Initializable {
     }
 
     private void updateGroup() throws IOException {
-        for(int i = 0; i < gruppoListView.getItems().size(); i++)
-            gruppoListView.getItems().remove(i);
+        while (!gruppoListView.getItems().isEmpty())
+            gruppoListView.getItems().remove(0);
+            //System.out.print("-- Rimozione elemento --");
+
+        //System.out.println("\nRimozione totale avvenuta");
 
         Classica c = ClassicaDAOImpl.getInstance().getAppoggio();
         this.lg = CandidatoDAOImpl.getInstance().getGruppi(c);
         for (Gruppo g : lg)
             gruppoListView.getItems().add(g.toString());
+        //    System.out.println("Aggiunta di " + g);
 
     }
 
@@ -96,12 +100,12 @@ public class InserimentoCandidatiController implements Initializable {
         }else{
             //INSERISCI CANDIDATO
             int ix = gruppoListView.getSelectionModel().getSelectedIndex();
-            System.out.println("Selezionato il numero: " + ix);
+            //System.out.println("Selezionato il numero: " + ix);
             if(ix != -1){
                 Persona p = new Persona(CandidatoDAOImpl.getInstance().getNextIdPersona(), AntiInjection.bonify(nomeTextField.getText()), lg.get(ix).getId());
-                System.out.println("Gruppo preso: " + lg.get(ix));
+                //System.out.println("Gruppo preso: " + lg.get(ix));
 
-                System.out.println("Persona da inserire: " + p + ", collegato a gruppo: " + lg.get(ix).getId() + " - " + p.getGruppo());
+                //System.out.println("Persona da inserire: " + p + ", collegato a gruppo: " + lg.get(ix).getId() + " - " + p.getGruppo());
                 CandidatoDAOImpl.getInstance().addPersona(getCurrentVotazione(), lg.get(ix), p);
 
                 a.setAlertType(Alert.AlertType.INFORMATION);
