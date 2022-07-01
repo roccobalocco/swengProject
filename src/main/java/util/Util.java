@@ -41,6 +41,7 @@ public class Util {
 
     public static void addElettoreObs(){
         Observer o  = Elettore.getInstance();
+        ElettoreDAOImpl.getInstance().subscribe(o);
         CandidatoDAOImpl.getInstance().subscribe(o);
         ClassicaDAOImpl.getInstance().subscribe(o);
         ElettoreDAOImpl.getInstance().subscribe(o);
@@ -48,6 +49,7 @@ public class Util {
     }
     public static void addAdminObs(){
         Observer o  = Admin.getInstance();
+        AdminDAOImpl.getInstance().subscribe(o);
         CandidatoDAOImpl.getInstance().subscribe(o);
         ClassicaDAOImpl.getInstance().subscribe(o);
         ElettoreDAOImpl.getInstance().subscribe(o);

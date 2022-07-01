@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Admin;
+import models.Elettore;
 import util.AntiInjection;
 import util.Util;
 
@@ -64,6 +65,8 @@ public class LoginController {
                 primaryStage.setTitle("Elettore menu");
                 primaryStage.setResizable(true);
                 primaryStage.show();
+                Elettore.getInstance().update("[Login effettuato]");
+
             }
         }catch(Exception e) {
             e.printStackTrace();

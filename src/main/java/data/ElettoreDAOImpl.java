@@ -78,6 +78,7 @@ public class ElettoreDAOImpl implements ElettoreDAO, Observable {
     @Override
     public void notifyObservers(String s) throws IOException {
         for(Observer o : uniqueInstance.obs)
-            o.update(s);
+            if(o != null)
+                o.update(s);
     }
 }

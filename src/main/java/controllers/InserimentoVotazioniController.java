@@ -85,7 +85,7 @@ public class InserimentoVotazioniController implements Initializable {
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Admin menu");
+        primaryStage.setTitle("Elettore menu");
         primaryStage.setResizable(true);
         primaryStage.show();
         ((Stage) descrizioneTextArea.getScene().getWindow()).close();
@@ -166,13 +166,13 @@ public class InserimentoVotazioniController implements Initializable {
             if(r.isPresent())
                 if(r.get() == ButtonType.OK) {
                     if (ReferendumDAOImpl.getInstance().addVotazione(ref)) {
-                        a.setContentText("Inserimento eseguito con successo!");
                         a.setAlertType(Alert.AlertType.INFORMATION);
+                        a.setContentText("Inserimento eseguito con successo!");
                         goBack();
                         a.show();
                     } else {
+                        a.setAlertType(Alert.AlertType.ERROR);
                         a.setContentText("Inserimento fallito");
-                        a.setAlertType(Alert.AlertType.INFORMATION);
                         a.show();
                     }
                 }

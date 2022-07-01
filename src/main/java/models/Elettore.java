@@ -1,5 +1,6 @@
 package models;
 
+import data.ClassicaDAOImpl;
 import util.Observer;
 
 import java.io.BufferedWriter;
@@ -80,4 +81,5 @@ public class Elettore extends Utente implements Observer {
         bw.write("\n");
         bw.close();
     }
+
 }

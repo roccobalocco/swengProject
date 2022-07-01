@@ -13,7 +13,7 @@ import java.util.*;
 /**
  * @author Piemme
  */
-public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
+public class ClassicaDAOImpl implements VotazioneDAO, Observable{
 
     private ClassicaDAOImpl() {
         obs = new LinkedList<>();
@@ -291,8 +291,30 @@ public class ClassicaDAOImpl extends VotazioneDAOImpl implements Observable{
         return id;
     }
 
-    public boolean canVote(Referendum r){
-        boolean cv = false;
+    public boolean canVote(Classica c) throws IOException {
+        boolean cv = true;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT * FROM v_c WHERE v_c.cf_fk = '" + Elettore.getInstance().getCF() + "' AND v_c.votazione_fk = " + c.getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            //guarda se ci sono risultati
+            if(resultSet.next())
+                cv = false;
+            //chiudo resultset e connession
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        notifyObservers(" [Ha giá votato per: " + c + "]");
         return cv;
     }
 
