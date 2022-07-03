@@ -34,4 +34,6 @@ public abstract class Votazione {
     public String getScadenza() {
         return scadenza.toString();
     }
+
+    public LocalDate getScadenzaLD(){ return scadenza; }
 }

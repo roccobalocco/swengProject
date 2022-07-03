@@ -34,13 +34,16 @@ public class SetupController implements Initializable {
     }
 
     @FXML
-    public void modifica(){
+    public void mod_el() throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/mod-del.fxml")));
+        Scene scene = new Scene(root);
 
-    }
-
-    @FXML
-    public void elimina(){
-
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Admin menu");
+        primaryStage.setResizable(true);
+        primaryStage.show();
+        ((Stage) benvenutoText.getScene().getWindow()).close();
     }
 
     @Override

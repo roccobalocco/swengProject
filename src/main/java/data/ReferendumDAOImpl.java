@@ -110,8 +110,9 @@ public class ReferendumDAOImpl implements VotazioneDAO, Observable {
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "UPDATE referendum SET `descrizione` = \"" + v.descrizione + "\", `quorum` = " + v.hasQuorum()  + ", `scadenza` = '" + v.getScadenza() + "', WHERE `id` = " + v.getId();
-            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            String query = "UPDATE referendum SET `descrizione` = \"" + v.descrizione + "\", `quorum` = " +
+                    v.hasQuorum()  + ", `scadenza` = '" + v.getScadenza() + "' WHERE `id` = " + v.getId();
+            System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query

@@ -183,9 +183,8 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
                     "`scadenza` = '" + c.getScadenza() + " 00:00:00', " +
                     "`descrizione` = '" + c.descrizione + "', " +
                     "`ordinale` = " + (c.whichType()  == 0) + ", " +
-                    "`preferenza` " + (c.whichType()  == 2) + ", " +
-                    "WHERE `id` = " + c.getId();
-            //System.out.println("Query che sta per essere eseguita:\n" + query);
+                    "`preferenza` = " + (c.whichType()  == 2) + " WHERE `id` = " + c.getId();
+            System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
