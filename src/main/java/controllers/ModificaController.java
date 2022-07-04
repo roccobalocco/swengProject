@@ -4,22 +4,17 @@ import data.ClassicaDAOImpl;
 import data.ReferendumDAOImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.Classica;
 import models.Referendum;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class ModificaController {
 
@@ -32,11 +27,12 @@ public class ModificaController {
     @FXML
     DatePicker scadenzaDatePicker;
     @FXML
-    ChoiceBox tipoChoiceBox;
+    ChoiceBox<String> tipoChoiceBox;
     @FXML
     Label infoLabel;
 
 
+    @SuppressWarnings("uncheccked")
     @FXML
     public void setup(){
         if(!s){
@@ -46,13 +42,18 @@ public class ModificaController {
                     tipoChoiceBox.setItems(votationsList);
                     votationsList.addAll("Ordinale", "Categorico senza preferenze", "Categorico con preferenze");
                     tipoChoiceBox.setValue(votationsList.get(1));
+
+                    assolutaCheckBox.setSelected(ClassicaDAOImpl.getInstance().getAppoggio().isAssoluta());
                     quorumCheckBox.setDisable(true);
+                    descrizioneTextArea.setText(ClassicaDAOImpl.getInstance().getAppoggio().descrizione);
                     infoLabel.setText(ClassicaDAOImpl.getInstance().getAppoggio().toString());
                     scadenzaDatePicker.setValue(ClassicaDAOImpl.getInstance().getAppoggio().getScadenzaLD());
                 }
                 case "Modifica Referendum" -> {
+                    quorumCheckBox.setSelected(ReferendumDAOImpl.getInstance().getAppoggio().quorum);
                     assolutaCheckBox.setDisable(true);
                     tipoChoiceBox.setDisable(true);
+                    descrizioneTextArea.setText(ReferendumDAOImpl.getInstance().getAppoggio().descrizione);
                     infoLabel.setText(ReferendumDAOImpl.getInstance().getAppoggio().toString());
                     scadenzaDatePicker.setValue(ReferendumDAOImpl.getInstance().getAppoggio().getScadenzaLD());
                 }
@@ -66,7 +67,7 @@ public class ModificaController {
     public void modifica() throws IOException {
         switch (((Stage) infoLabel.getScene().getWindow()).getTitle() ){
             case "Modifica Classica" -> {
-                String sel = (String) tipoChoiceBox.getSelectionModel().getSelectedItem();
+                String sel = tipoChoiceBox.getSelectionModel().getSelectedItem();
                 Classica nc = new Classica(descrizioneTextArea.getText(),
                         scadenzaDatePicker.getValue(),
                         sel.equals("Ordinale"),
@@ -79,7 +80,7 @@ public class ModificaController {
                     a.setAlertType(Alert.AlertType.ERROR);
                     a.setContentText("Errore nell'aggiornamento");
                 }
-                a.show();
+                a.showAndWait();
             }
             case "Modifica Referendum" -> {
                 Referendum nr = new Referendum(descrizioneTextArea.getText(), scadenzaDatePicker.getValue(), quorumCheckBox.isSelected(), ReferendumDAOImpl.getInstance().getAppoggio().getId());
@@ -90,7 +91,7 @@ public class ModificaController {
                     a.setAlertType(Alert.AlertType.ERROR);
                     a.setContentText("Errore nell'aggiornamento");
                 }
-                a.show();
+                a.showAndWait();
             }
             default -> System.out.println("ERRORE IN modifica Button");
         }

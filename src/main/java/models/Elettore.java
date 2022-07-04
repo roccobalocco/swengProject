@@ -1,6 +1,5 @@
 package models;
 
-import data.ClassicaDAOImpl;
 import util.Observer;
 
 import java.io.BufferedWriter;

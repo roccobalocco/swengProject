@@ -1,7 +1,6 @@
 package controllers;
 
 import data.ReferendumDAOImpl;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +10,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import models.Referendum;
 
 import java.io.IOException;
 import java.net.URL;

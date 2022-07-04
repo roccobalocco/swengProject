@@ -1,9 +1,5 @@
 package models;
 
-import data.CandidatoDAOImpl;
-
-import java.io.IOException;
-
 public class Persona extends Candidato{
 
     private final int gruppoFK;

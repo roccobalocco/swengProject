@@ -13,7 +13,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.Classica;
 import models.Referendum;
-import util.AntiInjection;
+import util.Util;
 
 import java.io.IOException;
 import java.net.URL;
@@ -117,7 +117,7 @@ public class InserimentoVotazioniController implements Initializable {
     @FXML
     public void inserisciCandidati() throws IOException {
         if(isOkVot()) {
-            Classica c = new Classica(AntiInjection.bonify(descrizioneTextArea.getText()),scadenzaDatePicker.getValue(), isOrdinale(), isPreferenziale(), ClassicaDAOImpl.getInstance().getNextId(), assolutaCheckBox.isSelected());
+            Classica c = new Classica(Util.bonify(descrizioneTextArea.getText()),scadenzaDatePicker.getValue(), isOrdinale(), isPreferenziale(), ClassicaDAOImpl.getInstance().getNextId(), assolutaCheckBox.isSelected());
             a.setAlertType(Alert.AlertType.CONFIRMATION);
             a.setContentText("Sicuro di voler procedere all'inserimento dei candidati per la votazione (non ancora inserita): " + c);
             Optional<ButtonType> r = a.showAndWait();
@@ -159,7 +159,7 @@ public class InserimentoVotazioniController implements Initializable {
     @FXML
     public void inserisciReferendum() throws IOException {
         if(isOkRef()) {
-            Referendum ref = new Referendum(AntiInjection.bonify(descrizioneTextArea.getText()), scadenzaDatePicker.getValue(), quorumCheckBox.isSelected(), ReferendumDAOImpl.getInstance().getNextId());
+            Referendum ref = new Referendum(Util.bonify(descrizioneTextArea.getText()), scadenzaDatePicker.getValue(), quorumCheckBox.isSelected(), ReferendumDAOImpl.getInstance().getNextId());
             a.setAlertType(Alert.AlertType.CONFIRMATION);
             a.setContentText("Sicuro di voler procedere all'inserimento del Referendum: " + ref);
             Optional<ButtonType> r = a.showAndWait();
@@ -168,8 +168,8 @@ public class InserimentoVotazioniController implements Initializable {
                     if (ReferendumDAOImpl.getInstance().addVotazione(ref)) {
                         a.setAlertType(Alert.AlertType.INFORMATION);
                         a.setContentText("Inserimento eseguito con successo!");
+                        a.showAndWait();
                         goBack();
-                        a.show();
                     } else {
                         a.setAlertType(Alert.AlertType.ERROR);
                         a.setContentText("Inserimento fallito");

@@ -2,7 +2,6 @@ package controllers;
 
 import data.ClassicaDAOImpl;
 import data.ReferendumDAOImpl;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,14 +29,14 @@ public class ModDelController implements Initializable {
 
     private List<Classica> lc = new LinkedList<>();
     private List<Referendum> lr = new LinkedList<>();
-    private Alert a  = new Alert(Alert.AlertType.ERROR);
+    private final Alert a  = new Alert(Alert.AlertType.ERROR);
 
     @FXML
     CheckBox eliminaCheckBox;
     @FXML
     Text benvenutoText;
     @FXML
-    ListView votationListView;
+    ListView<String> votationListView;
     @FXML
     Button goButton;
 
@@ -55,6 +54,8 @@ public class ModDelController implements Initializable {
         else
             goButton.setText("Aggiorna");
     }
+
+    @SuppressWarnings("all")
     private void updateList(){
         while(votationListView.getItems().size() > 0)
             votationListView.getItems().remove(0);

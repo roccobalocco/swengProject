@@ -1,9 +1,6 @@
 package data;
 
 import models.Admin;
-import models.Utente;
-import models.Votazione;
-import util.Observer;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -39,7 +36,7 @@ public class DbManager implements Observable{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "delete from swengdb.persone; delete from swengdb.voti_gruppi; delete from swengdb.votazione; delete from swengdb.gruppi; delete from swengdb.referendum; delete from swengdb.v_c; delete from swengdb.v_r;";
+            String query = "SET SQL_SAFE_UPDATES=0; delete from swengdb.persone; delete from swengdb.voti_gruppi; delete from swengdb.votazione; delete from swengdb.gruppi; delete from swengdb.referendum; delete from swengdb.v_c; delete from swengdb.v_r;";
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query

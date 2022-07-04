@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import models.Classica;
 import models.Gruppo;
 import models.Persona;
-import util.AntiInjection;
+import util.Util;
 
 import java.io.IOException;
 import java.net.URL;
@@ -66,9 +66,6 @@ public class InserimentoCandidatiController implements Initializable {
     private void updateGroup() throws IOException {
         while (!gruppoListView.getItems().isEmpty())
             gruppoListView.getItems().remove(0);
-            //System.out.print("-- Rimozione elemento --");
-
-        //System.out.println("\nRimozione totale avvenuta");
 
         Classica c = ClassicaDAOImpl.getInstance().getAppoggio();
         this.lg = CandidatoDAOImpl.getInstance().getGruppi(c);
@@ -91,7 +88,7 @@ public class InserimentoCandidatiController implements Initializable {
             a.show();
         }else if(gruppoCheckBox.isSelected()){
             //INSERISCI GRUPPO
-            Gruppo g = new Gruppo(CandidatoDAOImpl.getInstance().getNextIdGruppo(), AntiInjection.bonify(nomeTextField.getText()));
+            Gruppo g = new Gruppo(CandidatoDAOImpl.getInstance().getNextIdGruppo(), Util.bonify(nomeTextField.getText()));
             ClassicaDAOImpl.getInstance().addGruppo(getCurrentVotazione(), g);
             a.setAlertType(Alert.AlertType.INFORMATION);
             a.setContentText("Inserito Partito/Gruuppo " + g +" \n Per la votazione " + getCurrentVotazione().toString());
@@ -102,10 +99,8 @@ public class InserimentoCandidatiController implements Initializable {
             int ix = gruppoListView.getSelectionModel().getSelectedIndex();
             //System.out.println("Selezionato il numero: " + ix);
             if(ix != -1){
-                Persona p = new Persona(CandidatoDAOImpl.getInstance().getNextIdPersona(), AntiInjection.bonify(nomeTextField.getText()), lg.get(ix).getId());
-                //System.out.println("Gruppo preso: " + lg.get(ix));
+                Persona p = new Persona(CandidatoDAOImpl.getInstance().getNextIdPersona(), Util.bonify(nomeTextField.getText()), lg.get(ix).getId());
 
-                //System.out.println("Persona da inserire: " + p + ", collegato a gruppo: " + lg.get(ix).getId() + " - " + p.getGruppo());
                 CandidatoDAOImpl.getInstance().addPersona(getCurrentVotazione(), lg.get(ix), p);
 
                 a.setAlertType(Alert.AlertType.INFORMATION);

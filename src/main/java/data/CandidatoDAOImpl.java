@@ -300,13 +300,14 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
     }
 
     @Override
-    public List<Persona> getPersone(Classica c) throws IOException {
+    public List<Persona> getPersone(Gruppo g) throws IOException {
         List<Persona> lp = new LinkedList<>();
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "SELECT persone.id, persone.nome, persone.gruppoFK FROM persone JOIN voti_gruppi ON persone.voti_gruppiFK = voti_gruppi.votazione_fk2";
+            String query = "SELECT persone.id, persone.nome, persone.gruppoFK " +
+                    "FROM persone WHERE persone.gruppoFK = " + g.getId();
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -322,7 +323,7 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        getInstance().notifyObservers(" [Richiesta persone per votazione " + c + " ]");
+        getInstance().notifyObservers(" [Richiesta persone per gruppo " + g + " ]");
         return lp;
     }
 
@@ -353,6 +354,47 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
         return lg;
     }
 
+    public void insertVoto(Classica c, Gruppo g, Integer i) {
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE `voti_gruppi` SET `voti_gruppo` = `voti_gruppo` + " + i +
+                    " WHERE `gruppi_fk` = " + g.getId() + " AND `votazione_fk2` = " + c.getId();
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+    }
+
+    public void insertVoto(Persona p, Integer i) {
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE `persone` SET `voti` = `voti` + " + i +
+                    " WHERE `id` = " + p.getId();
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+    }
 
     @Override
     public void subscribe(Observer o) { uniqueInstance.obs.add(o); }

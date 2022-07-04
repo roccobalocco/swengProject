@@ -50,4 +50,8 @@ public class SetupController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         benvenutoText.setText("Benvenuto " + Admin.getInstance().toString());
     }
+
+    @FXML
+    public void risultati() {
+    }
 }

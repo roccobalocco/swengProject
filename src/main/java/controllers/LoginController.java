@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Admin;
 import models.Elettore;
-import util.AntiInjection;
 import util.Util;
 
 import java.io.IOException;
@@ -89,7 +88,7 @@ public class LoginController {
             a.setAlertType(Alert.AlertType.ERROR);
             a.setContentText("Inserire una password valida");
             a.show();
-        }else if(existInDb(AntiInjection.bonify(userString), PassEncTech2.toHexString(PassEncTech2.getSHA(AntiInjection.bonify(pswString))))) {
+        }else if(existInDb(Util.bonify(userString), PassEncTech2.toHexString(PassEncTech2.getSHA(Util.bonify(pswString))))) {
 			logged(new Stage());
             ((Stage) cf_TextField.getScene().getWindow()).close();
         }else {

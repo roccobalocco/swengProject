@@ -32,7 +32,7 @@ public class ElettoreController implements Initializable {
 
     final Alert a = new Alert(Alert.AlertType.NONE);
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("all")
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         benvenutoText.setText(Util.welcome() + " elettore \n" + Elettore.getInstance().toString());

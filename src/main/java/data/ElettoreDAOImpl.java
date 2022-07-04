@@ -1,6 +1,6 @@
 package data;
 
-import models.Admin;
+import models.Classica;
 import models.Elettore;
 import models.Votazione;
 import util.Observable;
@@ -60,6 +60,34 @@ public class ElettoreDAOImpl implements ElettoreDAO, Observable {
         return utente;
     }
 
+    public void vota(Classica c) {
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "INSERT INTO v_c VALUES ('" + Elettore.getInstance().getCF() +
+                    "', " + c.getId() + ")";
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //scrivo query
+            query = "UPDATE votazione SET `voti` = `voti` + 1";
+            //creo oggetto per esecuzione query
+            statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+    }
+
     @Override
     public boolean haVotato(String cf, String psw, Votazione v) {
         return true;
@@ -81,4 +109,5 @@ public class ElettoreDAOImpl implements ElettoreDAO, Observable {
             if(o != null)
                 o.update(s);
     }
+
 }

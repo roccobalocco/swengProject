@@ -44,60 +44,67 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="564.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controllers.VotaClasController">
+<VBox prefHeight="576.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VotaClasController">
     <MenuBar VBox.vgrow="NEVER">
         <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" text="New"/>
-            <MenuItem mnemonicParsing="false" text="Open…"/>
-            <Menu mnemonicParsing="false" text="Open Recent"/>
-            <SeparatorMenuItem mnemonicParsing="false"/>
-            <MenuItem mnemonicParsing="false" text="Close"/>
-            <MenuItem mnemonicParsing="false" text="Save"/>
-            <MenuItem mnemonicParsing="false" text="Save As…"/>
-            <MenuItem mnemonicParsing="false" text="Revert"/>
-            <SeparatorMenuItem mnemonicParsing="false"/>
-            <MenuItem mnemonicParsing="false" text="Preferences…"/>
-            <SeparatorMenuItem mnemonicParsing="false"/>
-            <MenuItem mnemonicParsing="false" text="Quit"/>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
-            <MenuItem mnemonicParsing="false" text="Undo"/>
-            <MenuItem mnemonicParsing="false" text="Redo"/>
-            <SeparatorMenuItem mnemonicParsing="false"/>
-            <MenuItem mnemonicParsing="false" text="Cut"/>
-            <MenuItem mnemonicParsing="false" text="Copy"/>
-            <MenuItem mnemonicParsing="false" text="Paste"/>
-            <MenuItem mnemonicParsing="false" text="Delete"/>
-            <SeparatorMenuItem mnemonicParsing="false"/>
-            <MenuItem mnemonicParsing="false" text="Select All"/>
-            <MenuItem mnemonicParsing="false" text="Unselect All"/>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp"/>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
         </Menu>
     </MenuBar>
     <AnchorPane prefHeight="427.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
-        <Text fx:id="classicaText" layoutX="224.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Desccrizione Votazione qui">
+        <Text fx:id="classicaText" layoutX="276.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione Votazione qui" textAlignment="CENTER">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Text>
-        <ListView fx:id="partitiListView" layoutX="14.0" layoutY="119.0" prefHeight="313.0" prefWidth="286.0"/>
-        <ListView fx:id="candidatiListView" layoutX="339.0" layoutY="119.0" prefHeight="313.0" prefWidth="286.0"/>
-        <Label fx:id="partitiLabel" layoutX="14.0" layoutY="102.0" text="PartitiLabel"/>
-        <Label fx:id="candidatiLabel" layoutX="339.0" layoutY="102.0" text="CandidatiLabel"/>
-        <Button layoutX="240.0" layoutY="450.0" mnemonicParsing="false" onAction="#vota" prefHeight="30.0"
-                prefWidth="60.0" text="Vota">
+        <ListView fx:id="partitiListView" layoutX="66.0" layoutY="127.0" prefHeight="313.0" prefWidth="286.0" />
+        <ListView fx:id="candidatiListView" layoutX="391.0" layoutY="127.0" prefHeight="313.0" prefWidth="286.0" />
+        <Label fx:id="partitiLabel" layoutX="66.0" layoutY="110.0" text="PartitiLabel" />
+        <Label fx:id="candidatiLabel" layoutX="391.0" layoutY="110.0" text="CandidatiLabel" />
+        <Button layoutX="292.0" layoutY="458.0" mnemonicParsing="false" onAction="#vota" prefHeight="30.0" prefWidth="60.0" text="Vota">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Button>
-        <Button layoutX="339.0" layoutY="451.0" mnemonicParsing="false" onAction="#bianca" text="Bianca">
+        <Button layoutX="391.0" layoutY="459.0" mnemonicParsing="false" onAction="#bianca" text="Bianca">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Button>
+      <Button fx:id="giuParButton" layoutX="26.0" layoutY="273.0" mnemonicParsing="false" onAction="#giuPartito" rotate="90.0" text="&gt;" AnchorPane.leftAnchor="35.0" />
+      <Button fx:id="suParButton" layoutX="26.0" layoutY="245.0" mnemonicParsing="false" onAction="#suPartito" rotate="90.0" text="&lt;" AnchorPane.leftAnchor="35.0" />
+      <Button fx:id="giuCanButton" layoutX="684.0" layoutY="273.0" mnemonicParsing="false" onAction="#giuCandidato" rotate="90.0" text="&gt;" AnchorPane.rightAnchor="35.0" />
+      <Button fx:id="suCanButton" layoutX="684.0" layoutY="245.0" mnemonicParsing="false" onAction="#suCandidato" rotate="90.0" text="&lt;" AnchorPane.rightAnchor="35.0" />
+      <Button fx:id="selButton" layoutX="66.0" layoutY="447.0" mnemonicParsing="false" onAction="#getCandidati" text="Procedi a selezione candidati" />
+      <Button layoutX="338.0" layoutY="499.0" mnemonicParsing="false" onAction="#goBack" text="Indietro">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </AnchorPane>
 </VBox>

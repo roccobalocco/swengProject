@@ -1,7 +1,6 @@
 package models;
 
 import java.util.Iterator;
-import java.util.List;
 
 public class Risultati {
 
@@ -9,7 +8,7 @@ public class Risultati {
     }
 
     public Iterator<Risultati> iteratorAnon(){
-        return new Iterator<Risultati>(){
+        return new Iterator<>(){
             private int index = 0;
             @Override
             public boolean hasNext() {
