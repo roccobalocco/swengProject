@@ -14,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import models.Candidato;
 import models.Classica;
 import models.Gruppo;
 import models.Persona;
