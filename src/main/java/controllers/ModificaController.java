@@ -19,7 +19,7 @@ import java.util.Objects;
 public class ModificaController {
 
     boolean s = false;
-    Alert a = new Alert(Alert.AlertType.ERROR);
+    private final Alert a = new Alert(Alert.AlertType.ERROR);
     @FXML
     TextArea descrizioneTextArea;
     @FXML

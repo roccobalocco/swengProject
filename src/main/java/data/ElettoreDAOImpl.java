@@ -2,7 +2,6 @@ package data;
 
 import models.Classica;
 import models.Elettore;
-import models.Votazione;
 import util.Observable;
 import util.Observer;
 
@@ -86,11 +85,6 @@ public class ElettoreDAOImpl implements ElettoreDAO, Observable {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-    }
-
-    @Override
-    public boolean haVotato(String cf, String psw, Votazione v) {
-        return true;
     }
 
     public boolean isElettore(String cf, String psw){

@@ -43,7 +43,8 @@ public class InserimentoCandidatiController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(getCurrentVotazione() != null) {
             try {
-                ClassicaDAOImpl.getInstance().addVotazione();
+                if(!ClassicaDAOImpl.getInstance().addVotazione())
+                    throw new IllegalAccessError("Si é tentato di aggiungere una votazione settata in appoggio senza averla prima settata");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -119,11 +120,11 @@ public class InserimentoCandidatiController implements Initializable {
     @FXML
     public void goBack() throws IOException {
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/inserimento.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/sceltaAdmin.fxml")));
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Inserisci Votazione/Referendum");
+        primaryStage.setTitle("Admin menu");
         primaryStage.setResizable(true);
         ((Stage) nomeTextField.getScene().getWindow()).close();
         primaryStage.show();

@@ -52,6 +52,15 @@ public class SetupController implements Initializable {
     }
 
     @FXML
-    public void risultati() {
+    public void risultati() throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/sceltaRisultati.fxml")));
+        Scene scene = new Scene(root);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Scelta votazione per risultati");
+        primaryStage.setResizable(true);
+        primaryStage.show();
+        ((Stage) benvenutoText.getScene().getWindow()).close();
     }
 }

@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class VotaRefController implements Initializable {
 
-    private Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+    private final Alert a = new Alert(Alert.AlertType.CONFIRMATION);
     @FXML
     Text referendumText;
 
