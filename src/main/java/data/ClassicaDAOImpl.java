@@ -42,6 +42,7 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
         //System.out.println("Appoggio NON inserito: " + uniqueInstance.appoggio);
         return false;
     }
+
     /**
      * Il metodo inserisce il Gruppo nel DB e lo collega alla votazione 'c'
      * @param c votazione di competenza
@@ -128,14 +129,7 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
         return l;
     }
 
-    public Risultati getRisultati() throws IOException {
-        //TODO
-        getInstance().notifyObservers("[Richiesta Risultati]");
-        return null;
-    }
-
     /**
-     *
      * @param id l'identificatore non nullo della votazione
      * @return null se non esiste la votazione corrispondente, la votazione altrimenti
      * @param <T> la sottoclasse di Votazione --> Classica
@@ -230,9 +224,9 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
         return true;
     }
 
-    public boolean deleteVotazione(int id) throws IOException {
+    public void deleteVotazione(int id) throws IOException {
         if(getVotazione(id) == null)
-                return false;
+                return;
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
@@ -249,10 +243,9 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
-            return false;
+            return;
         }
         getInstance().notifyObservers(" [Cancellazione Votazione con id: " + id + "]");
-        return true;
     }
 
     public Risultati getRisultati(Votazione v) throws IOException {
@@ -314,6 +307,98 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
         }
         notifyObservers(" [Ha giá votato per: " + c + "]");
         return cv;
+    }
+
+    public void setTot(int v) throws IOException {
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE votazione SET tot = " + v + " WHERE votazione.id = " + getInstance().getAppoggio().getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        getInstance().notifyObservers("[Aggiunto totale possibili votanti: " + v + " per Referendum : " + appoggio + "]");
+    }
+
+    public void addVoti(Gruppo g, int v){
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE voti_gruppi SET voti_gruppo = voti_gruppo + " + v + " WHERE gruppi_fk = " + g.getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+    }
+
+    public void addVoti(Persona p, int v){
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE persone SET voti = voti + " + v + " WHERE id = " + p.getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+    }
+
+    public Risultati getRisultati(Classica c){
+        //TODO
+        return null;
+    }
+
+    public int getVotanti(Classica c) {
+        int tot = -1;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT tot FROM votazione WHERE id = " + c.getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next())
+                tot = resultSet.getInt(1);
+            //chiudo connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return tot;
     }
 
     @Override

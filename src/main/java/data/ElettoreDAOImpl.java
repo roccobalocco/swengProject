@@ -2,6 +2,7 @@ package data;
 
 import models.Classica;
 import models.Elettore;
+import models.Referendum;
 import util.Observable;
 import util.Observer;
 
@@ -89,6 +90,60 @@ public class ElettoreDAOImpl implements ElettoreDAO, Observable {
 
     public boolean isElettore(String cf, String psw){
         return getElettore(cf, psw) != null;
+    }
+
+    public int getVotanti(Classica c) throws IOException {
+        int tot = 0;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT COUNT(cf_fk) FROM v_c WHERE votazione_fk = " + c.getId() ;
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next())
+                tot = resultSet.getInt(1);
+
+            //chiudo resultSet e connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        getInstance().notifyObservers("[Richiesta votanti per Votazione Classica : " + c + "]");
+        return tot;
+    }
+
+    public int getVotanti(Referendum r) throws IOException {
+        int tot = 0;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT COUNT(cf_fk) FROM v_r WHERE referendum_fk = " + r.getId() ;
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next())
+                tot = resultSet.getInt(1);
+
+            //chiudo resultSet e connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        getInstance().notifyObservers("[Richiesta votanti per Referendum : " + r + "]");
+        return tot;
     }
 
     @Override

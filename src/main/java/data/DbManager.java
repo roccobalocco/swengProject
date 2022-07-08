@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import models.Classica;
+import models.Referendum;
 import util.Observable;
 import util.Observer;
 
@@ -31,11 +33,13 @@ public class DbManager implements Observable{
         return uniqueInstance;
     }
 
+
     public void resetAllVotazioni() throws IOException {
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
+            @SuppressWarnings("all")
             String query = "SET SQL_SAFE_UPDATES=0; delete from swengdb.persone; delete from swengdb.voti_gruppi; delete from swengdb.votazione; delete from swengdb.gruppi; delete from swengdb.referendum; delete from swengdb.v_c; delete from swengdb.v_r;";
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
@@ -49,6 +53,18 @@ public class DbManager implements Observable{
             System.out.println("VendorError: " + e.getErrorCode());
         }
         getInstance().notifyObservers("[Cancellazione di tutte le votazioni]");
+    }
+
+    public boolean resetVotazione(Classica c) throws IOException {
+        //TODO
+        getInstance().notifyObservers("[Cancellazione Votazione Classica: " + c + "]");
+        return true;
+    }
+
+    public boolean resetVotazione(Referendum r) throws IOException {
+        //TODO
+        getInstance().notifyObservers("[Cancellazione Referendum: " + r + "]");
+        return false;
     }
 
     @Override

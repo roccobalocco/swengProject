@@ -55,7 +55,7 @@ public class ModDelController implements Initializable {
             goButton.setText("Aggiorna");
     }
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("unchecked")
     private void updateList(){
         while(votationListView.getItems().size() > 0)
             votationListView.getItems().remove(0);
@@ -63,22 +63,22 @@ public class ModDelController implements Initializable {
         try {
             List<List<? extends Votazione>> l = getAllVotazioni();
             lc = (List<Classica>) l.get(0);
-            List<Votazione> toRemove = new LinkedList<>();
+            List<Classica> toRemoveCla = new LinkedList<>();
             for (Classica c : lc)
                 if (!c.fineVotazione())
                     votationListView.getItems().add(c.toString());
                 else
-                    toRemove.add(c);
-            lc.removeAll(toRemove);
-            toRemove = new LinkedList<>();
+                    toRemoveCla.add(c);
+            lc.removeAll(toRemoveCla);
+            List<Referendum> toRemoveRef = new LinkedList<>();
 
             lr = (List<Referendum>) l.get(1);
             for (Referendum r : lr)
                 if (!r.fineVotazione())
                     votationListView.getItems().add(r.toString());
                 else
-                    toRemove.add(r);
-            lr.removeAll(toRemove);
+                    toRemoveRef.add(r);
+            lr.removeAll(toRemoveRef);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

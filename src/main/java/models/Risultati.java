@@ -2,6 +2,8 @@ package models;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
+import data.ClassicaDAOImpl;
+import data.ReferendumDAOImpl;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -21,17 +23,12 @@ public class Risultati {
     private final Map<Persona, Integer> votiPersone;
 
 
-    public Risultati(Classica c, int tot, Map<Gruppo, Integer> vg, Map<Persona, Integer> vp){
-        this.c = c;
-        totale = tot;
-        votiGruppi =  vg;
-        votiPersone = vp;
-    }
-
     public Risultati(Classica c, Map<Gruppo, Integer> vg, Map<Persona, Integer> vp){
         this.c = c;
         votiGruppi =  vg;
         votiPersone = vp;
+        if(c.isAssoluta())
+            totale = ClassicaDAOImpl.getInstance().getVotanti(c);
     }
 
     public Risultati(Classica c, Map<Gruppo, Integer> vg){
@@ -40,15 +37,11 @@ public class Risultati {
         votiPersone = null;
     }
 
-    public Risultati(Referendum r, int tot){
-        votiGruppi = null; votiPersone = null; this.r = r;
-        totale = tot;
-        isClassica = false;
-    }
-
     public Risultati(Referendum r){
         votiGruppi = null; votiPersone = null; this.r = r;
         isClassica = false;
+        if(r.hasQuorum())
+            totale = ReferendumDAOImpl.getInstance().getVotanti(r);
     }
 
     private boolean hasWin(int voti){

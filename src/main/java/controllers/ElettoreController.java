@@ -32,29 +32,29 @@ public class ElettoreController implements Initializable {
 
     final Alert a = new Alert(Alert.AlertType.NONE);
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         benvenutoText.setText(Util.welcome() + " elettore \n" + Elettore.getInstance().toString());
         try {
             List<List<? extends Votazione>> l = getAllVotazioni();
             lc = (List<Classica>) l.get(0);
-            List<Votazione> toRemove = new LinkedList<>();
+            List<Classica> toRemoveCla = new LinkedList<>();
             for (Classica c : lc)
                 if (!c.fineVotazione() && ClassicaDAOImpl.getInstance().canVote(c))
                     votationListView.getItems().add(c.toString());
                 else
-                    toRemove.add(c);
-            lc.removeAll(toRemove);
-            toRemove = new LinkedList<>();
+                    toRemoveCla.add(c);
+            lc.removeAll(toRemoveCla);
+            List<Referendum>toRemoveRef = new LinkedList<>();
 
             lr = (List<Referendum>) l.get(1);
             for (Referendum r : lr)
                 if (!r.fineVotazione() && ReferendumDAOImpl.getInstance().canVote(r))
                     votationListView.getItems().add(r.toString());
                 else
-                    toRemove.add(r);
-            lr.removeAll(toRemove);
+                    toRemoveRef.add(r);
+            lr.removeAll(toRemoveRef);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

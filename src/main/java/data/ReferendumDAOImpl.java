@@ -152,8 +152,7 @@ public class ReferendumDAOImpl implements VotazioneDAO, Observable {
     }
 
 
-    public boolean deleteVotazione(int id){
-        boolean dv = false;
+    public void deleteVotazione(int id){
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
@@ -170,17 +169,6 @@ public class ReferendumDAOImpl implements VotazioneDAO, Observable {
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
-            return false;
-        }
-        return true;
-    }
-
-
-    public Risultati getRisultati(Votazione r) {
-        if(r.fineVotazione()){
-            return null; //TODO new Risultati(r.toString(), new LinkedList<>());
-        }else {
-            return null;
         }
     }
 
@@ -286,6 +274,100 @@ public class ReferendumDAOImpl implements VotazioneDAO, Observable {
         }
     }
 
+    public void setTot(int v) throws IOException {
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE referendum SET tot = " + v + " WHERE referendum.id = " + getInstance().getAppoggio().getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        getInstance().notifyObservers("[Aggiunto totale possibili votanti: " + v + " per Referendum : " + appoggio + "]");
+    }
+
+    /**
+     * Aggiunge i voti al referendum settato in appoggio a questa Classe
+     * @requires (-1 <= opinione <= 1) && (v > 0) && (this.getInstance().getAppoggio() != null)
+     * @param opinione -1 se bianca, 0 se no, 1 se si
+     * @param v numero voti da inserire
+     */
+    public void addVoti(int opinione, int v) throws IOException {
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE referendum SET " + getOpinione(opinione) + v +
+                    " WHERE referendum.id = " + getInstance().getAppoggio().getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        getInstance().notifyObservers("[Aggiunta "+ opinione + ": " + v + " per Referendum : " + appoggio + "]");
+    }
+
+    /**
+     * @param opinione -1 se bianca, 0 se no, 1 se si
+     * @return stringa equivalente per aggiornare i voti nel db
+     * @throws IllegalArgumentException se opinione > 1 || opinione < -1
+     */
+    private String getOpinione(int opinione) throws IllegalArgumentException{
+        switch(opinione){
+            case -1 -> { return "bianca = bianca + "; }
+            case 0 -> { return "no = no + "; }
+            case 1 -> { return "si = si + "; }
+            default -> throw new IllegalArgumentException("Argomento non valido --> " + opinione);
+        }
+    }
+
+    public Risultati getRisultati(Referendum r){
+        //TODO
+        return null;
+    }
+
+    public int getVotanti(Referendum r) {
+        int tot = -1;
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT tot FROM referendum WHERE id = " + r.getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next())
+                tot = resultSet.getInt(1);
+            //chiudo connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return tot;
+    }
     @Override
     public void subscribe(util.Observer o) { uniqueInstance.obs.add(o); }
 

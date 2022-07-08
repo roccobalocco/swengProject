@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class CandidatoDAOImpl implements CandidatoDAO, Observable {
 
@@ -409,4 +410,13 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
                 o.update(s);
     }
 
+    public Map<Persona, Integer> getMapP() {
+        //TODO
+        return null;
+    }
+
+    public Map<Gruppo, Integer> getMapG() {
+        //TODO
+        return null;
+    }
 }
