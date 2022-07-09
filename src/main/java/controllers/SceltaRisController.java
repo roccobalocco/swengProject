@@ -1,5 +1,7 @@
 package controllers;
 
+import com.itextpdf.text.DocumentException;
+import data.CandidatoDAOImpl;
 import data.ClassicaDAOImpl;
 import data.ReferendumDAOImpl;
 import data.VotazioneDAO;
@@ -9,18 +11,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import models.Classica;
 import models.Referendum;
+import models.Risultati;
 import models.Votazione;
+import util.Util;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class SceltaRisController implements Initializable {
     private final Alert a = new Alert(Alert.AlertType.ERROR);
@@ -92,4 +94,45 @@ public class SceltaRisController implements Initializable {
             primaryStage.show();
         }
     }
+
+    @FXML
+    public void printRisultati() throws DocumentException, IOException {
+        Alert infos = new Alert(Alert.AlertType.CONFIRMATION);
+        int ix = votazioniListView.getSelectionModel().getSelectedIndex();
+        infos.setContentText("Sicuro di voler ottenere i risultati?");
+        Optional<ButtonType> o = infos.showAndWait();
+        String path;
+        if(o.isPresent() && ix != -1) {
+            Risultati r;
+            if (ix >= lc.size()) { //referendum
+                ReferendumDAOImpl.getInstance().setAppoggio(lr.get(ix - lc.size()));
+                r = new Risultati(lr.get(ix - lc.size()));
+                path = "/swengProject/PDFResult/" + lr.get(ix - lc.size()).descrizione.replaceAll("[ -/'\"]", "_") +
+                        lr.get(ix - lc.size()).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+            } else { //Classica
+                ClassicaDAOImpl.getInstance().setAppoggio(lc.get(ix));
+                if (lc.get(ix).whichType() == 2) {
+                    r = new Risultati(lc.get(ix),
+                            CandidatoDAOImpl.getInstance().getMapG(),
+                            CandidatoDAOImpl.getInstance().getMapP());
+                } else {
+                    r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
+                            CandidatoDAOImpl.getInstance().getMapG());
+                }
+                path = "/swengProject/PDFResult/" + lc.get(ix).descrizione.replaceAll("[ -/'\"]", "_") +
+                        lc.get(ix).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+            }
+
+            if (!r.printRisultati("/swengProject/PDFResult/")){
+                infos.setAlertType(Alert.AlertType.WARNING);
+                infos.setContentText("Errore nel salvataggio pdf in /swengProject/PDFResult/");
+            }else{
+                infos.setAlertType(Alert.AlertType.INFORMATION);
+                infos.setContentText("PDF salvato in /swengProject/PDFResult/");
+            }
+            infos.showAndWait();
+            Util.showResult(path);
+        }
+    }
+
 }

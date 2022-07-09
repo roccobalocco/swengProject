@@ -96,12 +96,17 @@ public class Risultati {
         }
         return content.toString();
     }
+
     public boolean printRisultati(String path) throws FileNotFoundException, DocumentException {
         if(c == null && r == null)
             return false;
+
+        //TODO redo!
+
         Document document = new Document();
         if(isClassica) {
-            PdfWriter.getInstance(document, new FileOutputStream(path + "/" + c.descrizione.replaceAll("[ -/'\"]", "_") +
+            PdfWriter.getInstance(document,
+                    new FileOutputStream(path + "/" + c.descrizione.replaceAll("[ -/'\"]", "_") +
                     c.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf"));
 
             document.open();

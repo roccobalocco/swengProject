@@ -7,6 +7,8 @@ import models.Gruppo;
 import models.Persona;
 import org.codehaus.plexus.interpolation.RegexBasedInterpolator;
 
+import java.awt.*;
+import java.io.File;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -80,5 +82,21 @@ public class Util {
         for (int i = 0; i < lp.size(); i++)
             mp.put(lp.get(i), n - i);
         return mp;
+    }
+
+    public static void showResult(String path) {
+        try {
+            File pdfFile = new File("c:\\Java-Interview.pdf");
+            if (pdfFile.exists())
+                if (Desktop.isDesktopSupported())
+                    Desktop.getDesktop().open(pdfFile);
+                else
+                    System.out.println("Awt Desktop is not supported!");
+            else
+                System.out.println("File is not exists!");
+            System.out.println("Done");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
