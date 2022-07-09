@@ -84,9 +84,12 @@ public class Util {
         return mp;
     }
 
+
+
     public static void showResult(String path) {
         try {
-            File pdfFile = new File("c:\\Java-Interview.pdf");
+            File pdfFile = new File(path);
+            System.out.print("File da aprire-->" + path);
             if (pdfFile.exists())
                 if (Desktop.isDesktopSupported())
                     Desktop.getDesktop().open(pdfFile);

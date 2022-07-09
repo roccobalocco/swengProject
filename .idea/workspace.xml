@@ -10,7 +10,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/sceltaRisultati.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/sceltaRisultati.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +208,11 @@
       <workItem from="1657130544014" duration="10921000" />
       <workItem from="1657271547073" duration="4366000" />
       <workItem from="1657301279054" duration="5584000" />
-      <workItem from="1657363240798" duration="1485000" />
+      <workItem from="1657363240798" duration="1539000" />
+      <workItem from="1657375838037" duration="1258000" />
+      <workItem from="1657382234625" duration="8000" />
+      <workItem from="1657387481641" duration="3628000" />
+      <workItem from="1657391464320" duration="1628000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -365,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657307444827</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Some TODO's added and something else DONE!">
+      <created>1657368765697</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1657368765698</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

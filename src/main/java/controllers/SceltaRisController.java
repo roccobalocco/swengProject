@@ -107,7 +107,7 @@ public class SceltaRisController implements Initializable {
             if (ix >= lc.size()) { //referendum
                 ReferendumDAOImpl.getInstance().setAppoggio(lr.get(ix - lc.size()));
                 r = new Risultati(lr.get(ix - lc.size()));
-                path = "/swengProject/PDFResult/" + lr.get(ix - lc.size()).descrizione.replaceAll("[ -/'\"]", "_") +
+                path = "C://Users/Pietro/IdeaProjects/swengProject/PDFResult/" + lr.get(ix - lc.size()).descrizione.replaceAll("[ -/'\"]", "_") +
                         lr.get(ix - lc.size()).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
             } else { //Classica
                 ClassicaDAOImpl.getInstance().setAppoggio(lc.get(ix));
@@ -119,16 +119,16 @@ public class SceltaRisController implements Initializable {
                     r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
                             CandidatoDAOImpl.getInstance().getMapG());
                 }
-                path = "/swengProject/PDFResult/" + lc.get(ix).descrizione.replaceAll("[ -/'\"]", "_") +
+                path = "C://Users/Pietro/IdeaProjects/swengProject/PDFResult/" + lc.get(ix).descrizione.replaceAll("[ -/'\"]", "_") +
                         lc.get(ix).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
             }
 
-            if (!r.printRisultati("/swengProject/PDFResult/")){
+            if (!r.printRisultati("C:/Users/Pietro/IdeaProjects/swengProject/PDFResult/")){
                 infos.setAlertType(Alert.AlertType.WARNING);
                 infos.setContentText("Errore nel salvataggio pdf in /swengProject/PDFResult/");
             }else{
                 infos.setAlertType(Alert.AlertType.INFORMATION);
-                infos.setContentText("PDF salvato in /swengProject/PDFResult/");
+                infos.setContentText("PDF salvato in Desktop/PDFResult");
             }
             infos.showAndWait();
             Util.showResult(path);

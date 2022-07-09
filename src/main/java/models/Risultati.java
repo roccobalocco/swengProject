@@ -1,12 +1,17 @@
 package models;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfWriter;
 import data.ClassicaDAOImpl;
 import data.ReferendumDAOImpl;
+import org.apache.commons.io.IOUtils;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -15,7 +20,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @SuppressWarnings("DuplicatedCode")
 public class Risultati {
 
-    private boolean isClassica = true;
+    private boolean isClassica ;
     private Classica c = null;
     private Referendum r = null;
     private int si = 0, no = 0, bianca = 0, totale = 0;
@@ -25,6 +30,7 @@ public class Risultati {
 
     public Risultati(Classica c, Map<Gruppo, Integer> vg, Map<Persona, Integer> vp){
         this.c = c;
+        isClassica = true;
         votiGruppi =  vg;
         votiPersone = vp;
         if(c.isAssoluta())
@@ -33,6 +39,7 @@ public class Risultati {
 
     public Risultati(Classica c, Map<Gruppo, Integer> vg){
         this.c = c;
+        isClassica = true;
         votiGruppi = vg;
         votiPersone = null;
     }
@@ -58,16 +65,16 @@ public class Risultati {
     public boolean setVoti(Gruppo g, Integer voti){
         if(!isClassica)
             return false;
-        assert votiGruppi != null;
-        votiGruppi.put(g, voti + votiGruppi.get(g));
+        if(votiGruppi != null)
+            votiGruppi.put(g, voti + votiGruppi.get(g));
         return true;
     }
 
     public boolean setVoti(Persona p, Integer voti){
         if(!isClassica)
             return false;
-        assert votiPersone != null;
-        votiPersone.put(p, voti + votiPersone.get(p));
+        if(votiPersone != null)
+            votiPersone.put(p, voti + votiPersone.get(p));
         return true;
     }
 
@@ -76,15 +83,16 @@ public class Risultati {
             return "ERRORE NELLA CHIAMATA";
         StringBuilder content = new StringBuilder();
         if(isClassica) {
-            assert c != null;
-            content.append(c.descrizione).append("\n");
-            content.append("\n");
-            content.append("Scadenza: ").append(c.getScadenza());
-            content.append("\n");
-            content.append("Si: ").append(si).append("\n");
-            content.append("No: ").append(no).append("\n");
-            content.append("Bianca: ").append(bianca).append("\n\n\n");
-            content.append(vinceRef());
+            if(c != null) {
+                content.append(c.descrizione).append("\n");
+                content.append("\n");
+                content.append("Scadenza: ").append(c.getScadenza());
+                content.append("\n");
+                content.append("Si: ").append(si).append("\n");
+                content.append("No: ").append(no).append("\n");
+                content.append("Bianca: ").append(bianca).append("\n\n\n");
+                content.append(vinceRef());
+            }
 
         }else{
             content.append(r.descrizione).append("\n");
@@ -97,47 +105,63 @@ public class Risultati {
         return content.toString();
     }
 
-    public boolean printRisultati(String path) throws FileNotFoundException, DocumentException {
+    public boolean printRisultati(String path) throws IOException, DocumentException {
         if(c == null && r == null)
             return false;
 
-        //TODO redo!
+        PDDocument document = new PDDocument();
+        document.addPage(new PDPage());
 
-        Document document = new Document();
         if(isClassica) {
-            PdfWriter.getInstance(document,
-                    new FileOutputStream(path + "/" + c.descrizione.replaceAll("[ -/'\"]", "_") +
-                    c.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf"));
+            path = path + c.descrizione.replaceAll("[ -/'\"]", "_") +
+                    c.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+            System.out.println(path);
 
-            document.open();
-            Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-            String content = c.descrizione + "\n" + "\n" +
-                    "Scadenza: " + c.getScadenza() +
-                    "\n" +
-                    "Si: " + si + "\n" +
-                    "No: " + no + "\n" +
-                    "Bianca: " + bianca + "\n\n\n" +
-                    vinceRef();
-            Chunk chunk = new Chunk(content, font);
+            PDPage page = new PDPage();
+            PDPageContentStream contents = new PDPageContentStream(document, document.getPage(0), PDPageContentStream.AppendMode.APPEND, true);
+            contents.beginText();
+            PDFont font = PDType1Font.TIMES_ROMAN;
+            contents.setFont(font, 15);
+            contents.newLineAtOffset(50, 50);
+            contents.showText(c.descrizione); contents.newLine(); contents.newLine();
+            contents.newLineAtOffset(0, 50);
+            contents.showText("Scadenza: " + r.getScadenza()); contents.newLine();
+            contents.newLineAtOffset(0, 50);
+            contents.showText(gpString().replace("\n", "")); contents.newLine();
+            contents.newLineAtOffset(0, 50);
+            contents.showText(vinceCla().replace("\n", "")); contents.newLine();
+            contents.endText();
+            contents.close();
+            document.save(path);
 
-            document.add(chunk);
-            document.close();
         }else{
-            PdfWriter.getInstance(document, new FileOutputStream(path + "/" + r.descrizione.replaceAll("[ -/'\"]", "_") +
-                    r.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf"));
+            path = path + r.descrizione.replaceAll("[ -/'\"]", "_") +
+                    r.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+            System.out.println(path);
 
-            document.open();
-            Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-            String content = r.descrizione + "\n" + "\n" +
-                    "Scadenza: " + r.getScadenza() +
-                    "\n" +
-                    gpString() +
-                    vinceCla();
-            Chunk chunk = new Chunk(content, font);
-
-            document.add(chunk);
-            document.close();
+            PDPage page = new PDPage();
+            document.addPage(page);
+            PDPageContentStream contents = new PDPageContentStream(document, document.getPage(0), PDPageContentStream.AppendMode.APPEND, true);
+            contents.beginText();
+            PDFont font = PDType1Font.TIMES_ROMAN;
+            contents.setFont(font, 15);
+            contents.newLineAtOffset(50, 50);
+            contents.showText(r.descrizione); contents.newLine(); contents.newLine();
+            contents.newLineAtOffset(0, 50);
+            contents.showText("Scadenza: " + r.getScadenza()); contents.newLine();
+            contents.newLineAtOffset(0, 50);
+            contents.showText("Si: " + si); contents.newLine();
+            contents.newLineAtOffset(0, 50);
+            contents.showText("No: " + no); contents.newLine();
+            contents.newLineAtOffset(0, 50);
+            contents.showText("Bianca: " + bianca); contents.newLine();
+            contents.newLineAtOffset(0, 50);
+            contents.showText(vinceRef().replace("\n", "")); contents.newLine();
+            contents.endText();
+            contents.close();
+            document.save(path);
         }
+        document.close();
         return true;
     }
 
@@ -146,17 +170,17 @@ public class Risultati {
         if(c.whichType() == 0 || c.whichType() == 2)
             s.append("I voti espressi tramite ordine sono corrisposti in base al numero di candidati, se n é il numero di candidati, andranno n voti al primo, n-1 al secondo, e cosí via fino all'ultimo con un solo voto, a preferenza\n\n ");
         s.append("Partiti/Gruppi:\n");
-        assert votiGruppi != null;
-        votiGruppi.forEach((g, i) -> {
-            s.append(g.toString()).append(" -- Voti:").append(i).append("\n");
-            if(c.whichType() == 2) {
-                assert votiPersone != null;
-                votiPersone.forEach((p, ii) -> {
-                    if (p.getGruppo() == g.getId())
-                        s.append("\t").append(p).append(" -- Preferenze secondo il calcolo del sistema: ").append(ii).append("\n");
-                });
-            }
-        });
+       if(votiGruppi != null)
+            votiGruppi.forEach((g, i) -> {
+                s.append(g.toString()).append(" -- Voti:").append(i).append("\n");
+                if(c.whichType() == 2) {
+                    if(votiPersone != null)
+                        votiPersone.forEach((p, ii) -> {
+                            if (p.getGruppo() == g.getId())
+                                s.append("\t").append(p).append(" -- Preferenze secondo il calcolo del sistema: ").append(ii).append("\n");
+                        });
+                }
+            });
         return s.toString();
     }
 
@@ -167,21 +191,21 @@ public class Risultati {
         LinkedList<Gruppo> l = new LinkedList<>();
         Gruppo w = null;
         if(c.whichType() != 2){
-            assert votiGruppi != null;
-            for (Map.Entry<Gruppo, Integer> entry : votiGruppi.entrySet()) {
-                Gruppo g = entry.getKey();
-                Integer i = entry.getValue();
-                if (i > max) {
-                    l = new LinkedList<>();
-                    max = i;
-                    w = g;
-                    l.add(g);
-                    pari = false;
-                }else if(i == max){
-                    l.add(g);
-                    pari = true;
+            if(votiGruppi != null)
+                for (Map.Entry<Gruppo, Integer> entry : votiGruppi.entrySet()) {
+                    Gruppo g = entry.getKey();
+                    Integer i = entry.getValue();
+                    if (i > max) {
+                        l = new LinkedList<>();
+                        max = i;
+                        w = g;
+                        l.add(g);
+                        pari = false;
+                    }else if(i == max){
+                        l.add(g);
+                        pari = true;
+                    }
                 }
-            }
 
             if(!c.isAssoluta() || hasWin(max))
                 if(pari)
@@ -190,21 +214,21 @@ public class Risultati {
                     return "Il vincitore é: " + w + " -- Con " + max + " voti\n\n";
             return "Non é stata raggiunta la maggioranza assoluta, non c'é nessun vincitore\n\n";
         }else{
-            assert votiGruppi != null;
-            for (Map.Entry<Gruppo, Integer> entry : votiGruppi.entrySet()) {
-                Gruppo g = entry.getKey();
-                Integer i = entry.getValue();
-                if (i > max) {
-                    l = new LinkedList<>();
-                    max = i;
-                    w = g;
-                    l.add(g);
-                    pari = false;
-                }else if(i == max){
-                    l.add(g);
-                    pari = true;
+            if(votiGruppi != null)
+                for (Map.Entry<Gruppo, Integer> entry : votiGruppi.entrySet()) {
+                    Gruppo g = entry.getKey();
+                    Integer i = entry.getValue();
+                    if (i > max) {
+                        l = new LinkedList<>();
+                        max = i;
+                        w = g;
+                        l.add(g);
+                        pari = false;
+                    }else if(i == max){
+                        l.add(g);
+                        pari = true;
+                    }
                 }
-            }
 
             if(!c.isAssoluta() || hasWin(max))
                 if(pari)
@@ -213,11 +237,11 @@ public class Risultati {
                     AtomicReference<String> ss = new AtomicReference<>("");
                     Gruppo finalW = w;
                     int finalMax = max;
-                    assert votiPersone != null;
-                    votiPersone.forEach((p, i) -> {
-                        if(p.getGruppo() == finalW.getId())
-                            ss.set("Il vincitore é: " + finalW + "\nPer il candidato: " + p + "\nCon " + finalMax + " voti\n\n");
-                    });
+                    if(votiPersone != null)
+                        votiPersone.forEach((p, i) -> {
+                            if(p.getGruppo() == finalW.getId())
+                                ss.set("Il vincitore é: " + finalW + "\nPer il candidato: " + p + "\nCon " + finalMax + " voti\n\n");
+                        });
                     return ss.toString();
                 }
 
