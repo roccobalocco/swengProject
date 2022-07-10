@@ -119,4 +119,17 @@ public class ModDelController implements Initializable {
         }
     }
 
+    @FXML
+    public void goBack() throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/sceltaAdmin.fxml")));
+        Scene scene = new Scene(root);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Inserisci Votazione/Referendum");
+        primaryStage.setResizable(true);
+        ((Stage) goButton.getScene().getWindow()).close();
+        primaryStage.show();
+    }
+
 }

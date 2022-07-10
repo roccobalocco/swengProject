@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @SuppressWarnings("DuplicatedCode")
 public class Risultati {
 
-    private boolean isClassica ;
+    private final boolean isClassica ;
     private Classica c = null;
     private Referendum r = null;
     private int si = 0, no = 0, bianca = 0, totale = 0;
@@ -105,7 +105,7 @@ public class Risultati {
         return content.toString();
     }
 
-    public boolean printRisultati(String path) throws IOException, DocumentException {
+    public boolean printRisultati(String path) throws IOException {
         if(c == null && r == null)
             return false;
 
@@ -122,14 +122,14 @@ public class Risultati {
             contents.beginText();
             PDFont font = PDType1Font.TIMES_ROMAN;
             contents.setFont(font, 15);
-            contents.newLineAtOffset(50, 50);
-            contents.showText(c.descrizione); contents.newLine(); contents.newLine();
-            contents.newLineAtOffset(0, 50);
-            contents.showText("Scadenza: " + r.getScadenza()); contents.newLine();
-            contents.newLineAtOffset(0, 50);
-            contents.showText(gpString().replace("\n", "")); contents.newLine();
-            contents.newLineAtOffset(0, 50);
-            contents.showText(vinceCla().replace("\n", "")); contents.newLine();
+            contents.moveTextPositionByAmount(50, 700);
+            contents.showText(c.descrizione); contents.newLine();
+            contents.newLineAtOffset(0, -50);
+            contents.showText("Scadenza: " + c.getScadenza());
+            contents.newLineAtOffset(0, -50);
+            contents.showText(gpString().replace("\n", " -/- "));
+            contents.newLineAtOffset(0, -50);
+            contents.showText(vinceCla().replace("\n", " -/- "));
             contents.endText();
             contents.close();
             document.save(path);
@@ -145,18 +145,18 @@ public class Risultati {
             contents.beginText();
             PDFont font = PDType1Font.TIMES_ROMAN;
             contents.setFont(font, 15);
-            contents.newLineAtOffset(50, 50);
-            contents.showText(r.descrizione); contents.newLine(); contents.newLine();
-            contents.newLineAtOffset(0, 50);
-            contents.showText("Scadenza: " + r.getScadenza()); contents.newLine();
-            contents.newLineAtOffset(0, 50);
-            contents.showText("Si: " + si); contents.newLine();
-            contents.newLineAtOffset(0, 50);
-            contents.showText("No: " + no); contents.newLine();
-            contents.newLineAtOffset(0, 50);
-            contents.showText("Bianca: " + bianca); contents.newLine();
-            contents.newLineAtOffset(0, 50);
-            contents.showText(vinceRef().replace("\n", "")); contents.newLine();
+            contents.moveTextPositionByAmount(50, 700);
+            contents.showText(r.descrizione);
+            contents.newLineAtOffset(0, -50);
+            contents.showText("Scadenza: " + r.getScadenza());
+            contents.newLineAtOffset(0, -50);
+            contents.showText("Si: " + si);
+            contents.newLineAtOffset(0, -50);
+            contents.showText("No: " + no);
+            contents.newLineAtOffset(0, -50);
+            contents.showText("Bianca: " + bianca);
+            contents.newLineAtOffset(0, -50);
+            contents.showText(vinceRef().replace("\n", " -/- "));
             contents.endText();
             contents.close();
             document.save(path);
@@ -168,7 +168,7 @@ public class Risultati {
     private String gpString() {
         StringBuilder s = new StringBuilder();
         if(c.whichType() == 0 || c.whichType() == 2)
-            s.append("I voti espressi tramite ordine sono corrisposti in base al numero di candidati, se n é il numero di candidati, andranno n voti al primo, n-1 al secondo, e cosí via fino all'ultimo con un solo voto, a preferenza\n\n ");
+            s.append("I voti espressi tramite ordine sono corrisposti in base al numero di candidati, se n é il numero di candidati, andranno n voti al primo, n-1 al secondo, e cosí via fino all'ultimo con un solo voto, a preferenza\n ");
         s.append("Partiti/Gruppi:\n");
        if(votiGruppi != null)
             votiGruppi.forEach((g, i) -> {
@@ -209,10 +209,10 @@ public class Risultati {
 
             if(!c.isAssoluta() || hasWin(max))
                 if(pari)
-                    return "Non é possibile stabilire un vincitore a causa di una paritá tra: " + l + "\n\n";
+                    return "Non é possibile stabilire un vincitore a causa di una paritá tra: " + l + "\n";
                 else
-                    return "Il vincitore é: " + w + " -- Con " + max + " voti\n\n";
-            return "Non é stata raggiunta la maggioranza assoluta, non c'é nessun vincitore\n\n";
+                    return "Il vincitore é: " + w + " -- Con " + max + " voti\n";
+            return "Non é stata raggiunta la maggioranza assoluta, non c'é nessun vincitore\n";
         }else{
             if(votiGruppi != null)
                 for (Map.Entry<Gruppo, Integer> entry : votiGruppi.entrySet()) {
@@ -232,7 +232,7 @@ public class Risultati {
 
             if(!c.isAssoluta() || hasWin(max))
                 if(pari)
-                    return "Non é possibile stabilire un vincitore a causa di una paritá tra: " + l + "\n\n";
+                    return "Non é possibile stabilire un vincitore a causa di una paritá tra: " + l + "\n";
                 else {
                     AtomicReference<String> ss = new AtomicReference<>("");
                     Gruppo finalW = w;
@@ -245,23 +245,23 @@ public class Risultati {
                     return ss.toString();
                 }
 
-            return "Non é stata raggiunta la maggioranza assoluta, non c'é nessun vincitore\n\n";
+            return "Non é stata raggiunta la maggioranza assoluta, non c'é nessun vincitore\n";
         }
     }
 
     private String vinceRef() {
         if(r.hasQuorum()) {
             if (hasWin(si))
-                return "Ha vinto il [ SI ] con " + si + " voti su " + (si + no + bianca) + " voti \n\n";
+                return "Ha vinto il [ SI ] con " + si + " voti su " + (si + no + bianca) + " voti \n";
             if (hasWin(no))
-                return "Ha vinto il [ NO ] con " + no + " voti su " + (si + no + bianca) + " voti \n\n";
-            return "Non é stato raggiunto il quorum\nSoli " + (si + no + bianca) + " su " + totale + "voti\n\n";
+                return "Ha vinto il [ NO ] con " + no + " voti su " + (si + no + bianca) + " voti \n";
+            return "Non é stato raggiunto il quorum\nSoli " + (si + no + bianca) + " su " + totale + "voti\n";
         }else{
             if (si > no)
-                return "Ha vinto il [ SI ] con " + si + " voti su " + (si + no + bianca) + " voti \n\n";
+                return "Ha vinto il [ SI ] con " + si + " voti su " + (si + no + bianca) + " voti \n";
             if (si < no)
-                return "Ha vinto il [ NO ] con " + no + " voti su " + (si + no + bianca) + " voti \n\n";
-            return "Situazione di paritá tra si [" + si + "] e no [" + no + "]\n\n";
+                return "Ha vinto il [ NO ] con " + no + " voti su " + (si + no + bianca) + " voti \n";
+            return "Situazione di paritá tra si [" + si + "] e no [" + no + "]\n";
         }
     }
 

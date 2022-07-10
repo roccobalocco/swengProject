@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Some TODO's added and something else DONE!">
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Finished pdf">
+      <change afterPath="$PROJECT_DIR$/PDFResult/Cannabis_Legale2022_07_08.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PDFResult/DioMaledetto2022_07_06.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PDFResult/Eutanasia_legale2022_07_05.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ModDelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ModDelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/mod-del.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/mod-del.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +218,8 @@
       <workItem from="1657375838037" duration="1258000" />
       <workItem from="1657382234625" duration="8000" />
       <workItem from="1657387481641" duration="3628000" />
-      <workItem from="1657391464320" duration="1628000" />
+      <workItem from="1657391464320" duration="1748000" />
+      <workItem from="1657435075648" duration="3120000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -375,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657368765698</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Now the file is created and written but badly">
+      <created>1657393216004</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1657393216004</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +430,9 @@
     <MESSAGE value="Finished Risultati, but W/out TESTING!!!!!!!!!!" />
     <MESSAGE value="Some adjustment" />
     <MESSAGE value="Some TODO's added and something else DONE!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some TODO's added and something else DONE!" />
+    <MESSAGE value="Now the file is created and written but badly" />
+    <MESSAGE value="Finished pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished pdf" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -110,10 +110,13 @@ public class AggiungiVotiController{
                 r = new Risultati(ReferendumDAOImpl.getInstance().getAppoggio());
             } else { //Classica
                 if (ClassicaDAOImpl.getInstance().getAppoggio().whichType() == 2) {
+                    System.out.println(CandidatoDAOImpl.getInstance().getMapG());
+                    System.out.println(CandidatoDAOImpl.getInstance().getMapP());
                     r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
                             CandidatoDAOImpl.getInstance().getMapG(),
                             CandidatoDAOImpl.getInstance().getMapP());
                 } else {
+                    System.out.println(CandidatoDAOImpl.getInstance().getMapG());
                     r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
                             CandidatoDAOImpl.getInstance().getMapG());
                 }
