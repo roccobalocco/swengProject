@@ -96,7 +96,7 @@ public class SceltaRisController implements Initializable {
     }
 
     @FXML
-    public void printRisultati() throws DocumentException, IOException {
+    public void printRisultati() throws IOException {
         Alert infos = new Alert(Alert.AlertType.CONFIRMATION);
         int ix = votazioniListView.getSelectionModel().getSelectedIndex();
         infos.setContentText("Sicuro di voler ottenere i risultati?");

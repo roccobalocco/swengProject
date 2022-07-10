@@ -5,7 +5,6 @@ import models.Admin;
 import models.Elettore;
 import models.Gruppo;
 import models.Persona;
-import org.codehaus.plexus.interpolation.RegexBasedInterpolator;
 
 import java.awt.*;
 import java.io.File;

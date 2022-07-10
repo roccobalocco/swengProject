@@ -248,12 +248,6 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
         getInstance().notifyObservers(" [Cancellazione Votazione con id: " + id + "]");
     }
 
-    public Risultati getRisultati(Votazione v) throws IOException {
-        //TODO
-        getInstance().notifyObservers(" [Richiesta Risultati per Votazione: " + v + "]");
-        return null;
-    }
-
     public int getNextId() throws IOException {
         int id = 0;
         try{

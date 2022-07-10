@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.*;
-import models.Risultati;
 
 import java.io.IOException;
 import java.util.List;
@@ -100,7 +99,7 @@ public class AggiungiVotiController{
     }
 
     @FXML
-    public void printRisultati() throws DocumentException, IOException {
+    public void printRisultati() throws IOException {
         Alert infos = new Alert(Alert.AlertType.CONFIRMATION);
         infos.setContentText("Sicuro di voler ottenere i risultati?");
         Optional<ButtonType> o = infos.showAndWait();

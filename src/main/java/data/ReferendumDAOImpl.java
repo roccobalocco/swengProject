@@ -339,11 +339,6 @@ public class ReferendumDAOImpl implements VotazioneDAO, Observable {
         }
     }
 
-    public Risultati getRisultati(Referendum r){
-        //TODO
-        return null;
-    }
-
     public int getVotanti(Referendum r) {
         int tot = -1;
         try{
