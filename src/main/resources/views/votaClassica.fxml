@@ -44,7 +44,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="530.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ElettoreController">
+<VBox prefHeight="576.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VotaClasController">
     <MenuBar VBox.vgrow="NEVER">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" text="New" />
@@ -76,17 +76,35 @@
             <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
         </Menu>
     </MenuBar>
-    <AnchorPane prefHeight="544.0" prefWidth="644.0" VBox.vgrow="ALWAYS">
-        <Text fx:id="benvenutoText" layoutX="47.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui ci va il benvenuto">
+    <AnchorPane prefHeight="427.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+        <Text fx:id="classicaText" layoutX="276.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione Votazione qui" textAlignment="CENTER">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <ListView fx:id="partitiListView" layoutX="66.0" layoutY="127.0" prefHeight="313.0" prefWidth="286.0" />
+        <ListView fx:id="candidatiListView" layoutX="391.0" layoutY="127.0" prefHeight="313.0" prefWidth="286.0" />
+        <Label fx:id="partitiLabel" layoutX="66.0" layoutY="110.0" text="PartitiLabel" />
+        <Label fx:id="candidatiLabel" layoutX="391.0" layoutY="110.0" text="CandidatiLabel" />
+        <Button layoutX="292.0" layoutY="458.0" mnemonicParsing="false" onAction="#vota" prefHeight="30.0" prefWidth="60.0" text="Vota">
             <font>
                 <Font size="14.0" />
             </font>
-        </Text>
-        <ListView fx:id="votationListView" layoutX="55.0" layoutY="183.0" prefHeight="256.0" prefWidth="530.0" />
-        <Button layoutX="300.0" layoutY="457.0" mnemonicParsing="false" onAction="#vota" text="Vota">
+        </Button>
+        <Button layoutX="391.0" layoutY="459.0" mnemonicParsing="false" onAction="#bianca" text="Bianca">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+      <Button fx:id="giuParButton" layoutX="26.0" layoutY="273.0" mnemonicParsing="false" onAction="#giuPartito" rotate="90.0" text="&gt;" AnchorPane.leftAnchor="35.0" />
+      <Button fx:id="suParButton" layoutX="26.0" layoutY="245.0" mnemonicParsing="false" onAction="#suPartito" rotate="90.0" text="&lt;" AnchorPane.leftAnchor="35.0" />
+      <Button fx:id="giuCanButton" layoutX="684.0" layoutY="273.0" mnemonicParsing="false" onAction="#giuCandidato" rotate="90.0" text="&gt;" AnchorPane.rightAnchor="35.0" />
+      <Button fx:id="suCanButton" layoutX="684.0" layoutY="245.0" mnemonicParsing="false" onAction="#suCandidato" rotate="90.0" text="&lt;" AnchorPane.rightAnchor="35.0" />
+      <Button fx:id="selButton" layoutX="66.0" layoutY="447.0" mnemonicParsing="false" onAction="#getCandidati" text="Procedi a selezione candidati" />
+      <Button layoutX="338.0" layoutY="499.0" mnemonicParsing="false" onAction="#goBack" text="Indietro">
          <font>
             <Font size="14.0" />
-         </font></Button>
-        <Label layoutX="373.0" layoutY="165.0" text="Una sola selezione alla volta é ammessa" textAlignment="RIGHT" textFill="#615b5b" />
+         </font>
+      </Button>
     </AnchorPane>
 </VBox>

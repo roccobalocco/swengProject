@@ -6,8 +6,10 @@ import util.Observer;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class CandidatoDAOImpl implements CandidatoDAO, Observable {
 
@@ -300,13 +302,14 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
     }
 
     @Override
-    public List<Persona> getPersone(Classica c) throws IOException {
+    public List<Persona> getPersone(Gruppo g) throws IOException {
         List<Persona> lp = new LinkedList<>();
         try{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "SELECT persone.id, persone.nome, persone.gruppoFK FROM persone JOIN voti_gruppi ON persone.voti_gruppiFK = voti_gruppi.votazione_fk2";
+            String query = "SELECT persone.id, persone.nome, persone.gruppoFK " +
+                    "FROM persone WHERE persone.gruppoFK = " + g.getId();
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -322,7 +325,7 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        getInstance().notifyObservers(" [Richiesta persone per votazione " + c + " ]");
+        getInstance().notifyObservers(" [Richiesta persone per gruppo " + g + " ]");
         return lp;
     }
 
@@ -353,6 +356,109 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
         return lg;
     }
 
+    public void insertVoto(Classica c, Gruppo g, Integer i) {
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE `voti_gruppi` SET `voti_gruppo` = `voti_gruppo` + " + i +
+                    " WHERE `gruppi_fk` = " + g.getId() + " AND `votazione_fk2` = " + c.getId();
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+    }
+
+    public void insertVoto(Persona p, Integer i) {
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "UPDATE `persone` SET `voti` = `voti` + " + i +
+                    " WHERE `id` = " + p.getId();
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            statement.executeUpdate();
+
+            //chiudo connessione
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+    }
+
+    public Map<Persona, Integer> getMapP() throws IOException {
+        Map<Persona, Integer> mp = new HashMap<>();
+        Classica c = ClassicaDAOImpl.getInstance().getAppoggio();
+        List<Gruppo> lg = CandidatoDAOImpl.getInstance().getGruppi(c);
+        try {
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            for(Gruppo g : lg){
+                List<Persona> lp = CandidatoDAOImpl.getInstance().getPersone(g);
+                for(Persona p : lp) {
+                    String query = "SELECT voti FROM persone WHERE id = " + p.getId();
+                    //creo oggetto statement per esecuzione query
+                    PreparedStatement statement = conn.prepareStatement(query);
+                    //eseguo la query
+                    ResultSet resultSet = statement.executeQuery();
+                    if (resultSet.next())
+                        mp.put(p, resultSet.getInt(1));
+                    //chiudo connessione e resulset
+                    resultSet.close();
+                }
+            }
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return mp;
+    }
+
+    public Map<Gruppo, Integer> getMapG() throws IOException {
+        Map<Gruppo, Integer> mg = new HashMap<>();
+        Classica c = ClassicaDAOImpl.getInstance().getAppoggio();
+        List<Gruppo> lg = CandidatoDAOImpl.getInstance().getGruppi(c);
+
+        try {
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            for(Gruppo g : lg){
+                String query = "SELECT voti_gruppo FROM voti_gruppi WHERE gruppi_fk = " + g.getId();
+                //creo oggetto statement per esecuzione query
+                PreparedStatement statement = conn.prepareStatement(query);
+                //eseguo la query
+                ResultSet resultSet = statement.executeQuery();
+                if(resultSet.next())
+                    mg.put(g, resultSet.getInt(1));
+                //chiudo connessione e resulset
+                resultSet.close();
+            }
+            conn.close();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return mg;
+    }
 
     @Override
     public void subscribe(Observer o) { uniqueInstance.obs.add(o); }
@@ -363,7 +469,7 @@ public class CandidatoDAOImpl implements CandidatoDAO, Observable {
     @Override
     public void notifyObservers(String s) throws IOException {
         for(Observer o : uniqueInstance.obs)
-            o.update(s);
+            if(o != null)
+                o.update(s);
     }
-
 }

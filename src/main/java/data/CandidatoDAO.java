@@ -29,7 +29,7 @@ public interface CandidatoDAO {
 
     List<Gruppo> getGruppi() throws IOException;
 
-    List<Persona> getPersone(Classica c) throws IOException;
+    List<Persona> getPersone(Gruppo g) throws IOException;
 
     List<Persona> getPersone() throws IOException;
 }

@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import models.Classica;
 import models.Gruppo;
 import models.Persona;
-import util.AntiInjection;
+import util.Util;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,7 +43,8 @@ public class InserimentoCandidatiController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(getCurrentVotazione() != null) {
             try {
-                ClassicaDAOImpl.getInstance().addVotazione();
+                if(!ClassicaDAOImpl.getInstance().addVotazione())
+                    throw new IllegalAccessError("Si é tentato di aggiungere una votazione settata in appoggio senza averla prima settata");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -64,13 +65,14 @@ public class InserimentoCandidatiController implements Initializable {
     }
 
     private void updateGroup() throws IOException {
-        for(int i = 0; i < gruppoListView.getItems().size(); i++)
-            gruppoListView.getItems().remove(i);
+        while (!gruppoListView.getItems().isEmpty())
+            gruppoListView.getItems().remove(0);
 
         Classica c = ClassicaDAOImpl.getInstance().getAppoggio();
         this.lg = CandidatoDAOImpl.getInstance().getGruppi(c);
         for (Gruppo g : lg)
             gruppoListView.getItems().add(g.toString());
+        //    System.out.println("Aggiunta di " + g);
 
     }
 
@@ -87,7 +89,7 @@ public class InserimentoCandidatiController implements Initializable {
             a.show();
         }else if(gruppoCheckBox.isSelected()){
             //INSERISCI GRUPPO
-            Gruppo g = new Gruppo(CandidatoDAOImpl.getInstance().getNextIdGruppo(), AntiInjection.bonify(nomeTextField.getText()));
+            Gruppo g = new Gruppo(CandidatoDAOImpl.getInstance().getNextIdGruppo(), Util.bonify(nomeTextField.getText()));
             ClassicaDAOImpl.getInstance().addGruppo(getCurrentVotazione(), g);
             a.setAlertType(Alert.AlertType.INFORMATION);
             a.setContentText("Inserito Partito/Gruuppo " + g +" \n Per la votazione " + getCurrentVotazione().toString());
@@ -96,12 +98,10 @@ public class InserimentoCandidatiController implements Initializable {
         }else{
             //INSERISCI CANDIDATO
             int ix = gruppoListView.getSelectionModel().getSelectedIndex();
-            System.out.println("Selezionato il numero: " + ix);
+            //System.out.println("Selezionato il numero: " + ix);
             if(ix != -1){
-                Persona p = new Persona(CandidatoDAOImpl.getInstance().getNextIdPersona(), AntiInjection.bonify(nomeTextField.getText()), lg.get(ix).getId());
-                System.out.println("Gruppo preso: " + lg.get(ix));
+                Persona p = new Persona(CandidatoDAOImpl.getInstance().getNextIdPersona(), Util.bonify(nomeTextField.getText()), lg.get(ix).getId());
 
-                System.out.println("Persona da inserire: " + p + ", collegato a gruppo: " + lg.get(ix).getId() + " - " + p.getGruppo());
                 CandidatoDAOImpl.getInstance().addPersona(getCurrentVotazione(), lg.get(ix), p);
 
                 a.setAlertType(Alert.AlertType.INFORMATION);
@@ -120,11 +120,11 @@ public class InserimentoCandidatiController implements Initializable {
     @FXML
     public void goBack() throws IOException {
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/inserimento.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("/views/sceltaAdmin.fxml")));
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Inserisci Votazione/Referendum");
+        primaryStage.setTitle("Admin menu");
         primaryStage.setResizable(true);
         ((Stage) nomeTextField.getScene().getWindow()).close();
         primaryStage.show();

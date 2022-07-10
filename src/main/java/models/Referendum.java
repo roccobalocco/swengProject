@@ -22,10 +22,10 @@ public class Referendum extends Votazione {
     public String toString(){
         StringBuilder s = new StringBuilder("Referendum per " + descrizione + "\n");
         if(hasQuorum())
-            s.append("Con quorum \n");
+            s.append("Con quorum -/- ");
         else
-            s.append("Senza quorum\n");
-        s.append("Scandenza: ").append(getScadenza());
+            s.append("Senza quorum -/- ");
+        s.append("Scadenza: ").append(getScadenza());
         return s.toString();
     }
 

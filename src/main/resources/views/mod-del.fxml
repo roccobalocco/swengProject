@@ -33,6 +33,7 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
@@ -44,7 +45,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="530.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ElettoreController">
+<VBox prefHeight="530.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModDelController">
     <MenuBar VBox.vgrow="NEVER">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" text="New" />
@@ -83,10 +84,20 @@
             </font>
         </Text>
         <ListView fx:id="votationListView" layoutX="55.0" layoutY="183.0" prefHeight="256.0" prefWidth="530.0" />
-        <Button layoutX="300.0" layoutY="457.0" mnemonicParsing="false" onAction="#vota" text="Vota">
+        <Button fx:id="goButton" layoutX="327.0" layoutY="457.0" mnemonicParsing="false" onAction="#go" prefHeight="30.0" prefWidth="68.0" text="Vota">
+            <font>
+                <Font size="14.0" />
+            </font></Button>
+        <Label layoutX="373.0" layoutY="165.0" text="Una sola selezione alla volta é ammessa" textAlignment="RIGHT" textFill="#615b5b" />
+      <CheckBox fx:id="eliminaCheckBox" layoutX="55.0" layoutY="157.0" mnemonicParsing="false" onAction="#updateButton" text="Elimina">
          <font>
             <Font size="14.0" />
-         </font></Button>
-        <Label layoutX="373.0" layoutY="165.0" text="Una sola selezione alla volta é ammessa" textAlignment="RIGHT" textFill="#615b5b" />
+         </font>
+      </CheckBox>
+      <Button layoutX="241.0" layoutY="458.0" mnemonicParsing="false" onAction="#goBack" text="Indietro">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </AnchorPane>
 </VBox>

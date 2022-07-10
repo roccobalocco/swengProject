@@ -4,24 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Observable things and logFiles with SQLInjection protection inserted (finally)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/AntiInjection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_06_2022_10_38_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_06_2022_10_38__Changes_.xml" beforeDir="false" />
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Finished pdf">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AdminDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CandidatoDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ElettoreDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Gruppo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Gruppo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Votazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -56,7 +48,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2AhJi88Gt3JLGoum04i9WPazjbc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -78,17 +70,19 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;packageLocal&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Pietro/Downloads/openjfx-18.0.1_windows-x64_bin-sdk/javafx-sdk-18.0.1/lib/javafx.fxml.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs.jest.jest_package&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -96,7 +90,32 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Application.MainASUS">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn site" />
+      <command value="mvn compile" />
+      <command value="mvn clean" />
+      <command value="mvn deploy" />
+      <command value="mvn jar:jar deploy:deploy " />
+      <command value="clean deploy -Dmaven.test.skip=true" />
+      <command value="mvn clean deploy -Dmaven.test.skip=true" />
+      <command value="mvn jar:jar install:install" />
+      <command value="mvn  install" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MavenRunConfiguration" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.MainBMAX">
     <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="swengProject" />
@@ -106,12 +125,16 @@
       </method>
     </configuration>
     <configuration name="MainBMAX" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="App" />
       <module name="swengProject" />
       <option name="VM_PARAMETERS" value="--module-path C:\Users\Pietro\Downloads\openjfx-18.0.1_windows-x64_bin-sdk\javafx-sdk-18.0.1\lib --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="swengProject-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/swengProject-1.0-SNAPSHOT.jar" />
+      <method v="2" />
     </configuration>
     <configuration name="swengProject [compile]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
@@ -141,8 +164,14 @@
     <list>
       <item itemvalue="Application.MainBMAX" />
       <item itemvalue="Application.MainASUS" />
+      <item itemvalue="JAR Application.swengProject-1.0-SNAPSHOT.jar" />
       <item itemvalue="Maven.swengProject [compile]" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.swengProject-1.0-SNAPSHOT.jar" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -172,6 +201,23 @@
       <workItem from="1656431400544" duration="5624000" />
       <workItem from="1656441174355" duration="5257000" />
       <workItem from="1656503052133" duration="14965000" />
+      <workItem from="1656591193775" duration="9432000" />
+      <workItem from="1656661525949" duration="8591000" />
+      <workItem from="1656689872125" duration="886000" />
+      <workItem from="1656696236274" duration="2190000" />
+      <workItem from="1656867178806" duration="6849000" />
+      <workItem from="1656878094827" duration="3500000" />
+      <workItem from="1656920121538" duration="8598000" />
+      <workItem from="1657118215825" duration="3568000" />
+      <workItem from="1657130544014" duration="10921000" />
+      <workItem from="1657271547073" duration="4366000" />
+      <workItem from="1657301279054" duration="5584000" />
+      <workItem from="1657363240798" duration="1539000" />
+      <workItem from="1657375838037" duration="1258000" />
+      <workItem from="1657382234625" duration="8000" />
+      <workItem from="1657387481641" duration="3628000" />
+      <workItem from="1657391464320" duration="1748000" />
+      <workItem from="1657435075648" duration="3500000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -257,7 +303,98 @@
       <option name="project" value="LOCAL" />
       <updated>1656498760772</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="finally finished Classica insertion without errors (AT A FIRST SIGHT), next thing //TODO is the votation for Referendum">
+      <created>1656584816256</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1656584816256</updated>
+    </task>
+    <task id="LOCAL-00014" summary="first steps for votation. Done GUI's for Elettore Referendum and Classica.">
+      <created>1656600307949</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1656600307949</updated>
+    </task>
+    <task id="LOCAL-00015" summary="stuff, idk">
+      <created>1656601455610</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1656601455610</updated>
+    </task>
+    <task id="LOCAL-00016" summary="implemented GUI for Referendum votations.">
+      <created>1656671252454</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1656671252454</updated>
+    </task>
+    <task id="LOCAL-00017" summary="done update/delete, BUT remember to do some optimization and add many controls for inputs...">
+      <created>1656873999198</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1656873999198</updated>
+    </task>
+    <task id="LOCAL-00018" summary="done votation system">
+      <created>1656928849301</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1656928849301</updated>
+    </task>
+    <task id="LOCAL-00019" summary="gui for adding votes to an existing votation (SCADUTA) and a structure for result view.">
+      <created>1657122918988</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1657122918988</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Finished Risultati, but W/out TESTING!!!!!!!!!!">
+      <created>1657134892536</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1657134892536</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Some adjustment">
+      <created>1657141550630</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1657141550631</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Some TODO's added and something else DONE!">
+      <created>1657307444827</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1657307444827</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Some TODO's added and something else DONE!">
+      <created>1657368765697</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1657368765698</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Now the file is created and written but badly">
+      <created>1657393216004</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1657393216004</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Finished pdf">
+      <created>1657438260833</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1657438260833</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +425,19 @@
     <MESSAGE value="Now the insertion of Votazione subclass Classica is supported" />
     <MESSAGE value="Observable things" />
     <MESSAGE value="Observable things and logFiles with SQLInjection protection inserted (finally)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Observable things and logFiles with SQLInjection protection inserted (finally)" />
+    <MESSAGE value="finally finished Classica insertion without errors (AT A FIRST SIGHT), next thing //TODO is the votation for Referendum" />
+    <MESSAGE value="first steps for votation. Done GUI's for Elettore Referendum and Classica." />
+    <MESSAGE value="stuff, idk" />
+    <MESSAGE value="implemented GUI for Referendum votations." />
+    <MESSAGE value="done update/delete, BUT remember to do some optimization and add many controls for inputs..." />
+    <MESSAGE value="done votation system" />
+    <MESSAGE value="gui for adding votes to an existing votation (SCADUTA) and a structure for result view." />
+    <MESSAGE value="Finished Risultati, but W/out TESTING!!!!!!!!!!" />
+    <MESSAGE value="Some adjustment" />
+    <MESSAGE value="Some TODO's added and something else DONE!" />
+    <MESSAGE value="Now the file is created and written but badly" />
+    <MESSAGE value="Finished pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished pdf" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -301,6 +450,20 @@
           <properties class="java.lang.RuntimeException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java</url>
+          <line>104</line>
+          <properties class="data.ClassicaDAOImpl" method="getAllCategorico">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -309,6 +472,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/swengProject$MainBMAX.ic" NAME="MainBMAX Coverage Results" MODIFIED="1657139151147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/swengProject$Main.ic" NAME="Main Coverage Results" MODIFIED="1655979769855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

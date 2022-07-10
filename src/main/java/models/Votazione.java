@@ -29,9 +29,9 @@ public abstract class Votazione {
 
     public int getId(){ return id; }
 
-    public abstract Risultati getRisultati();
-
     public String getScadenza() {
         return scadenza.toString();
     }
+
+    public LocalDate getScadenzaLD(){ return scadenza; }
 }
