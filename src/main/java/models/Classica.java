@@ -1,7 +1,5 @@
 package models;
 
-import data.CandidatoDAOImpl;
-
 import java.time.LocalDate;
 
 /**

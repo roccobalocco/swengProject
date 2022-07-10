@@ -365,11 +365,6 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
         }
     }
 
-    public Risultati getRisultati(Classica c){
-        //TODO
-        return null;
-    }
-
     public int getVotanti(Classica c) {
         int tot = -1;
         try{

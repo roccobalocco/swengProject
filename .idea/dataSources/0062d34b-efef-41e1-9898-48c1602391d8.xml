@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="swengdb@localhost">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.39">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.40">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -1032,9 +1032,9 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>2</Position>
     </column>
     <key id="296" parent="286" name="PRIMARY">
-      <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>id</UnderlyingIndexColNames>
     </key>
     <column id="297" parent="287" name="id">
       <DataType>int|0s</DataType>
@@ -1079,11 +1079,11 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Type>btree</Type>
     </index>
     <key id="306" parent="287" name="PRIMARY">
-      <ColNames>voti_gruppiFK
-gruppoFK
-id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>voti_gruppiFK
+gruppoFK
+id</UnderlyingIndexColNames>
     </key>
     <column id="307" parent="288" name="id">
       <AutoIncrement>6</AutoIncrement>
@@ -1131,9 +1131,9 @@ id</ColNames>
       <Position>8</Position>
     </column>
     <key id="315" parent="288" name="PRIMARY">
-      <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>id</UnderlyingIndexColNames>
     </key>
     <column id="316" parent="289" name="cf">
       <DataType>varchar(16)|0s</DataType>
@@ -1170,12 +1170,11 @@ id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="323" parent="289" name="PRIMARY">
-      <ColNames>cf</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>cf</UnderlyingIndexColNames>
     </key>
     <key id="324" parent="289" name="cf_UNIQUE">
-      <ColNames>cf</ColNames>
       <UnderlyingIndexName>cf_UNIQUE</UnderlyingIndexName>
     </key>
     <column id="325" parent="290" name="cf_fk">
@@ -1283,9 +1282,9 @@ id</ColNames>
       <Position>8</Position>
     </column>
     <key id="346" parent="292" name="PRIMARY">
-      <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>id</UnderlyingIndexColNames>
     </key>
     <column id="347" parent="293" name="votazione_fk2">
       <DataType>int|0s</DataType>
@@ -1318,10 +1317,10 @@ id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="353" parent="293" name="PRIMARY">
-      <ColNames>votazione_fk2
-gruppi_fk</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>votazione_fk2
+gruppi_fk</UnderlyingIndexColNames>
     </key>
   </database-model>
 </dataSource>

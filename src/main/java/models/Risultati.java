@@ -119,7 +119,7 @@ public class Risultati {
             contents.beginText();
             PDFont font = PDType1Font.TIMES_ROMAN;
             contents.setFont(font, 15);
-            contents.moveTextPositionByAmount(50, 700);
+            contents.newLineAtOffset(50, 700);
             contents.showText(c.descrizione); contents.newLine();
             contents.newLineAtOffset(0, -50);
             contents.showText("Scadenza: " + c.getScadenza());
@@ -142,7 +142,7 @@ public class Risultati {
             contents.beginText();
             PDFont font = PDType1Font.TIMES_ROMAN;
             contents.setFont(font, 15);
-            contents.moveTextPositionByAmount(50, 700);
+            contents.newLineAtOffset(50, 700);
             contents.showText(r.descrizione);
             contents.newLineAtOffset(0, -50);
             contents.showText("Scadenza: " + r.getScadenza());
@@ -182,7 +182,6 @@ public class Risultati {
     }
 
     private String vinceCla() {
-        String s = "";
         boolean pari = false;
         int max = 0;
         LinkedList<Gruppo> l = new LinkedList<>();

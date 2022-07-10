@@ -4,6 +4,25 @@
     <pattern value="util.Observable" method="notifyObservers" />
     <pattern value="util.Observable" method="subscribe" />
     <pattern value="util.Observable" method="unsubcribe" />
+    <pattern value="data.AdminDAO" method="getAdmin" />
+    <pattern value="data.AdminDAO" method="isAdmin" />
+    <pattern value="data.AdminDAOImpl" />
+    <pattern value="data.AdminDAOImpl" method="unsubcribe" />
+    <pattern value="data.CandidatoDAO" method="addGruppo" />
+    <pattern value="data.CandidatoDAO" method="addPersona" />
+    <pattern value="data.CandidatoDAO" />
+    <pattern value="data.CandidatoDAO" method="deleteGruppo" />
+    <pattern value="data.CandidatoDAO" method="deletePersona" />
+    <pattern value="data.CandidatoDAO" method="getAllCandidati" />
+    <pattern value="data.CandidatoDAO" method="getGruppi" />
+    <pattern value="data.CandidatoDAO" method="getGruppo" />
+    <pattern value="data.CandidatoDAO" method="getNextIdGruppo" />
+    <pattern value="data.CandidatoDAO" method="getNextIdPersona" />
+    <pattern value="data.CandidatoDAO" method="getPersona" />
+    <pattern value="data.CandidatoDAO" method="getPersone" />
+    <pattern value="data.CandidatoDAOImpl" />
+    <pattern value="data.CandidatoDAOImpl" method="unsubcribe" />
+    <pattern value="data.VotazioneDAO" method="addVotazione" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">

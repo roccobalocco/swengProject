@@ -29,8 +29,4 @@ public class Referendum extends Votazione {
         return s.toString();
     }
 
-    @Override
-    public Risultati getRisultati() {
-        return null;
-    }
 }

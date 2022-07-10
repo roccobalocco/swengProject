@@ -1,6 +1,5 @@
 package controllers;
 
-import com.itextpdf.text.DocumentException;
 import data.CandidatoDAOImpl;
 import data.ClassicaDAOImpl;
 import data.ReferendumDAOImpl;
@@ -11,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.*;
+import util.Util;
 
 import java.io.IOException;
 import java.util.List;
@@ -62,7 +62,6 @@ public class AggiungiVotiController{
                 default -> System.out.println("ERRORE IN ENTRATA Stage");
             }
             s = true;
-            System.out.println("DIOMERDA");
         }
     }
 
@@ -103,38 +102,36 @@ public class AggiungiVotiController{
         Alert infos = new Alert(Alert.AlertType.CONFIRMATION);
         infos.setContentText("Sicuro di voler ottenere i risultati?");
         Optional<ButtonType> o = infos.showAndWait();
+        String path = "C://Users/Pietro/IdeaProjects/swengProject/PDFResult/";
         if(o.isPresent()) {
             Risultati r;
             if (gruppoTextField.isDisable()) { //referendum
-                r = new Risultati(ReferendumDAOImpl.getInstance().getAppoggio());
+                Referendum ref  = ReferendumDAOImpl.getInstance().getAppoggio();
+                r = new Risultati(ref);
+                path += ref.descrizione.replaceAll("[ -/'\"]", "_") +
+                        ref.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
             } else { //Classica
-                if (ClassicaDAOImpl.getInstance().getAppoggio().whichType() == 2) {
-                    System.out.println(CandidatoDAOImpl.getInstance().getMapG());
-                    System.out.println(CandidatoDAOImpl.getInstance().getMapP());
-                    r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
-                            CandidatoDAOImpl.getInstance().getMapG(),
-                            CandidatoDAOImpl.getInstance().getMapP());
+                Classica c = ClassicaDAOImpl.getInstance().getAppoggio();
+                path += c.descrizione.replaceAll("[ -/'\"]", "_") +
+                        c.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+                if (c.whichType() == 2) {
+                    r = new Risultati(c, CandidatoDAOImpl.getInstance().getMapG(), CandidatoDAOImpl.getInstance().getMapP());
                 } else {
-                    System.out.println(CandidatoDAOImpl.getInstance().getMapG());
-                    r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
-                            CandidatoDAOImpl.getInstance().getMapG());
+                    r = new Risultati(c, CandidatoDAOImpl.getInstance().getMapG());
                 }
             }
 
-            if (!r.printRisultati("/swengProject/PDFResult/")){
-                infos.setAlertType(Alert.AlertType.WARNING);
-                infos.setContentText("Errore nel salvataggio pdf in /swengProject/PDFResult/");
-            }else{
+            if (r.printRisultati("/swengProject/PDFResult/")){
                 infos.setAlertType(Alert.AlertType.INFORMATION);
                 infos.setContentText("PDF salvato in /swengProject/PDFResult/");
+            }else{
+                infos.setAlertType(Alert.AlertType.WARNING);
+                infos.setContentText("Errore nel salvataggio pdf in /swengProject/PDFResult/");
             }
             infos.showAndWait();
-            showResult();
+            deleteVotation(infos);
+            Util.showResult(path);
         }
-    }
-
-    private void showResult() {
-        //TODO
     }
 
     @FXML
@@ -200,6 +197,15 @@ public class AggiungiVotiController{
             gruppoComboBox.getItems().addAll(p.toString());
     }
 
-    //TODO chiedi se eliminare la votazione dal db dopo aver stampato i risultati
+    private void deleteVotation(Alert infos) throws IOException {
+        infos.setAlertType(Alert.AlertType.CONFIRMATION);
+        infos.setContentText("Cancellare la votazione dal sistema?");
+        Optional<ButtonType> o = infos.showAndWait();
+        if(o.isPresent())
+            if(gruppoTextField.isDisable()) //referendum
+                ReferendumDAOImpl.getInstance().deleteVotazione(ReferendumDAOImpl.getInstance().getAppoggio().getId());
+            else //Classica
+                ClassicaDAOImpl.getInstance().deleteVotazione(ClassicaDAOImpl.getInstance().getAppoggio().getId());
+    }
 
 }

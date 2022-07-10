@@ -1,6 +1,5 @@
 package controllers;
 
-import com.itextpdf.text.DocumentException;
 import data.CandidatoDAOImpl;
 import data.ClassicaDAOImpl;
 import data.ReferendumDAOImpl;
@@ -123,12 +122,12 @@ public class SceltaRisController implements Initializable {
                         lc.get(ix).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
             }
 
-            if (!r.printRisultati("C:/Users/Pietro/IdeaProjects/swengProject/PDFResult/")){
-                infos.setAlertType(Alert.AlertType.WARNING);
-                infos.setContentText("Errore nel salvataggio pdf in /swengProject/PDFResult/");
-            }else{
+            if (r.printRisultati("C:/Users/Pietro/IdeaProjects/swengProject/PDFResult/")){
                 infos.setAlertType(Alert.AlertType.INFORMATION);
                 infos.setContentText("PDF salvato in Desktop/PDFResult");
+            }else{
+                infos.setAlertType(Alert.AlertType.WARNING);
+                infos.setContentText("Errore nel salvataggio pdf in /swengProject/PDFResult/");
             }
             infos.showAndWait();
             Util.showResult(path);

@@ -5,10 +5,4 @@ package util;
  */
 public class StatsVisitor {
 
-    /**
-     * Default constructor
-     */
-    public StatsVisitor() {
-    }
-
 }
