@@ -4,21 +4,116 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Observable things and logFiles with SQLInjection protection inserted (finally)">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Started testing">
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/css/coverage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/css/highlight-idea.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/img/arrowDown.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/img/arrowUp.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/js/highlight.pack.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-1/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-2/sources/source-b.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-3/sources/source-a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-4/sources/source-a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeCoverageIntellij/ns-5/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/test/models/ReferendumTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDFResult/Cannabis_Legale2022_07_08.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDFResult/DioMaledetto2022_07_06.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDFResult/Eutanasia_legale2022_07_05.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Referendum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Referendum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Votazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +124,10 @@
     <colors>
       <entry key="0062d34b-efef-41e1-9898-48c1602391d8" value="Violet" />
     </colors>
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\rocco\IdeaProjects\swengProject\CodeCoverageIntellij" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,7 +176,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;packageLocal&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pietro/Downloads/openjfx-18.0.1_windows-x64_bin-sdk/javafx-sdk-18.0.1/lib/javafx.fxml.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rocco/IdeaProjects/swengProject/CodeCoverageIntellij&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -88,7 +187,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -122,7 +221,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainASUS">
+  <component name="RunManager" selected="JUnit.ClassicaTest">
     <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="swengProject" />
@@ -135,6 +234,21 @@
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="swengProject" />
       <option name="VM_PARAMETERS" value="--module-path C:\Users\Pietro\Downloads\openjfx-18.0.1_windows-x64_bin-sdk\javafx-sdk-18.0.1\lib --add-modules=javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClassicaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swengProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.models" />
+      <option name="MAIN_CLASS_NAME" value="test.models.ClassicaTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,10 +286,12 @@
       <item itemvalue="Application.MainBMAX" />
       <item itemvalue="Application.MainASUS" />
       <item itemvalue="JAR Application.swengProject-1.0-SNAPSHOT.jar" />
+      <item itemvalue="JUnit.ClassicaTest" />
       <item itemvalue="Maven.swengProject [compile]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ClassicaTest" />
         <item itemvalue="JAR Application.swengProject-1.0-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
@@ -225,7 +341,9 @@
       <workItem from="1657387481641" duration="3628000" />
       <workItem from="1657391464320" duration="1748000" />
       <workItem from="1657435075648" duration="3500000" />
-      <workItem from="1657473904610" duration="2270000" />
+      <workItem from="1657473904610" duration="2726000" />
+      <workItem from="1657477105346" duration="112000" />
+      <workItem from="1657477243159" duration="2294000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -402,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657438260833</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="small changes">
+      <created>1657476305335</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1657476305335</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +546,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="first branch" />
     <MESSAGE value="first push" />
     <MESSAGE value="second push" />
     <MESSAGE value="changed some package intestations" />
@@ -445,7 +569,9 @@
     <MESSAGE value="Some TODO's added and something else DONE!" />
     <MESSAGE value="Now the file is created and written but badly" />
     <MESSAGE value="Finished pdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished pdf" />
+    <MESSAGE value="small changes" />
+    <MESSAGE value="Started testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -481,6 +607,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/swengProject$MainBMAX.ic" NAME="MainBMAX Coverage Results" MODIFIED="1657139151147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/swengProject$MainASUS.ic" NAME="MainASUS Coverage Results" MODIFIED="1657476538672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/swengProject$Main.ic" NAME="Main Coverage Results" MODIFIED="1655979769855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/swengProject$ClassicaTest.ic" NAME="ClassicaTest Coverage Results" MODIFIED="1657478945871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
   </component>
 </project>

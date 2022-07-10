@@ -1,0 +1,195 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AdminDAOImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">data</a>
+</div>
+
+<h1>Coverage Summary for Class: AdminDAOImpl (data)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AdminDAOImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package data;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import models.Admin;
+<i class="no-highlight">4</i>&nbsp;import util.Observable;
+<i class="no-highlight">5</i>&nbsp;import util.Observer;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">8</i>&nbsp;import java.sql.*;
+<i class="no-highlight">9</i>&nbsp;import java.util.LinkedList;
+<i class="no-highlight">10</i>&nbsp;import java.util.List;
+<i class="no-highlight">11</i>&nbsp;import java.util.Objects;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;/**
+<i class="no-highlight">14</i>&nbsp; * @author Piemme
+<i class="no-highlight">15</i>&nbsp; */
+<i class="no-highlight">16</i>&nbsp;public class AdminDAOImpl implements AdminDAO, Observable {
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    /**
+<i class="no-highlight">19</i>&nbsp;     * Default constructor
+<i class="no-highlight">20</i>&nbsp;     */
+<b class="nc"><i class="no-highlight">21</i>&nbsp;    private AdminDAOImpl() {</b>
+<b class="nc"><i class="no-highlight">22</i>&nbsp;        obs = new LinkedList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">23</i>&nbsp;        obs.add(Admin.getInstance());</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    private final List&lt;Observer&gt; obs;
+<i class="no-highlight">27</i>&nbsp;    private static AdminDAOImpl uniqueInstance;
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    public static AdminDAOImpl getInstance() {
+<b class="nc"><i class="no-highlight">30</i>&nbsp;        if(uniqueInstance == null)</b>
+<b class="nc"><i class="no-highlight">31</i>&nbsp;            uniqueInstance = new AdminDAOImpl();</b>
+<b class="nc"><i class="no-highlight">32</i>&nbsp;        return uniqueInstance;</b>
+<i class="no-highlight">33</i>&nbsp;    }
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;    /**
+<i class="no-highlight">36</i>&nbsp;     * @param cf un codice alfanumerico di 16 caratteri che venga trovato all&#39;interno della base di dati, non nullo
+<i class="no-highlight">37</i>&nbsp;     * @param psw stringa non nulla ne vuota
+<i class="no-highlight">38</i>&nbsp;     * @return null se non viene trovato nulla, l&#39;Admin se viene trovato l&#39;utente
+<i class="no-highlight">39</i>&nbsp;     */
+<i class="no-highlight">40</i>&nbsp;    public Admin getAdmin(String cf, String psw) throws IllegalArgumentException, NullPointerException, IOException {
+<b class="nc"><i class="no-highlight">41</i>&nbsp;        Objects.requireNonNull(cf);</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;        Objects.requireNonNull(psw);</b>
+<b class="nc"><i class="no-highlight">43</i>&nbsp;        if(cf.length() != 16)</b>
+<b class="nc"><i class="no-highlight">44</i>&nbsp;            throw new IllegalArgumentException(&quot;Codice fiscale non riconosciuto&quot;);</b>
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        Admin utente = null;</b>
+<i class="no-highlight">46</i>&nbsp;        try{
+<i class="no-highlight">47</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">48</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">49</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">50</i>&nbsp;            String query = &quot;SELECT * FROM utenti WHERE `cf` = &#39;&quot; + cf + &quot;&#39; AND `password` = &#39;&quot; + psw + &quot;&#39; AND `isAdmin` = 1&quot;;</b>
+<i class="no-highlight">51</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">52</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">53</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">54</i>&nbsp;            ResultSet resultSet = statement.executeQuery();</b>
+<i class="no-highlight">55</i>&nbsp;            //guarda se ci sono risultati
+<b class="nc"><i class="no-highlight">56</i>&nbsp;            if(resultSet.next())</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;                utente = Admin.getInstance(resultSet.getString(1));</b>
+<i class="no-highlight">58</i>&nbsp;                //System.out.println(&quot;Ci sono dei risultati: &quot; +Admin.getInstance().toString());
+<i class="no-highlight">59</i>&nbsp;
+<i class="no-highlight">60</i>&nbsp;            //chiudo resultset e connessione
+<b class="nc"><i class="no-highlight">61</i>&nbsp;            resultSet.close();</b>
+<b class="nc"><i class="no-highlight">62</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">68</i>&nbsp;        getInstance().notifyObservers(&quot; [Ricerca candidato] &quot;);</b>
+<b class="nc"><i class="no-highlight">69</i>&nbsp;        return utente;</b>
+<i class="no-highlight">70</i>&nbsp;    }
+<i class="no-highlight">71</i>&nbsp;
+<i class="no-highlight">72</i>&nbsp;
+<i class="no-highlight">73</i>&nbsp;    public boolean isAdmin(String cf, String psw) throws IOException {
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        return this.getAdmin(cf, psw) != null;</b>
+<i class="no-highlight">75</i>&nbsp;    }
+<i class="no-highlight">76</i>&nbsp;
+<i class="no-highlight">77</i>&nbsp;    @Override
+<b class="nc"><i class="no-highlight">78</i>&nbsp;    public void subscribe(Observer o) { uniqueInstance.obs.add(o); }</b>
+<i class="no-highlight">79</i>&nbsp;
+<i class="no-highlight">80</i>&nbsp;    @Override
+<b class="nc"><i class="no-highlight">81</i>&nbsp;    public void unsubcribe(Observer o) { uniqueInstance.obs.remove(o); }</b>
+<i class="no-highlight">82</i>&nbsp;
+<i class="no-highlight">83</i>&nbsp;    @Override
+<i class="no-highlight">84</i>&nbsp;    public void notifyObservers(String s) throws IOException {
+<b class="nc"><i class="no-highlight">85</i>&nbsp;        for(Observer o : uniqueInstance.obs)</b>
+<b class="nc"><i class="no-highlight">86</i>&nbsp;            if(o != null)</b>
+<b class="nc"><i class="no-highlight">87</i>&nbsp;                o.update(s);</b>
+<i class="no-highlight">88</i>&nbsp;    }
+<i class="no-highlight">89</i>&nbsp;
+<i class="no-highlight">90</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 20:10</div>
+</div>
+</body>
+</html>

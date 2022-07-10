@@ -1,0 +1,316 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AggiungiVotiController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">controllers</a>
+</div>
+
+<h1>Coverage Summary for Class: AggiungiVotiController (controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AggiungiVotiController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/122)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package controllers;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import data.CandidatoDAOImpl;
+<i class="no-highlight">4</i>&nbsp;import data.ClassicaDAOImpl;
+<i class="no-highlight">5</i>&nbsp;import data.ReferendumDAOImpl;
+<i class="no-highlight">6</i>&nbsp;import javafx.fxml.FXML;
+<i class="no-highlight">7</i>&nbsp;import javafx.fxml.FXMLLoader;
+<i class="no-highlight">8</i>&nbsp;import javafx.scene.Parent;
+<i class="no-highlight">9</i>&nbsp;import javafx.scene.Scene;
+<i class="no-highlight">10</i>&nbsp;import javafx.scene.control.*;
+<i class="no-highlight">11</i>&nbsp;import javafx.stage.Stage;
+<i class="no-highlight">12</i>&nbsp;import models.*;
+<i class="no-highlight">13</i>&nbsp;import util.Util;
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">16</i>&nbsp;import java.util.List;
+<i class="no-highlight">17</i>&nbsp;import java.util.Objects;
+<i class="no-highlight">18</i>&nbsp;import java.util.Optional;
+<i class="no-highlight">19</i>&nbsp;
+<b class="nc"><i class="no-highlight">20</i>&nbsp;public class AggiungiVotiController{</b>
+<b class="nc"><i class="no-highlight">21</i>&nbsp;    private final Alert a = new Alert(Alert.AlertType.ERROR);</b>
+<b class="nc"><i class="no-highlight">22</i>&nbsp;    private boolean s = false;</b>
+<b class="nc"><i class="no-highlight">23</i>&nbsp;    private List&lt;Gruppo&gt; lg = null;</b>
+<b class="nc"><i class="no-highlight">24</i>&nbsp;    private List&lt;Persona&gt; lp = null;</b>
+<i class="no-highlight">25</i>&nbsp;    @FXML
+<i class="no-highlight">26</i>&nbsp;    ComboBox&lt;String&gt; gruppoComboBox, candidatoComboBox;
+<i class="no-highlight">27</i>&nbsp;    @FXML
+<i class="no-highlight">28</i>&nbsp;    TextField gruppoTextField, candidatoTextField, siTextField, noTextField, biancaTextField, totaleTextField;
+<i class="no-highlight">29</i>&nbsp;    @FXML
+<i class="no-highlight">30</i>&nbsp;    Button getCandidatiButton, insertGruppoButton, insertCandidatiButton, insertReferendumButton, insertTotButton;
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    @FXML
+<i class="no-highlight">33</i>&nbsp;    public void setup(){
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        if(!s){</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;            candidatoComboBox.setDisable(true); candidatoTextField.setDisable(true); insertCandidatiButton.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;            switch (((Stage) gruppoComboBox.getScene().getWindow()).getTitle() ){</b>
+<i class="no-highlight">37</i>&nbsp;                case &quot;Aggiungi voti a Classica&quot; -&gt; {
+<b class="nc"><i class="no-highlight">38</i>&nbsp;                    Classica c = ClassicaDAOImpl.getInstance().getAppoggio();</b>
+<b class="nc"><i class="no-highlight">39</i>&nbsp;                    if(c.isAssoluta()) {</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;                        totaleTextField.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;                        insertTotButton.setDisable(true);</b>
+<i class="no-highlight">42</i>&nbsp;                    }
+<b class="nc"><i class="no-highlight">43</i>&nbsp;                    siTextField.setDisable(true); noTextField.setDisable(true); biancaTextField.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">44</i>&nbsp;                    insertReferendumButton.setDisable(true);</b>
+<i class="no-highlight">45</i>&nbsp;                    try {
+<b class="nc"><i class="no-highlight">46</i>&nbsp;                        lg = CandidatoDAOImpl.getInstance().getGruppi(c);</b>
+<b class="nc"><i class="no-highlight">47</i>&nbsp;                    } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">48</i>&nbsp;                        throw new RuntimeException(e);</b>
+<b class="nc"><i class="no-highlight">49</i>&nbsp;                    }</b>
+<b class="nc"><i class="no-highlight">50</i>&nbsp;                    for(Gruppo g : lg)</b>
+<b class="nc"><i class="no-highlight">51</i>&nbsp;                        gruppoComboBox.getItems().addAll(g.toString());</b>
+<i class="no-highlight">52</i>&nbsp;
+<b class="nc"><i class="no-highlight">53</i>&nbsp;                }</b>
+<i class="no-highlight">54</i>&nbsp;                case &quot;Aggiungi voti a Referendum&quot; -&gt; {
+<b class="nc"><i class="no-highlight">55</i>&nbsp;                    if (ReferendumDAOImpl.getInstance().getAppoggio().hasQuorum()){</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;                        totaleTextField.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;                        insertTotButton.setDisable(true);</b>
+<i class="no-highlight">58</i>&nbsp;                    }
+<b class="nc"><i class="no-highlight">59</i>&nbsp;                    gruppoComboBox.setDisable(true); gruppoTextField.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">60</i>&nbsp;                    insertGruppoButton.setDisable(true); getCandidatiButton.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">61</i>&nbsp;                }</b>
+<b class="nc"><i class="no-highlight">62</i>&nbsp;                default -&gt; System.out.println(&quot;ERRORE IN ENTRATA Stage&quot;);</b>
+<i class="no-highlight">63</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">64</i>&nbsp;            s = true;</b>
+<i class="no-highlight">65</i>&nbsp;        }
+<i class="no-highlight">66</i>&nbsp;    }
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;    @FXML
+<i class="no-highlight">69</i>&nbsp;    public void insertVotiGruppo() {
+<i class="no-highlight">70</i>&nbsp;        try{
+<b class="nc"><i class="no-highlight">71</i>&nbsp;            int ix = gruppoComboBox.getSelectionModel().getSelectedIndex();</b>
+<b class="nc"><i class="no-highlight">72</i>&nbsp;            int voti = Integer.parseInt(gruppoTextField.getText());</b>
+<b class="nc"><i class="no-highlight">73</i>&nbsp;            if(voti &lt; 1 || ix == -1)</b>
+<b class="nc"><i class="no-highlight">74</i>&nbsp;                throw new NumberFormatException();</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;            ClassicaDAOImpl.getInstance().addVoti(lg.get(ix), voti);</b>
+<b class="nc"><i class="no-highlight">76</i>&nbsp;        }catch(NumberFormatException e){</b>
+<b class="nc"><i class="no-highlight">77</i>&nbsp;            a.setContentText(&quot;Inserisci un numero di voti valido&quot;);</b>
+<b class="nc"><i class="no-highlight">78</i>&nbsp;            a.show();</b>
+<b class="nc"><i class="no-highlight">79</i>&nbsp;        }</b>
+<i class="no-highlight">80</i>&nbsp;    }
+<i class="no-highlight">81</i>&nbsp;    @FXML
+<i class="no-highlight">82</i>&nbsp;    public void insertTotale() {
+<i class="no-highlight">83</i>&nbsp;        try {
+<b class="nc"><i class="no-highlight">84</i>&nbsp;            int v = Integer.parseInt(gruppoTextField.getText());</b>
+<b class="nc"><i class="no-highlight">85</i>&nbsp;            if (v &lt; 1)</b>
+<b class="nc"><i class="no-highlight">86</i>&nbsp;                throw new NumberFormatException();</b>
+<i class="no-highlight">87</i>&nbsp;
+<b class="nc"><i class="no-highlight">88</i>&nbsp;            if (gruppoTextField.isDisable()) //referendum</b>
+<b class="nc"><i class="no-highlight">89</i>&nbsp;                ReferendumDAOImpl.getInstance().setTot(v);</b>
+<i class="no-highlight">90</i>&nbsp;            else //classica
+<b class="nc"><i class="no-highlight">91</i>&nbsp;                ClassicaDAOImpl.getInstance().setTot(v);</b>
+<b class="nc"><i class="no-highlight">92</i>&nbsp;        }catch(NumberFormatException e){</b>
+<b class="nc"><i class="no-highlight">93</i>&nbsp;            a.setContentText(&quot;Inserisci un numero di voti valido&quot;);</b>
+<b class="nc"><i class="no-highlight">94</i>&nbsp;            a.show();</b>
+<b class="nc"><i class="no-highlight">95</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">96</i>&nbsp;            throw new RuntimeException(&quot;Problema con aggiunta totale votanti possibili -/- &quot; + e);</b>
+<b class="nc"><i class="no-highlight">97</i>&nbsp;        }</b>
+<i class="no-highlight">98</i>&nbsp;    }
+<i class="no-highlight">99</i>&nbsp;
+<i class="no-highlight">100</i>&nbsp;    @FXML
+<i class="no-highlight">101</i>&nbsp;    public void printRisultati() throws IOException {
+<b class="nc"><i class="no-highlight">102</i>&nbsp;        Alert infos = new Alert(Alert.AlertType.CONFIRMATION);</b>
+<b class="nc"><i class="no-highlight">103</i>&nbsp;        infos.setContentText(&quot;Sicuro di voler ottenere i risultati?&quot;);</b>
+<b class="nc"><i class="no-highlight">104</i>&nbsp;        Optional&lt;ButtonType&gt; o = infos.showAndWait();</b>
+<b class="nc"><i class="no-highlight">105</i>&nbsp;        String path = &quot;C://Users/Pietro/IdeaProjects/swengProject/PDFResult/&quot;;</b>
+<b class="nc"><i class="no-highlight">106</i>&nbsp;        if(o.isPresent()) {</b>
+<i class="no-highlight">107</i>&nbsp;            Risultati r;
+<b class="nc"><i class="no-highlight">108</i>&nbsp;            if (gruppoTextField.isDisable()) { //referendum</b>
+<b class="nc"><i class="no-highlight">109</i>&nbsp;                Referendum ref  = ReferendumDAOImpl.getInstance().getAppoggio();</b>
+<b class="nc"><i class="no-highlight">110</i>&nbsp;                r = new Risultati(ref);</b>
+<b class="nc"><i class="no-highlight">111</i>&nbsp;                path += ref.descrizione.replaceAll(&quot;[ -/&#39;\&quot;]&quot;, &quot;_&quot;) +</b>
+<b class="nc"><i class="no-highlight">112</i>&nbsp;                        ref.getScadenza().replaceAll(&quot;[ -/&#39;\&quot;]&quot;, &quot;_&quot;) + &quot;.pdf&quot;;</b>
+<b class="nc"><i class="no-highlight">113</i>&nbsp;            } else { //Classica</b>
+<b class="nc"><i class="no-highlight">114</i>&nbsp;                Classica c = ClassicaDAOImpl.getInstance().getAppoggio();</b>
+<b class="nc"><i class="no-highlight">115</i>&nbsp;                path += c.descrizione.replaceAll(&quot;[ -/&#39;\&quot;]&quot;, &quot;_&quot;) +</b>
+<b class="nc"><i class="no-highlight">116</i>&nbsp;                        c.getScadenza().replaceAll(&quot;[ -/&#39;\&quot;]&quot;, &quot;_&quot;) + &quot;.pdf&quot;;</b>
+<b class="nc"><i class="no-highlight">117</i>&nbsp;                if (c.whichType() == 2) {</b>
+<b class="nc"><i class="no-highlight">118</i>&nbsp;                    r = new Risultati(c, CandidatoDAOImpl.getInstance().getMapG(), CandidatoDAOImpl.getInstance().getMapP());</b>
+<i class="no-highlight">119</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">120</i>&nbsp;                    r = new Risultati(c, CandidatoDAOImpl.getInstance().getMapG());</b>
+<i class="no-highlight">121</i>&nbsp;                }
+<i class="no-highlight">122</i>&nbsp;            }
+<i class="no-highlight">123</i>&nbsp;
+<b class="nc"><i class="no-highlight">124</i>&nbsp;            if (r.printRisultati(&quot;/swengProject/PDFResult/&quot;)){</b>
+<b class="nc"><i class="no-highlight">125</i>&nbsp;                infos.setAlertType(Alert.AlertType.INFORMATION);</b>
+<b class="nc"><i class="no-highlight">126</i>&nbsp;                infos.setContentText(&quot;PDF salvato in /swengProject/PDFResult/&quot;);</b>
+<i class="no-highlight">127</i>&nbsp;            }else{
+<b class="nc"><i class="no-highlight">128</i>&nbsp;                infos.setAlertType(Alert.AlertType.WARNING);</b>
+<b class="nc"><i class="no-highlight">129</i>&nbsp;                infos.setContentText(&quot;Errore nel salvataggio pdf in /swengProject/PDFResult/&quot;);</b>
+<i class="no-highlight">130</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">131</i>&nbsp;            infos.showAndWait();</b>
+<b class="nc"><i class="no-highlight">132</i>&nbsp;            deleteVotation(infos);</b>
+<b class="nc"><i class="no-highlight">133</i>&nbsp;            Util.showResult(path);</b>
+<i class="no-highlight">134</i>&nbsp;        }
+<i class="no-highlight">135</i>&nbsp;    }
+<i class="no-highlight">136</i>&nbsp;
+<i class="no-highlight">137</i>&nbsp;    @FXML
+<i class="no-highlight">138</i>&nbsp;    public void goBack() throws IOException{
+<b class="nc"><i class="no-highlight">139</i>&nbsp;        Stage primaryStage = new Stage();</b>
+<b class="nc"><i class="no-highlight">140</i>&nbsp;        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource(&quot;/views/sceltaRisultati.fxml&quot;)));</b>
+<b class="nc"><i class="no-highlight">141</i>&nbsp;        Scene scene = new Scene(root);</b>
+<i class="no-highlight">142</i>&nbsp;
+<b class="nc"><i class="no-highlight">143</i>&nbsp;        primaryStage.setScene(scene);</b>
+<b class="nc"><i class="no-highlight">144</i>&nbsp;        primaryStage.setTitle(&quot;Scelta risultati Votazione&quot;);</b>
+<b class="nc"><i class="no-highlight">145</i>&nbsp;        primaryStage.setResizable(true);</b>
+<b class="nc"><i class="no-highlight">146</i>&nbsp;        ((Stage) gruppoComboBox.getScene().getWindow()).close();</b>
+<b class="nc"><i class="no-highlight">147</i>&nbsp;        primaryStage.show();</b>
+<i class="no-highlight">148</i>&nbsp;    }
+<i class="no-highlight">149</i>&nbsp;
+<i class="no-highlight">150</i>&nbsp;    @FXML
+<i class="no-highlight">151</i>&nbsp;    public void insertVotiCandidato() {
+<i class="no-highlight">152</i>&nbsp;        try{
+<b class="nc"><i class="no-highlight">153</i>&nbsp;            int ix = candidatoComboBox.getSelectionModel().getSelectedIndex();</b>
+<b class="nc"><i class="no-highlight">154</i>&nbsp;            int voti = Integer.parseInt(candidatoTextField.getText());</b>
+<b class="nc"><i class="no-highlight">155</i>&nbsp;            if(voti &lt; 1 || ix == -1)</b>
+<b class="nc"><i class="no-highlight">156</i>&nbsp;                throw new NumberFormatException();</b>
+<b class="nc"><i class="no-highlight">157</i>&nbsp;            ClassicaDAOImpl.getInstance().addVoti(lp.get(ix), voti);</b>
+<b class="nc"><i class="no-highlight">158</i>&nbsp;        }catch(NumberFormatException e){</b>
+<b class="nc"><i class="no-highlight">159</i>&nbsp;            a.setContentText(&quot;Inserisci un numero di voti valido&quot;);</b>
+<b class="nc"><i class="no-highlight">160</i>&nbsp;            a.show();</b>
+<b class="nc"><i class="no-highlight">161</i>&nbsp;        }</b>
+<i class="no-highlight">162</i>&nbsp;    }
+<i class="no-highlight">163</i>&nbsp;
+<i class="no-highlight">164</i>&nbsp;    @FXML
+<i class="no-highlight">165</i>&nbsp;    public void insertRef(){
+<i class="no-highlight">166</i>&nbsp;        try{
+<i class="no-highlight">167</i>&nbsp;            int si, no, bianca;
+<b class="nc"><i class="no-highlight">168</i>&nbsp;            si = Integer.parseInt(siTextField.getText());</b>
+<b class="nc"><i class="no-highlight">169</i>&nbsp;            no = Integer.parseInt(noTextField.getText());</b>
+<b class="nc"><i class="no-highlight">170</i>&nbsp;            bianca = Integer.parseInt(biancaTextField.getText());</b>
+<i class="no-highlight">171</i>&nbsp;
+<b class="nc"><i class="no-highlight">172</i>&nbsp;            if(si &lt; 0 || no &lt; 0 || bianca &lt; 0)</b>
+<b class="nc"><i class="no-highlight">173</i>&nbsp;                throw new NumberFormatException();</b>
+<i class="no-highlight">174</i>&nbsp;
+<b class="nc"><i class="no-highlight">175</i>&nbsp;            ReferendumDAOImpl.getInstance().addVoti(1, si);</b>
+<b class="nc"><i class="no-highlight">176</i>&nbsp;            ReferendumDAOImpl.getInstance().addVoti(0, no);</b>
+<b class="nc"><i class="no-highlight">177</i>&nbsp;            ReferendumDAOImpl.getInstance().addVoti(-1, bianca);</b>
+<b class="nc"><i class="no-highlight">178</i>&nbsp;        }catch(NumberFormatException e){</b>
+<b class="nc"><i class="no-highlight">179</i>&nbsp;            a.setContentText(&quot;Inserisci un numero di voti valido&quot;);</b>
+<b class="nc"><i class="no-highlight">180</i>&nbsp;            a.show();</b>
+<b class="nc"><i class="no-highlight">181</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">182</i>&nbsp;            throw new RuntimeException(&quot;ERRORE in addVoti -/- &quot; + e);</b>
+<b class="nc"><i class="no-highlight">183</i>&nbsp;        }</b>
+<i class="no-highlight">184</i>&nbsp;    }
+<i class="no-highlight">185</i>&nbsp;
+<i class="no-highlight">186</i>&nbsp;    @FXML
+<i class="no-highlight">187</i>&nbsp;    public void updateCandidati() {
+<b class="nc"><i class="no-highlight">188</i>&nbsp;        int ix = gruppoComboBox.getSelectionModel().getSelectedIndex();</b>
+<b class="nc"><i class="no-highlight">189</i>&nbsp;        Gruppo g = lg.get(ix);</b>
+<b class="nc"><i class="no-highlight">190</i>&nbsp;        candidatoComboBox.setDisable(false); candidatoTextField.setDisable(false);</b>
+<i class="no-highlight">191</i>&nbsp;        try {
+<b class="nc"><i class="no-highlight">192</i>&nbsp;            lp = CandidatoDAOImpl.getInstance().getPersone(g);</b>
+<b class="nc"><i class="no-highlight">193</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">194</i>&nbsp;            throw new RuntimeException(e);</b>
+<b class="nc"><i class="no-highlight">195</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">196</i>&nbsp;        for(Persona p : lp)</b>
+<b class="nc"><i class="no-highlight">197</i>&nbsp;            gruppoComboBox.getItems().addAll(p.toString());</b>
+<i class="no-highlight">198</i>&nbsp;    }
+<i class="no-highlight">199</i>&nbsp;
+<i class="no-highlight">200</i>&nbsp;    private void deleteVotation(Alert infos) throws IOException {
+<b class="nc"><i class="no-highlight">201</i>&nbsp;        infos.setAlertType(Alert.AlertType.CONFIRMATION);</b>
+<b class="nc"><i class="no-highlight">202</i>&nbsp;        infos.setContentText(&quot;Cancellare la votazione dal sistema?&quot;);</b>
+<b class="nc"><i class="no-highlight">203</i>&nbsp;        Optional&lt;ButtonType&gt; o = infos.showAndWait();</b>
+<b class="nc"><i class="no-highlight">204</i>&nbsp;        if(o.isPresent())</b>
+<b class="nc"><i class="no-highlight">205</i>&nbsp;            if(gruppoTextField.isDisable()) //referendum</b>
+<b class="nc"><i class="no-highlight">206</i>&nbsp;                ReferendumDAOImpl.getInstance().deleteVotazione(ReferendumDAOImpl.getInstance().getAppoggio().getId());</b>
+<i class="no-highlight">207</i>&nbsp;            else //Classica
+<b class="nc"><i class="no-highlight">208</i>&nbsp;                ClassicaDAOImpl.getInstance().deleteVotazione(ClassicaDAOImpl.getInstance().getAppoggio().getId());</b>
+<i class="no-highlight">209</i>&nbsp;    }
+<i class="no-highlight">210</i>&nbsp;
+<i class="no-highlight">211</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 20:10</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,580 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CandidatoDAOImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">data</a>
+</div>
+
+<h1>Coverage Summary for Class: CandidatoDAOImpl (data)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CandidatoDAOImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36,4%
+  </span>
+  <span class="absValue">
+    (8/22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    18,9%
+  </span>
+  <span class="absValue">
+    (49/259)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package data;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import models.*;
+<i class="no-highlight">4</i>&nbsp;import util.Observable;
+<i class="no-highlight">5</i>&nbsp;import util.Observer;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">8</i>&nbsp;import java.sql.*;
+<i class="no-highlight">9</i>&nbsp;import java.util.HashMap;
+<i class="no-highlight">10</i>&nbsp;import java.util.LinkedList;
+<i class="no-highlight">11</i>&nbsp;import java.util.List;
+<i class="no-highlight">12</i>&nbsp;import java.util.Map;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;public class CandidatoDAOImpl implements CandidatoDAO, Observable {
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    private final List&lt;Observer&gt; obs;
+<i class="no-highlight">17</i>&nbsp;    private static CandidatoDAOImpl uniqueInstance;
+<i class="no-highlight">18</i>&nbsp;
+<b class="fc"><i class="no-highlight">19</i>&nbsp;    private CandidatoDAOImpl(){</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;        obs = new LinkedList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        obs.add(Admin.getInstance());</b>
+<i class="no-highlight">22</i>&nbsp;    }
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;    public static CandidatoDAOImpl getInstance(){
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        if(uniqueInstance == null)</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;            uniqueInstance = new CandidatoDAOImpl();</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;        return uniqueInstance;</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;    /**
+<i class="no-highlight">31</i>&nbsp;     * Il db deve essere attivo!
+<i class="no-highlight">32</i>&nbsp;     * @return una lista con al suo interno due liste, la prima di tipo Gruppo e la seconda di tipo Persona
+<i class="no-highlight">33</i>&nbsp;     */
+<i class="no-highlight">34</i>&nbsp;    @Override
+<i class="no-highlight">35</i>&nbsp;    public List&lt;List&lt;? extends Candidato&gt;&gt; getAllCandidati() throws IOException {
+<b class="nc"><i class="no-highlight">36</i>&nbsp;        List&lt;Gruppo&gt;  lg = new LinkedList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;        List&lt;Persona&gt; lp = new LinkedList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;        List&lt;List&lt;? extends Candidato&gt;&gt; lc = new LinkedList&lt;&gt;();</b>
+<i class="no-highlight">39</i>&nbsp;        try{
+<i class="no-highlight">40</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">41</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">42</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">43</i>&nbsp;            String query = &quot;SELECT * FROM gruppi&quot;;</b>
+<i class="no-highlight">44</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">45</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">46</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">47</i>&nbsp;            ResultSet resultSet = statement.executeQuery();</b>
+<i class="no-highlight">48</i>&nbsp;            //guarda se ci sono risultati
+<b class="nc"><i class="no-highlight">49</i>&nbsp;            while(resultSet.next())</b>
+<b class="nc"><i class="no-highlight">50</i>&nbsp;                lg.add(new Gruppo(resultSet.getInt(1), resultSet.getString(2)));</b>
+<i class="no-highlight">51</i>&nbsp;
+<b class="nc"><i class="no-highlight">52</i>&nbsp;            query = &quot;SELECT * FROM persone&quot;;</b>
+<i class="no-highlight">53</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">54</i>&nbsp;            statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">55</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">56</i>&nbsp;            resultSet = statement.executeQuery();</b>
+<i class="no-highlight">57</i>&nbsp;            //guarda se ci sono risultati
+<b class="nc"><i class="no-highlight">58</i>&nbsp;            while(resultSet.next())</b>
+<b class="nc"><i class="no-highlight">59</i>&nbsp;                lp.add(new Persona(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3)));</b>
+<i class="no-highlight">60</i>&nbsp;
+<i class="no-highlight">61</i>&nbsp;            //chiudo resultset e connessione
+<b class="nc"><i class="no-highlight">62</i>&nbsp;            resultSet.close();</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">68</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">69</i>&nbsp;        lc.add(lg);</b>
+<b class="nc"><i class="no-highlight">70</i>&nbsp;        lc.add(lp);</b>
+<b class="nc"><i class="no-highlight">71</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta di tutti i candidati (Gruppi e Persone)]&quot;);</b>
+<b class="nc"><i class="no-highlight">72</i>&nbsp;        return lc;</b>
+<i class="no-highlight">73</i>&nbsp;    }
+<i class="no-highlight">74</i>&nbsp;
+<i class="no-highlight">75</i>&nbsp;    /**
+<i class="no-highlight">76</i>&nbsp;     *
+<i class="no-highlight">77</i>&nbsp;     * @param id non-negative int
+<i class="no-highlight">78</i>&nbsp;     * @return null se non esiste il gruppo, il gruppo corrispondente altrimenti
+<i class="no-highlight">79</i>&nbsp;     */
+<i class="no-highlight">80</i>&nbsp;    @Override
+<i class="no-highlight">81</i>&nbsp;    public Gruppo getGruppo(int id) throws IOException {
+<b class="nc"><i class="no-highlight">82</i>&nbsp;        Gruppo g = null;</b>
+<i class="no-highlight">83</i>&nbsp;        try{
+<i class="no-highlight">84</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">85</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">86</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">87</i>&nbsp;            String query = &quot;SELECT * FROM gruppi WHERE `id` = &quot; + id;</b>
+<i class="no-highlight">88</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">89</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">90</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">91</i>&nbsp;            ResultSet resultSet = statement.executeQuery();</b>
+<i class="no-highlight">92</i>&nbsp;            //guarda se ci sono risultati
+<b class="nc"><i class="no-highlight">93</i>&nbsp;            if(resultSet.next())</b>
+<b class="nc"><i class="no-highlight">94</i>&nbsp;                g = new Gruppo(resultSet.getInt(1), resultSet.getString(2));</b>
+<i class="no-highlight">95</i>&nbsp;            //chiudo resultset e connessione
+<b class="nc"><i class="no-highlight">96</i>&nbsp;            resultSet.close();</b>
+<b class="nc"><i class="no-highlight">97</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">98</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">99</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">100</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">101</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">102</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">103</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta Gruppo con id: &quot; + id + &quot;]&quot;);</b>
+<b class="nc"><i class="no-highlight">104</i>&nbsp;        return g;</b>
+<i class="no-highlight">105</i>&nbsp;    }
+<i class="no-highlight">106</i>&nbsp;
+<i class="no-highlight">107</i>&nbsp;
+<i class="no-highlight">108</i>&nbsp;    /**
+<i class="no-highlight">109</i>&nbsp;     *
+<i class="no-highlight">110</i>&nbsp;     * @param id non-negative int
+<i class="no-highlight">111</i>&nbsp;     * @return null se non esiste il candidato, il candidato corrispondente altrimenti
+<i class="no-highlight">112</i>&nbsp;     */
+<i class="no-highlight">113</i>&nbsp;    @Override
+<i class="no-highlight">114</i>&nbsp;    public Persona getPersona(int id) throws IOException {
+<b class="nc"><i class="no-highlight">115</i>&nbsp;        Persona p = null;</b>
+<i class="no-highlight">116</i>&nbsp;        try{
+<i class="no-highlight">117</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">118</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">119</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">120</i>&nbsp;            String query = &quot;SELECT * FROM persone WHERE `id` = &quot; + id;</b>
+<i class="no-highlight">121</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">122</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">123</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">124</i>&nbsp;            ResultSet resultSet = statement.executeQuery();</b>
+<i class="no-highlight">125</i>&nbsp;            //guarda se ci sono risultati
+<b class="nc"><i class="no-highlight">126</i>&nbsp;            if(resultSet.next())</b>
+<b class="nc"><i class="no-highlight">127</i>&nbsp;                p = new Persona(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(5));</b>
+<i class="no-highlight">128</i>&nbsp;            //chiudo resultset e connessione
+<b class="nc"><i class="no-highlight">129</i>&nbsp;            resultSet.close();</b>
+<b class="nc"><i class="no-highlight">130</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">131</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">132</i>&nbsp;            System.out.println(&quot;ERRORE ROW130-SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">133</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">134</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">135</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">136</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta Persona con id: &quot; + id + &quot;]&quot;);</b>
+<b class="nc"><i class="no-highlight">137</i>&nbsp;        return p;</b>
+<i class="no-highlight">138</i>&nbsp;    }
+<i class="no-highlight">139</i>&nbsp;
+<i class="no-highlight">140</i>&nbsp;
+<i class="no-highlight">141</i>&nbsp;    @Override
+<i class="no-highlight">142</i>&nbsp;    public boolean addGruppo(Gruppo c) throws IOException {
+<b class="nc"><i class="no-highlight">143</i>&nbsp;        if(getGruppo(c.getId()) != null)</b>
+<b class="nc"><i class="no-highlight">144</i>&nbsp;            return false;</b>
+<i class="no-highlight">145</i>&nbsp;        try{
+<i class="no-highlight">146</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">147</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">148</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">149</i>&nbsp;            String query = &quot;INSERT INTO gruppi (`id`, `nome`) VALUES (&quot; + c.getId() +&quot;, &#39;&quot; + c.getNome() + &quot;&#39;)&quot;;</b>
+<i class="no-highlight">150</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">151</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">152</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">153</i>&nbsp;            statement.executeUpdate();</b>
+<i class="no-highlight">154</i>&nbsp;            //chiudo connessione
+<b class="nc"><i class="no-highlight">155</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">156</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">157</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">158</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">159</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">160</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">161</i>&nbsp;        getInstance().notifyObservers(&quot; [Aggiunta Gruppo: &quot; + c + &quot;]&quot;);</b>
+<b class="nc"><i class="no-highlight">162</i>&nbsp;        return true;</b>
+<i class="no-highlight">163</i>&nbsp;    }
+<i class="no-highlight">164</i>&nbsp;
+<i class="no-highlight">165</i>&nbsp;    @Override
+<i class="no-highlight">166</i>&nbsp;    public boolean addPersona(Classica c, Gruppo g, Persona p) throws IOException {
+<b class="nc"><i class="no-highlight">167</i>&nbsp;        if(getPersona(p.getId()) != null)</b>
+<b class="nc"><i class="no-highlight">168</i>&nbsp;            return false;</b>
+<i class="no-highlight">169</i>&nbsp;        try{
+<i class="no-highlight">170</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">171</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">172</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">173</i>&nbsp;            String query = &quot;INSERT INTO `persone` (`id`, `nome`, `voti`, `voti_gruppiFK`, `gruppoFK`) VALUES( &quot; + p.getId() + &quot;, &#39;&quot; + p.getNome() + &quot;&#39;, 0, &quot; + c.getId() + &quot;, &quot; + g.getId() +&quot;)&quot;;</b>
+<b class="nc"><i class="no-highlight">174</i>&nbsp;            System.out.println(&quot;Query che sta per essere eseguita:\n&quot; + query);</b>
+<i class="no-highlight">175</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">176</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">177</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">178</i>&nbsp;            statement.executeUpdate();</b>
+<i class="no-highlight">179</i>&nbsp;
+<i class="no-highlight">180</i>&nbsp;            //chiudo connessione
+<b class="nc"><i class="no-highlight">181</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">182</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">183</i>&nbsp;            System.out.println(&quot;ROW 181 CandidatoDAOImpl--SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">184</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">185</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">186</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">187</i>&nbsp;        this.notifyObservers(&quot; [Aggiunta Persona: &quot; + p + &quot;, di Gruppo: &quot; + g + &quot; per Votazione: &quot; + c + &quot;]&quot;);</b>
+<b class="nc"><i class="no-highlight">188</i>&nbsp;        return true;</b>
+<i class="no-highlight">189</i>&nbsp;    }
+<i class="no-highlight">190</i>&nbsp;
+<i class="no-highlight">191</i>&nbsp;    @Override
+<i class="no-highlight">192</i>&nbsp;    public boolean deletePersona(int id) throws IOException {
+<b class="nc"><i class="no-highlight">193</i>&nbsp;        if(getPersona(id) == null)</b>
+<b class="nc"><i class="no-highlight">194</i>&nbsp;            return false;</b>
+<i class="no-highlight">195</i>&nbsp;        try{
+<i class="no-highlight">196</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">197</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">198</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">199</i>&nbsp;            String query = &quot;DELETE FROM persone WHERE `id` = &quot; + id;</b>
+<i class="no-highlight">200</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">201</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">202</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">203</i>&nbsp;            statement.executeUpdate();</b>
+<i class="no-highlight">204</i>&nbsp;            //chiudo connessione
+<b class="nc"><i class="no-highlight">205</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">206</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">207</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">208</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">209</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">210</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">211</i>&nbsp;        getInstance().notifyObservers(&quot; [Cancellazione persona con id: &quot; + id + &quot; ]&quot;);</b>
+<b class="nc"><i class="no-highlight">212</i>&nbsp;        return true;</b>
+<i class="no-highlight">213</i>&nbsp;    }
+<i class="no-highlight">214</i>&nbsp;
+<i class="no-highlight">215</i>&nbsp;    @Override
+<i class="no-highlight">216</i>&nbsp;    public boolean deleteGruppo(int id) throws IOException {
+<b class="nc"><i class="no-highlight">217</i>&nbsp;        if(getGruppo(id) == null)</b>
+<b class="nc"><i class="no-highlight">218</i>&nbsp;            return false;</b>
+<i class="no-highlight">219</i>&nbsp;        try{
+<i class="no-highlight">220</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">221</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">222</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">223</i>&nbsp;            String query = &quot;DELETE FROM gruppi WHERE `id` = &quot; + id;</b>
+<i class="no-highlight">224</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">225</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">226</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">227</i>&nbsp;            statement.executeUpdate();</b>
+<i class="no-highlight">228</i>&nbsp;            //chiudo connessione
+<b class="nc"><i class="no-highlight">229</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">230</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">231</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">232</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">233</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">234</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">235</i>&nbsp;        getInstance().notifyObservers(&quot; [Cancellazione gruppo con id: &quot; + id + &quot; ]&quot;);</b>
+<b class="nc"><i class="no-highlight">236</i>&nbsp;        return true;</b>
+<i class="no-highlight">237</i>&nbsp;    }
+<i class="no-highlight">238</i>&nbsp;
+<i class="no-highlight">239</i>&nbsp;    @SuppressWarnings(&quot;unchecked&quot;)
+<i class="no-highlight">240</i>&nbsp;    @Override
+<i class="no-highlight">241</i>&nbsp;    public List&lt;Gruppo&gt; getGruppi() throws IOException {
+<b class="nc"><i class="no-highlight">242</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta lista gruppi]&quot;);</b>
+<b class="nc"><i class="no-highlight">243</i>&nbsp;        return (List&lt;Gruppo&gt;) getAllCandidati().get(0);</b>
+<i class="no-highlight">244</i>&nbsp;    }
+<i class="no-highlight">245</i>&nbsp;
+<i class="no-highlight">246</i>&nbsp;    @SuppressWarnings(&quot;unchecked&quot;)
+<i class="no-highlight">247</i>&nbsp;    @Override
+<i class="no-highlight">248</i>&nbsp;    public List&lt;Persona&gt; getPersone() throws IOException {
+<b class="nc"><i class="no-highlight">249</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta lista persone]&quot;);</b>
+<b class="nc"><i class="no-highlight">250</i>&nbsp;        return (List&lt;Persona&gt;) getAllCandidati().get(1);</b>
+<i class="no-highlight">251</i>&nbsp;    }
+<i class="no-highlight">252</i>&nbsp;
+<i class="no-highlight">253</i>&nbsp;    public int getNextIdGruppo() throws IOException {
+<b class="nc"><i class="no-highlight">254</i>&nbsp;        int i = 0;</b>
+<i class="no-highlight">255</i>&nbsp;        try{
+<i class="no-highlight">256</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">257</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">258</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">259</i>&nbsp;            String query = &quot;SELECT MAX(id) FROM gruppi&quot;;</b>
+<i class="no-highlight">260</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">261</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">262</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">263</i>&nbsp;            ResultSet resultSet = statement.executeQuery();</b>
+<b class="nc"><i class="no-highlight">264</i>&nbsp;            if(resultSet.next())</b>
+<b class="nc"><i class="no-highlight">265</i>&nbsp;                i = resultSet.getInt(1) + 1;</b>
+<i class="no-highlight">266</i>&nbsp;            //chiudo resultset e connessione
+<b class="nc"><i class="no-highlight">267</i>&nbsp;            resultSet.close();</b>
+<b class="nc"><i class="no-highlight">268</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">269</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">270</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">271</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">272</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">273</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">274</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta prossimo id per gruppo]&quot;);</b>
+<b class="nc"><i class="no-highlight">275</i>&nbsp;        return i;</b>
+<i class="no-highlight">276</i>&nbsp;    }
+<i class="no-highlight">277</i>&nbsp;
+<i class="no-highlight">278</i>&nbsp;    @Override
+<i class="no-highlight">279</i>&nbsp;    public int getNextIdPersona() throws IOException {
+<b class="nc"><i class="no-highlight">280</i>&nbsp;        int i = 0;</b>
+<i class="no-highlight">281</i>&nbsp;        try{
+<i class="no-highlight">282</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">283</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">284</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">285</i>&nbsp;            String query = &quot;SELECT MAX(id) FROM persone&quot;;</b>
+<i class="no-highlight">286</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">287</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">288</i>&nbsp;            //eseguo la query
+<b class="nc"><i class="no-highlight">289</i>&nbsp;            ResultSet resultSet = statement.executeQuery();</b>
+<b class="nc"><i class="no-highlight">290</i>&nbsp;            if(resultSet.next())</b>
+<b class="nc"><i class="no-highlight">291</i>&nbsp;                i = resultSet.getInt(1) + 1;</b>
+<i class="no-highlight">292</i>&nbsp;            //chiudo resultset e connessione
+<b class="nc"><i class="no-highlight">293</i>&nbsp;            resultSet.close();</b>
+<b class="nc"><i class="no-highlight">294</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">295</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">296</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">297</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">298</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">299</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">300</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta prossimo id per persona]&quot;);</b>
+<b class="nc"><i class="no-highlight">301</i>&nbsp;        return i;</b>
+<i class="no-highlight">302</i>&nbsp;    }
+<i class="no-highlight">303</i>&nbsp;
+<i class="no-highlight">304</i>&nbsp;    @Override
+<i class="no-highlight">305</i>&nbsp;    public List&lt;Persona&gt; getPersone(Gruppo g) throws IOException {
+<b class="fc"><i class="no-highlight">306</i>&nbsp;        List&lt;Persona&gt; lp = new LinkedList&lt;&gt;();</b>
+<i class="no-highlight">307</i>&nbsp;        try{
+<i class="no-highlight">308</i>&nbsp;            //apro connessione
+<b class="fc"><i class="no-highlight">309</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">310</i>&nbsp;            //scrivo query
+<b class="fc"><i class="no-highlight">311</i>&nbsp;            String query = &quot;SELECT persone.id, persone.nome, persone.gruppoFK &quot; +</b>
+<b class="fc"><i class="no-highlight">312</i>&nbsp;                    &quot;FROM persone WHERE persone.gruppoFK = &quot; + g.getId();</b>
+<i class="no-highlight">313</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="fc"><i class="no-highlight">314</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">315</i>&nbsp;            //eseguo la query
+<b class="fc"><i class="no-highlight">316</i>&nbsp;            ResultSet resultSet = statement.executeQuery();</b>
+<i class="no-highlight">317</i>&nbsp;            //guarda se ci sono risultati
+<b class="fc"><i class="no-highlight">318</i>&nbsp;            while(resultSet.next())</b>
+<b class="fc"><i class="no-highlight">319</i>&nbsp;                lp.add(new Persona(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3)));</b>
+<i class="no-highlight">320</i>&nbsp;            //chiudo resultset e connessione
+<b class="fc"><i class="no-highlight">321</i>&nbsp;            resultSet.close();</b>
+<b class="fc"><i class="no-highlight">322</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">323</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">324</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">325</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">326</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="fc"><i class="no-highlight">327</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">328</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta persone per gruppo &quot; + g + &quot; ]&quot;);</b>
+<b class="fc"><i class="no-highlight">329</i>&nbsp;        return lp;</b>
+<i class="no-highlight">330</i>&nbsp;    }
+<i class="no-highlight">331</i>&nbsp;
+<i class="no-highlight">332</i>&nbsp;    @Override
+<i class="no-highlight">333</i>&nbsp;    public List&lt;Gruppo&gt; getGruppi(Classica c) throws IOException {
+<b class="fc"><i class="no-highlight">334</i>&nbsp;        List&lt;Gruppo&gt; lg = new LinkedList&lt;&gt;();</b>
+<i class="no-highlight">335</i>&nbsp;        try{
+<i class="no-highlight">336</i>&nbsp;            //apro connessione
+<b class="fc"><i class="no-highlight">337</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">338</i>&nbsp;            //scrivo query
+<b class="fc"><i class="no-highlight">339</i>&nbsp;            String query = &quot;SELECT gruppi.id, gruppi.nome FROM gruppi JOIN voti_gruppi ON gruppi.id = voti_gruppi.gruppi_fk WHERE voti_gruppi.votazione_fk2 = &quot; + c.getId();</b>
+<i class="no-highlight">340</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="fc"><i class="no-highlight">341</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">342</i>&nbsp;            //eseguo la query
+<b class="fc"><i class="no-highlight">343</i>&nbsp;            ResultSet resultSet = statement.executeQuery();</b>
+<i class="no-highlight">344</i>&nbsp;            //guarda se ci sono risultati
+<b class="fc"><i class="no-highlight">345</i>&nbsp;            while(resultSet.next())</b>
+<b class="fc"><i class="no-highlight">346</i>&nbsp;                lg.add(new Gruppo(resultSet.getInt(1), resultSet.getString(2)));</b>
+<i class="no-highlight">347</i>&nbsp;            //chiudo resultset e connessione
+<b class="fc"><i class="no-highlight">348</i>&nbsp;            resultSet.close();</b>
+<b class="fc"><i class="no-highlight">349</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">350</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">351</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">352</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">353</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="fc"><i class="no-highlight">354</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">355</i>&nbsp;        getInstance().notifyObservers(&quot; [Richiesta gruppi per votazione &quot; + c + &quot; ]&quot;);</b>
+<b class="fc"><i class="no-highlight">356</i>&nbsp;        return lg;</b>
+<i class="no-highlight">357</i>&nbsp;    }
+<i class="no-highlight">358</i>&nbsp;
+<i class="no-highlight">359</i>&nbsp;    public void insertVoto(Classica c, Gruppo g, Integer i) {
+<i class="no-highlight">360</i>&nbsp;        try{
+<i class="no-highlight">361</i>&nbsp;            //apro connessione
+<b class="fc"><i class="no-highlight">362</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">363</i>&nbsp;            //scrivo query
+<b class="fc"><i class="no-highlight">364</i>&nbsp;            String query = &quot;UPDATE `voti_gruppi` SET `voti_gruppo` = `voti_gruppo` + &quot; + i +</b>
+<b class="fc"><i class="no-highlight">365</i>&nbsp;                    &quot; WHERE `gruppi_fk` = &quot; + g.getId() + &quot; AND `votazione_fk2` = &quot; + c.getId();</b>
+<i class="no-highlight">366</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="fc"><i class="no-highlight">367</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">368</i>&nbsp;            //eseguo la query
+<b class="fc"><i class="no-highlight">369</i>&nbsp;            statement.executeUpdate();</b>
+<i class="no-highlight">370</i>&nbsp;
+<i class="no-highlight">371</i>&nbsp;            //chiudo connessione
+<b class="fc"><i class="no-highlight">372</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">373</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">374</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">375</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">376</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="fc"><i class="no-highlight">377</i>&nbsp;        }</b>
+<i class="no-highlight">378</i>&nbsp;    }
+<i class="no-highlight">379</i>&nbsp;
+<i class="no-highlight">380</i>&nbsp;    public void insertVoto(Persona p, Integer i) {
+<i class="no-highlight">381</i>&nbsp;        try{
+<i class="no-highlight">382</i>&nbsp;            //apro connessione
+<b class="fc"><i class="no-highlight">383</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">384</i>&nbsp;            //scrivo query
+<b class="fc"><i class="no-highlight">385</i>&nbsp;            String query = &quot;UPDATE `persone` SET `voti` = `voti` + &quot; + i +</b>
+<b class="fc"><i class="no-highlight">386</i>&nbsp;                    &quot; WHERE `id` = &quot; + p.getId();</b>
+<i class="no-highlight">387</i>&nbsp;            //creo oggetto statement per esecuzione query
+<b class="fc"><i class="no-highlight">388</i>&nbsp;            PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">389</i>&nbsp;            //eseguo la query
+<b class="fc"><i class="no-highlight">390</i>&nbsp;            statement.executeUpdate();</b>
+<i class="no-highlight">391</i>&nbsp;
+<i class="no-highlight">392</i>&nbsp;            //chiudo connessione
+<b class="fc"><i class="no-highlight">393</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">394</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">395</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">396</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">397</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="fc"><i class="no-highlight">398</i>&nbsp;        }</b>
+<i class="no-highlight">399</i>&nbsp;    }
+<i class="no-highlight">400</i>&nbsp;
+<i class="no-highlight">401</i>&nbsp;    public Map&lt;Persona, Integer&gt; getMapP() throws IOException {
+<b class="nc"><i class="no-highlight">402</i>&nbsp;        Map&lt;Persona, Integer&gt; mp = new HashMap&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">403</i>&nbsp;        Classica c = ClassicaDAOImpl.getInstance().getAppoggio();</b>
+<b class="nc"><i class="no-highlight">404</i>&nbsp;        List&lt;Gruppo&gt; lg = CandidatoDAOImpl.getInstance().getGruppi(c);</b>
+<i class="no-highlight">405</i>&nbsp;        try {
+<i class="no-highlight">406</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">407</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">408</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">409</i>&nbsp;            for(Gruppo g : lg){</b>
+<b class="nc"><i class="no-highlight">410</i>&nbsp;                List&lt;Persona&gt; lp = CandidatoDAOImpl.getInstance().getPersone(g);</b>
+<b class="nc"><i class="no-highlight">411</i>&nbsp;                for(Persona p : lp) {</b>
+<b class="nc"><i class="no-highlight">412</i>&nbsp;                    String query = &quot;SELECT voti FROM persone WHERE id = &quot; + p.getId();</b>
+<i class="no-highlight">413</i>&nbsp;                    //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">414</i>&nbsp;                    PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">415</i>&nbsp;                    //eseguo la query
+<b class="nc"><i class="no-highlight">416</i>&nbsp;                    ResultSet resultSet = statement.executeQuery();</b>
+<b class="nc"><i class="no-highlight">417</i>&nbsp;                    if (resultSet.next())</b>
+<b class="nc"><i class="no-highlight">418</i>&nbsp;                        mp.put(p, resultSet.getInt(1));</b>
+<i class="no-highlight">419</i>&nbsp;                    //chiudo connessione e resulset
+<b class="nc"><i class="no-highlight">420</i>&nbsp;                    resultSet.close();</b>
+<b class="nc"><i class="no-highlight">421</i>&nbsp;                }</b>
+<b class="nc"><i class="no-highlight">422</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">423</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">424</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">425</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">426</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">427</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">428</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">429</i>&nbsp;            throw new RuntimeException(e);</b>
+<b class="nc"><i class="no-highlight">430</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">431</i>&nbsp;        return mp;</b>
+<i class="no-highlight">432</i>&nbsp;    }
+<i class="no-highlight">433</i>&nbsp;
+<i class="no-highlight">434</i>&nbsp;    public Map&lt;Gruppo, Integer&gt; getMapG() throws IOException {
+<b class="nc"><i class="no-highlight">435</i>&nbsp;        Map&lt;Gruppo, Integer&gt; mg = new HashMap&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">436</i>&nbsp;        Classica c = ClassicaDAOImpl.getInstance().getAppoggio();</b>
+<b class="nc"><i class="no-highlight">437</i>&nbsp;        List&lt;Gruppo&gt; lg = CandidatoDAOImpl.getInstance().getGruppi(c);</b>
+<i class="no-highlight">438</i>&nbsp;
+<i class="no-highlight">439</i>&nbsp;        try {
+<i class="no-highlight">440</i>&nbsp;            //apro connessione
+<b class="nc"><i class="no-highlight">441</i>&nbsp;            Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/swengdb?useSSL=false&quot;, &quot;root&quot;, &quot;root&quot;);</b>
+<i class="no-highlight">442</i>&nbsp;            //scrivo query
+<b class="nc"><i class="no-highlight">443</i>&nbsp;            for(Gruppo g : lg){</b>
+<b class="nc"><i class="no-highlight">444</i>&nbsp;                String query = &quot;SELECT voti_gruppo FROM voti_gruppi WHERE gruppi_fk = &quot; + g.getId();</b>
+<i class="no-highlight">445</i>&nbsp;                //creo oggetto statement per esecuzione query
+<b class="nc"><i class="no-highlight">446</i>&nbsp;                PreparedStatement statement = conn.prepareStatement(query);</b>
+<i class="no-highlight">447</i>&nbsp;                //eseguo la query
+<b class="nc"><i class="no-highlight">448</i>&nbsp;                ResultSet resultSet = statement.executeQuery();</b>
+<b class="nc"><i class="no-highlight">449</i>&nbsp;                if(resultSet.next())</b>
+<b class="nc"><i class="no-highlight">450</i>&nbsp;                    mg.put(g, resultSet.getInt(1));</b>
+<i class="no-highlight">451</i>&nbsp;                //chiudo connessione e resulset
+<b class="nc"><i class="no-highlight">452</i>&nbsp;                resultSet.close();</b>
+<b class="nc"><i class="no-highlight">453</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">454</i>&nbsp;            conn.close();</b>
+<b class="nc"><i class="no-highlight">455</i>&nbsp;        }catch(SQLException e){</b>
+<b class="nc"><i class="no-highlight">456</i>&nbsp;            System.out.println(&quot;SQLException: &quot; + e.getMessage());</b>
+<b class="nc"><i class="no-highlight">457</i>&nbsp;            System.out.println(&quot;SQLState: &quot; + e.getSQLState());</b>
+<b class="nc"><i class="no-highlight">458</i>&nbsp;            System.out.println(&quot;VendorError: &quot; + e.getErrorCode());</b>
+<b class="nc"><i class="no-highlight">459</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">460</i>&nbsp;        return mg;</b>
+<i class="no-highlight">461</i>&nbsp;    }
+<i class="no-highlight">462</i>&nbsp;
+<i class="no-highlight">463</i>&nbsp;    @Override
+<b class="fc"><i class="no-highlight">464</i>&nbsp;    public void subscribe(Observer o) { uniqueInstance.obs.add(o); }</b>
+<i class="no-highlight">465</i>&nbsp;
+<i class="no-highlight">466</i>&nbsp;    @Override
+<b class="nc"><i class="no-highlight">467</i>&nbsp;    public void unsubcribe(Observer o) { uniqueInstance.obs.remove(o); }</b>
+<i class="no-highlight">468</i>&nbsp;
+<i class="no-highlight">469</i>&nbsp;    @Override
+<i class="no-highlight">470</i>&nbsp;    public void notifyObservers(String s) throws IOException {
+<b class="fc"><i class="no-highlight">471</i>&nbsp;        for(Observer o : uniqueInstance.obs)</b>
+<b class="fc"><i class="no-highlight">472</i>&nbsp;            if(o != null)</b>
+<b class="fc"><i class="no-highlight">473</i>&nbsp;                o.update(s);</b>
+<i class="no-highlight">474</i>&nbsp;    }
+<i class="no-highlight">475</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 20:10</div>
+</div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * @author Piemme
@@ -11,6 +12,10 @@ public abstract class Votazione {
      * Default constructor
      */
     public Votazione(String desc, LocalDate scad, int id) {
+        Objects.requireNonNull(desc, "Descrizione non puó essere nulla");
+        Objects.requireNonNull(scad, "Scadenza non puó essere nulla");
+        if(desc.length() < 0)
+            throw new IllegalArgumentException("Descrizione non contiene nulla");
         descrizione = desc;
         scadenza = scad;
         this.id = id;
