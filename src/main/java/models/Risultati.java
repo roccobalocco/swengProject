@@ -53,25 +53,25 @@ public class Risultati {
     }
 
     public boolean setRef(int si, int no, int bianca){
-        if(isClassica)
+        if(isClassica || si < 0 || no < 0 || bianca < 0)
             return false;
         this.si += si; this.no += no; this.bianca += bianca;
         return true;
     }
 
     public boolean setVoti(Gruppo g, Integer voti){
-        if(!isClassica)
+        if(!isClassica || g == null || voti == null || votiGruppi == null || voti < 0)
             return false;
-        if(votiGruppi != null)
-            votiGruppi.put(g, voti + votiGruppi.get(g));
+
+        votiGruppi.put(g, voti + votiGruppi.get(g));
         return true;
     }
 
     public boolean setVoti(Persona p, Integer voti){
-        if(!isClassica)
+        if(!isClassica || votiPersone == null || voti < 0)
             return false;
-        if(votiPersone != null)
-            votiPersone.put(p, voti + votiPersone.get(p));
+
+        votiPersone.put(p, voti + votiPersone.get(p));
         return true;
     }
 
