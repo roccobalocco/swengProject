@@ -3,7 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 *.class
-.CodeCoverageIntellij/*
+!**/CodeCoverageIntellij/
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

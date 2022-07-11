@@ -1,9 +1,12 @@
 package test.models; 
 
 import models.Referendum;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
+import org.junit.Assert.*;
+
 
 import java.time.LocalDate;
 
@@ -36,6 +39,7 @@ public class ReferendumTest {
 
     @After
     public void after() throws Exception {
+        System.out.println("\nTest Referendum.java eseguito con successo!");
     }
 
     /**
@@ -47,11 +51,13 @@ public class ReferendumTest {
     public void testHasQuorum() throws Exception {
     //TODO: Test goes here...
         System.out.println("Risultato corretto r1 --> true");
-        System.out.println("Risultato test r1 --> " + r1.hasQuorum());
+        Assert.assertTrue("r1 ha il quorum", r1.hasQuorum());
+
         System.out.println("Risultato corretto r2 --> false");
-        System.out.println("Risultato test r2 --> " + r2.hasQuorum());
+        Assert.assertFalse("r2 non ha il quorum", r2.hasQuorum());
+
         System.out.println("Risultato corretto r3 --> true");
-        System.out.println("Risultato test r3 --> " + r3.hasQuorum());
+        Assert.assertTrue("r3 ha il quorum", r3.hasQuorum());
     }
 
 

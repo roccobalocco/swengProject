@@ -1,9 +1,11 @@
 package test.models; 
 
 import models.Classica;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
+import org.junit.Assert.*;
 
 import java.time.LocalDate;
 
@@ -46,11 +48,13 @@ public class ClassicaTest {
     public void testIsAssoluta() throws Exception {
     //TODO: Test goes here...
         System.out.println("Risultato corretto c1 --> true");
-        System.out.println("Risultato test c1 --> " + c1.isAssoluta());
+        Assert.assertTrue("c1 é assoluta", c1.isAssoluta());
+
         System.out.println("Risultato corretto c2 --> false");
-        System.out.println("Risultato test c2 --> " + c2.isAssoluta());
+        Assert.assertFalse("c1 non é assoluta", c2.isAssoluta());
+
         System.out.println("Risultato corretto c3 --> true");
-        System.out.println("Risultato test c3 --> " + c3.isAssoluta());
+        Assert.assertTrue("c3 é assoluta", c3.isAssoluta());
     }
 
     /**
@@ -62,11 +66,13 @@ public class ClassicaTest {
     public void testWhichType() throws Exception {
     //TODO: Test goes here...
         System.out.println("Risultato corretto c1 --> 1");
-        System.out.println("Risultato test c1 --> " + c1.whichType());
+        Assert.assertEquals("c1 é di tipo categorico non preferenziale", 1, c1.whichType());
+
         System.out.println("Risultato corretto c2 --> 0");
-        System.out.println("Risultato test c2 --> " + c2.whichType());
+        Assert.assertEquals("c2 é Ordinale", 0, c2.whichType());
+
         System.out.println("Risultato corretto c3 --> 2");
-        System.out.println("Risultato test c3 --> " + c3.whichType());
+        Assert.assertEquals("c3 é categorica preferenziale", 2, c3.whichType());
     }
 
 
