@@ -5,6 +5,8 @@ import java.util.Objects;
 
 /**
  * @author Piemme
+ * Semplice classe astratta per unire le caratteristiche delle votazioni Classica e Referendum, che poi implementano proprio questa classe!
+ * Unise le loro caratteristiche comune e permette di ottenere rapidamente alcune informazioni.
  */
 public abstract class Votazione {
 

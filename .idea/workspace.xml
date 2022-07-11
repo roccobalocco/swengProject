@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Started testing">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="normalize path">
+      <change afterPath="$PROJECT_DIR$/PDFResult/Non_esiste_una_cosa_scaduta_____2022_07_10.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ModificaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ModificaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Classica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Classica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Referendum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Referendum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/models/ReferendumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/models/ReferendumTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Votazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/StatsVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +90,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -116,7 +124,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.swengProject [compile]">
+  <component name="RunManager" selected="Application.MainASUS">
     <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="swengProject" />
@@ -303,7 +311,11 @@
       <workItem from="1657473904610" duration="2726000" />
       <workItem from="1657477105346" duration="112000" />
       <workItem from="1657477243159" duration="2485000" />
-      <workItem from="1657543248473" duration="4332000" />
+      <workItem from="1657543248473" duration="4845000" />
+      <workItem from="1657549479170" duration="730000" />
+      <workItem from="1657550807922" duration="317000" />
+      <workItem from="1657551574070" duration="125000" />
+      <workItem from="1657552440609" duration="1239000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -501,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657544786932</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Some testing">
+      <created>1657547794092</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1657547794092</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,8 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="first push" />
-    <MESSAGE value="second push" />
     <MESSAGE value="changed some package intestations" />
     <MESSAGE value="Small straight steps" />
     <MESSAGE value="Implemented some DAO methods, but without testing it, REMEMBER to do it later!" />
@@ -545,7 +562,9 @@
     <MESSAGE value="Finished pdf" />
     <MESSAGE value="small changes" />
     <MESSAGE value="Started testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started testing" />
+    <MESSAGE value="Some testing" />
+    <MESSAGE value="normalize path" />
+    <option name="LAST_COMMIT_MESSAGE" value="normalize path" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -581,6 +600,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/swengProject$MainBMAX.ic" NAME="MainBMAX Coverage Results" MODIFIED="1657139151147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/swengProject$test_models_in_swengProject.ic" NAME="test.models in swengProject Coverage Results" MODIFIED="1657547647435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$ReferendumTest_testHasQuorum.ic" NAME="ReferendumTest.testHasQuorum Coverage Results" MODIFIED="1657544074890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.models.*</FILTER>
     </SUITE>

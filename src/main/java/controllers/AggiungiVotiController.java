@@ -13,6 +13,7 @@ import models.*;
 import util.Util;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -102,7 +103,7 @@ public class AggiungiVotiController{
         Alert infos = new Alert(Alert.AlertType.CONFIRMATION);
         infos.setContentText("Sicuro di voler ottenere i risultati?");
         Optional<ButtonType> o = infos.showAndWait();
-        String path = "C://Users/Pietro/IdeaProjects/swengProject/PDFResult/";
+        String path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/";
         if(o.isPresent()) {
             Risultati r;
             if (gruppoTextField.isDisable()) { //referendum
@@ -121,7 +122,7 @@ public class AggiungiVotiController{
                 }
             }
 
-            if (r.printRisultati("/swengProject/PDFResult/")){
+            if (r.printRisultati(Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/")){
                 infos.setAlertType(Alert.AlertType.INFORMATION);
                 infos.setContentText("PDF salvato in /swengProject/PDFResult/");
             }else{

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 /**
  * @author Piemme
+ * Classe atta a semplificare la gestione del tipo di Votazione Referendum, poche aggiunte rispetto alla sua super-classe
  */
 public class Referendum extends Votazione {
 
@@ -16,7 +17,12 @@ public class Referendum extends Votazione {
 
     }
 
-    public final boolean quorum;
+    private final boolean quorum;
+
+    /**
+     *
+     * @return true se il referendum ha il quorum, false altrimenti
+     */
     public boolean hasQuorum() { return quorum; }
 
     public String toString(){

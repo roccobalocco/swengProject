@@ -50,7 +50,7 @@ public class ModificaController {
                     scadenzaDatePicker.setValue(ClassicaDAOImpl.getInstance().getAppoggio().getScadenzaLD());
                 }
                 case "Modifica Referendum" -> {
-                    quorumCheckBox.setSelected(ReferendumDAOImpl.getInstance().getAppoggio().quorum);
+                    quorumCheckBox.setSelected(ReferendumDAOImpl.getInstance().getAppoggio().hasQuorum());
                     assolutaCheckBox.setDisable(true);
                     tipoChoiceBox.setDisable(true);
                     descrizioneTextArea.setText(ReferendumDAOImpl.getInstance().getAppoggio().descrizione);

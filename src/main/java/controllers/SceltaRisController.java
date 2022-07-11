@@ -21,6 +21,7 @@ import util.Util;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class SceltaRisController implements Initializable {
@@ -106,7 +107,8 @@ public class SceltaRisController implements Initializable {
             if (ix >= lc.size()) { //referendum
                 ReferendumDAOImpl.getInstance().setAppoggio(lr.get(ix - lc.size()));
                 r = new Risultati(lr.get(ix - lc.size()));
-                path = "C://Users/Pietro/IdeaProjects/swengProject/PDFResult/" + lr.get(ix - lc.size()).descrizione.replaceAll("[ -/'\"]", "_") +
+                path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/" +
+                        lr.get(ix - lc.size()).descrizione.replaceAll("[ -/'\"]", "_") +
                         lr.get(ix - lc.size()).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
             } else { //Classica
                 ClassicaDAOImpl.getInstance().setAppoggio(lc.get(ix));
@@ -118,11 +120,11 @@ public class SceltaRisController implements Initializable {
                     r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
                             CandidatoDAOImpl.getInstance().getMapG());
                 }
-                path = "C://Users/Pietro/IdeaProjects/swengProject/PDFResult/" + lc.get(ix).descrizione.replaceAll("[ -/'\"]", "_") +
+                path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/" + lc.get(ix).descrizione.replaceAll("[ -/'\"]", "_") +
                         lc.get(ix).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
             }
 
-            if (r.printRisultati("C:/Users/Pietro/IdeaProjects/swengProject/PDFResult/")){
+            if (r.printRisultati(Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/")){
                 infos.setAlertType(Alert.AlertType.INFORMATION);
                 infos.setContentText("PDF salvato in Desktop/PDFResult");
             }else{

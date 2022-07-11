@@ -14,6 +14,10 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 
+/**
+ * @author Piemme
+ * Classe del package "models" atta a semplificare il calcolo e la gestione dei risultati. A accoppiamenti con le classi Classica e Referendum, sfrutta inoltre varie Classi e Metodi del package "data"
+ */
 @SuppressWarnings("DuplicatedCode")
 public class Risultati {
 

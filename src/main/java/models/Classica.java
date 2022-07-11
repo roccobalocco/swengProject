@@ -21,6 +21,10 @@ public class Classica extends Votazione {
     private final boolean preferenza;
     private final boolean assoluta;
 
+    /**
+     *
+     * @return false se la votazione non é assoluta, true altrimenti
+     */
     public boolean isAssoluta() {
         return assoluta;
     }
