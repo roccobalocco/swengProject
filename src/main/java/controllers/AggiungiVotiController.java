@@ -57,6 +57,10 @@ public class AggiungiVotiController{
                         totaleTextField.setDisable(true);
                         insertTotButton.setDisable(true);
                     }
+                    if(!ReferendumDAOImpl.getInstance().getAppoggio().hasQuorum()) {
+                        totaleTextField.setDisable(true);
+                        insertTotButton.setDisable(true);
+                    }
                     gruppoComboBox.setDisable(true); gruppoTextField.setDisable(true);
                     insertGruppoButton.setDisable(true); getCandidatiButton.setDisable(true);
                 }
@@ -82,7 +86,8 @@ public class AggiungiVotiController{
     @FXML
     public void insertTotale() {
         try {
-            int v = Integer.parseInt(gruppoTextField.getText());
+            int v = Integer.parseInt(totaleTextField.getText());
+            System.out.println("Totale: " + v);
             if (v < 1)
                 throw new NumberFormatException();
 
@@ -104,17 +109,16 @@ public class AggiungiVotiController{
         infos.setContentText("Sicuro di voler ottenere i risultati?");
         Optional<ButtonType> o = infos.showAndWait();
         String path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/";
-        if(o.isPresent()) {
+        if(o.isPresent() && o.get() == ButtonType.OK) {
             Risultati r;
             if (gruppoTextField.isDisable()) { //referendum
                 Referendum ref  = ReferendumDAOImpl.getInstance().getAppoggio();
                 r = new Risultati(ref);
-                path += ref.descrizione.replaceAll("[ -/'\"]", "_") +
-                        ref.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+                path += Util.bonify2(ref.descrizione) + Util.bonify2(ref.getScadenza()) + ".pdf";
             } else { //Classica
                 Classica c = ClassicaDAOImpl.getInstance().getAppoggio();
-                path += c.descrizione.replaceAll("[ -/'\"]", "_") +
-                        c.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+                path += Util.bonify2(c.descrizione) +
+                        Util.bonify2(c.getScadenza()) + ".pdf";
                 if (c.whichType() == 2) {
                     r = new Risultati(c, CandidatoDAOImpl.getInstance().getMapG(), CandidatoDAOImpl.getInstance().getMapP());
                 } else {
@@ -130,8 +134,8 @@ public class AggiungiVotiController{
                 infos.setContentText("Errore nel salvataggio pdf in /swengProject/PDFResult/");
             }
             infos.showAndWait();
-            deleteVotation(infos);
             Util.showResult(path);
+            deleteVotation(infos);
         }
     }
 
@@ -202,11 +206,13 @@ public class AggiungiVotiController{
         infos.setAlertType(Alert.AlertType.CONFIRMATION);
         infos.setContentText("Cancellare la votazione dal sistema?");
         Optional<ButtonType> o = infos.showAndWait();
-        if(o.isPresent())
+        if(o.isPresent() && o.get() == ButtonType.OK)
             if(gruppoTextField.isDisable()) //referendum
                 ReferendumDAOImpl.getInstance().deleteVotazione(ReferendumDAOImpl.getInstance().getAppoggio().getId());
             else //Classica
                 ClassicaDAOImpl.getInstance().deleteVotazione(ClassicaDAOImpl.getInstance().getAppoggio().getId());
+        else
+            System.out.println("Votazione non eliminata");
     }
 
 }

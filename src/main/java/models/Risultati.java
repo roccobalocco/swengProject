@@ -7,6 +7,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import util.Util;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -50,6 +51,10 @@ public class Risultati {
         isClassica = false;
         if(r.hasQuorum())
             totale = ReferendumDAOImpl.getInstance().getVotanti(r);
+        int[] voti = ReferendumDAOImpl.getInstance().getVoti();
+        si = voti[0];
+        no = voti[1];
+        bianca = voti[2];
     }
 
     private boolean hasWin(int voti){
@@ -114,8 +119,7 @@ public class Risultati {
         document.addPage(new PDPage());
 
         if(isClassica) {
-            path = path + c.descrizione.replaceAll("[ -/'\"]", "_") +
-                    c.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+            path = path + Util.bonify2(c.descrizione) + Util.bonify2(c.getScadenza()) + ".pdf";
             System.out.println(path);
 
             PDPage page = new PDPage();
@@ -136,8 +140,7 @@ public class Risultati {
             document.save(path);
 
         }else{
-            path = path + r.descrizione.replaceAll("[ -/'\"]", "_") +
-                    r.getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+            path = path + Util.bonify2(r.descrizione) + Util.bonify2(r.getScadenza()) + ".pdf";
             System.out.println(path);
 
             PDPage page = new PDPage();

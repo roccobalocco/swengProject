@@ -309,7 +309,7 @@ public class ReferendumDAOImpl implements VotazioneDAO, Observable {
             //scrivo query
             String query = "UPDATE referendum SET " + getOpinione(opinione) + v +
                     " WHERE referendum.id = " + getInstance().getAppoggio().getId();
-            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
@@ -363,6 +363,39 @@ public class ReferendumDAOImpl implements VotazioneDAO, Observable {
         }
         return tot;
     }
+
+    /**
+     *
+     * @return un'array di tre posti che indica i voti corrispondenti a si, no e bianca
+     */
+    public int[] getVoti() {
+        int[] votiArr = {0, 0, 0};
+        try{
+            //apro connessione
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
+            //scrivo query
+            String query = "SELECT si, no, bianca FROM referendum WHERE id = " + ReferendumDAOImpl.getInstance().getAppoggio().getId();
+            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            //creo oggetto statement per esecuzione query
+            PreparedStatement statement = conn.prepareStatement(query);
+            //eseguo la query
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                votiArr[0] = resultSet.getInt(1);
+                votiArr[1] = resultSet.getInt(2);
+                votiArr[2] = resultSet.getInt(3);
+            }
+            //chiudo connessione
+            resultSet.close();
+            conn.close();
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return votiArr;
+    }
+
     @Override
     public void subscribe(util.Observer o) { uniqueInstance.obs.add(o); }
 

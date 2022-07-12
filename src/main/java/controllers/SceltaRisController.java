@@ -102,14 +102,15 @@ public class SceltaRisController implements Initializable {
         infos.setContentText("Sicuro di voler ottenere i risultati?");
         Optional<ButtonType> o = infos.showAndWait();
         String path;
-        if(o.isPresent() && ix != -1) {
+        if(o.isPresent() && ix != -1 && o.get() == ButtonType.OK){
+            System.out.println("Entro in ottenimento");
             Risultati r;
             if (ix >= lc.size()) { //referendum
                 ReferendumDAOImpl.getInstance().setAppoggio(lr.get(ix - lc.size()));
                 r = new Risultati(lr.get(ix - lc.size()));
                 path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/" +
-                        lr.get(ix - lc.size()).descrizione.replaceAll("[ -/'\"]", "_") +
-                        lr.get(ix - lc.size()).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+                        Util.bonify2(lr.get(ix - lc.size()).descrizione) +
+                        Util.bonify2(lr.get(ix - lc.size()).getScadenza()) + ".pdf";
             } else { //Classica
                 ClassicaDAOImpl.getInstance().setAppoggio(lc.get(ix));
                 if (lc.get(ix).whichType() == 2) {
@@ -120,8 +121,8 @@ public class SceltaRisController implements Initializable {
                     r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
                             CandidatoDAOImpl.getInstance().getMapG());
                 }
-                path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/" + lc.get(ix).descrizione.replaceAll("[ -/'\"]", "_") +
-                        lc.get(ix).getScadenza().replaceAll("[ -/'\"]", "_") + ".pdf";
+                path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/" + Util.bonify2(lc.get(ix).descrizione) +
+                        Util.bonify2(lc.get(ix).getScadenza()) + ".pdf";
             }
 
             if (r.printRisultati(Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/")){

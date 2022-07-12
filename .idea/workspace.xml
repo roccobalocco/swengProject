@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Finished pdf">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDFResult/Non_esiste_una_cosa_scaduta_____2022_07_10.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Untitled.mdj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +123,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainASUS">
+  <component name="RunManager" selected="Application.MainBMAX">
     <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="swengProject" />
@@ -307,6 +315,7 @@
       <workItem from="1657550807922" duration="317000" />
       <workItem from="1657551574070" duration="125000" />
       <workItem from="1657552440609" duration="1239000" />
+      <workItem from="1657648149696" duration="4955000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -511,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657547794092</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Finished pdf">
+      <created>1657644186999</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1657644186999</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,12 +566,12 @@
     <MESSAGE value="Some adjustment" />
     <MESSAGE value="Some TODO's added and something else DONE!" />
     <MESSAGE value="Now the file is created and written but badly" />
-    <MESSAGE value="Finished pdf" />
     <MESSAGE value="small changes" />
     <MESSAGE value="Started testing" />
     <MESSAGE value="Some testing" />
     <MESSAGE value="normalize path" />
-    <option name="LAST_COMMIT_MESSAGE" value="normalize path" />
+    <MESSAGE value="Finished pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished pdf" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -24,6 +24,12 @@ public class Util {
         return s.replaceAll("['\"]", "`");
     }
 
+    public static String bonify2(String s){
+        return s.replaceAll("[-`'\"? ]", "_").replaceAll("[óò]", "o")
+                .replaceAll("[éè]", "e").replaceAll("[úù]", "u")
+                .replaceAll("[áà]", "a").replaceAll("[íì]", "i");
+    }
+
     public static boolean check(String cf) {
         if (cf == null)
             return false;
