@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
-import org.junit.Assert.*;
 
 import java.time.LocalDate;
 
@@ -19,7 +18,7 @@ import java.time.LocalDate;
 public class ClassicaTest { 
     private Classica c1, c2, c3;
     @Before
-    public void before() throws Exception {
+    public void before() {
         //Categorica non preferenziale e a maggioranza assoluta [CORRETTA]
         c1 = new Classica("Amministrative Milano", LocalDate.of(2023, 8, 8), false, false, 1, true);
 
@@ -35,7 +34,7 @@ public class ClassicaTest {
     }
 
     @After
-    public void after() throws Exception {
+    public void after() {
         System.out.println("\nTest Classica.java eseguito con successo!");
     }
 
@@ -45,7 +44,7 @@ public class ClassicaTest {
     *
     */
     @Test
-    public void testIsAssoluta() throws Exception {
+    public void testIsAssoluta() {
     //TODO: Test goes here...
         System.out.println("Risultato corretto c1 --> true");
         Assert.assertTrue("c1 é assoluta", c1.isAssoluta());
@@ -63,7 +62,7 @@ public class ClassicaTest {
     *
     */
     @Test
-    public void testWhichType() throws Exception {
+    public void testWhichType() {
     //TODO: Test goes here...
         System.out.println("Risultato corretto c1 --> 1");
         Assert.assertEquals("c1 é di tipo categorico non preferenziale", 1, c1.whichType());

@@ -70,6 +70,7 @@ public class AggiungiVotiController{
         }
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @FXML
     public void insertVotiGruppo() {
         try{
@@ -108,7 +109,7 @@ public class AggiungiVotiController{
         Alert infos = new Alert(Alert.AlertType.CONFIRMATION);
         infos.setContentText("Sicuro di voler ottenere i risultati?");
         Optional<ButtonType> o = infos.showAndWait();
-        String path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/";
+        @SuppressWarnings("DuplicateExpressions") String path = Paths.get(".").toAbsolutePath().normalize() + "/PDFResult/";
         if(o.isPresent() && o.get() == ButtonType.OK) {
             Risultati r;
             if (gruppoTextField.isDisable()) { //referendum
@@ -126,7 +127,8 @@ public class AggiungiVotiController{
                 }
             }
 
-            if (r.printRisultati(Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/")){
+            //noinspection DuplicateExpressions
+            if (r.printRisultati(Paths.get(".").toAbsolutePath().normalize() + "/PDFResult/")){
                 infos.setAlertType(Alert.AlertType.INFORMATION);
                 infos.setContentText("PDF salvato in /swengProject/PDFResult/");
             }else{
@@ -154,6 +156,7 @@ public class AggiungiVotiController{
 
     @FXML
     public void insertVotiCandidato() {
+        //noinspection DuplicatedCode
         try{
             int ix = candidatoComboBox.getSelectionModel().getSelectedIndex();
             int voti = Integer.parseInt(candidatoTextField.getText());

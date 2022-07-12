@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SPLITTER_PROPORTION" value="0.4578984" />
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="All Places" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Finished pdf">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" beforeDir="false" />
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Si vede la luce">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDFResult/Non_esiste_una_cosa_scaduta_____2022_07_10.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ReferendumDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Untitled.mdj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Votazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Votazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/models/ReferendumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/models/ReferendumTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +317,7 @@
       <workItem from="1657550807922" duration="317000" />
       <workItem from="1657551574070" duration="125000" />
       <workItem from="1657552440609" duration="1239000" />
-      <workItem from="1657648149696" duration="4955000" />
+      <workItem from="1657648149696" duration="5413000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -527,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657644186999</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Si vede la luce">
+      <created>1657653844464</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1657653844464</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,7 +555,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="changed some package intestations" />
     <MESSAGE value="Small straight steps" />
     <MESSAGE value="Implemented some DAO methods, but without testing it, REMEMBER to do it later!" />
     <MESSAGE value="Dump of db." />
@@ -571,7 +579,8 @@
     <MESSAGE value="Some testing" />
     <MESSAGE value="normalize path" />
     <MESSAGE value="Finished pdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished pdf" />
+    <MESSAGE value="Si vede la luce" />
+    <option name="LAST_COMMIT_MESSAGE" value="Si vede la luce" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

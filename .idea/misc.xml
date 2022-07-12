@@ -23,6 +23,7 @@
     <pattern value="data.CandidatoDAOImpl" />
     <pattern value="data.CandidatoDAOImpl" method="unsubcribe" />
     <pattern value="data.VotazioneDAO" method="addVotazione" />
+    <pattern value="data.CandidatoDAOImpl" method="deleteGruppo" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">

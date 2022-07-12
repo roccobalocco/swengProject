@@ -108,7 +108,8 @@ public class SceltaRisController implements Initializable {
             if (ix >= lc.size()) { //referendum
                 ReferendumDAOImpl.getInstance().setAppoggio(lr.get(ix - lc.size()));
                 r = new Risultati(lr.get(ix - lc.size()));
-                path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/" +
+                //noinspection DuplicateExpressions
+                path = Paths.get(".").toAbsolutePath().normalize() + "/PDFResult/" +
                         Util.bonify2(lr.get(ix - lc.size()).descrizione) +
                         Util.bonify2(lr.get(ix - lc.size()).getScadenza()) + ".pdf";
             } else { //Classica
@@ -121,11 +122,13 @@ public class SceltaRisController implements Initializable {
                     r = new Risultati(ClassicaDAOImpl.getInstance().getAppoggio(),
                             CandidatoDAOImpl.getInstance().getMapG());
                 }
-                path = Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/" + Util.bonify2(lc.get(ix).descrizione) +
+                //noinspection DuplicateExpressions
+                path = Paths.get(".").toAbsolutePath().normalize() + "/PDFResult/" + Util.bonify2(lc.get(ix).descrizione) +
                         Util.bonify2(lc.get(ix).getScadenza()) + ".pdf";
             }
 
-            if (r.printRisultati(Paths.get(".").toAbsolutePath().normalize().toString() + "/PDFResult/")){
+            //noinspection DuplicateExpressions
+            if (r.printRisultati(Paths.get(".").toAbsolutePath().normalize() + "/PDFResult/")){
                 infos.setAlertType(Alert.AlertType.INFORMATION);
                 infos.setContentText("PDF salvato in Desktop/PDFResult");
             }else{
