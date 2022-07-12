@@ -249,13 +249,19 @@ public class Risultati {
         }
     }
 
+    private boolean reachQuorum(){
+        return (si + no + bianca) > (totale/2);
+    }
+
     private String vinceRef() {
         if(r.hasQuorum()) {
-            if (hasWin(si))
+            if (!reachQuorum())
+                return "Non é stato raggiunto il quorum\nSoli " + (si + no + bianca) + " su " + totale + "voti\n";
+            if(si > no)
                 return "Ha vinto il [ SI ] con " + si + " voti su " + (si + no + bianca) + " voti \n";
-            if (hasWin(no))
+            if (no > si)
                 return "Ha vinto il [ NO ] con " + no + " voti su " + (si + no + bianca) + " voti \n";
-            return "Non é stato raggiunto il quorum\nSoli " + (si + no + bianca) + " su " + totale + "voti\n";
+            return "Paritá tra [ NO ] con " + no + " voti e [ SI ] con  "+ si + " voti \n";
         }else{
             if (si > no)
                 return "Ha vinto il [ SI ] con " + si + " voti su " + (si + no + bianca) + " voti \n";
