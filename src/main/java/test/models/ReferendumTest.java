@@ -1,5 +1,6 @@
 package test.models; 
 
+import models.Classica;
 import models.Referendum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,6 +35,7 @@ public class ReferendumTest {
 
         //Referendum con quorum [CORRETTO]
         r3 = new Referendum("Cannabis Legale", LocalDate.of(2023, 9, 4), true, 3);
+
     }
 
     @After
@@ -57,6 +59,7 @@ public class ReferendumTest {
 
         System.out.println("Risultato corretto r3 --> true");
         Assert.assertTrue("r3 ha il quorum", r3.hasQuorum());
+
     }
 
 

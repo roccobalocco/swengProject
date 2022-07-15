@@ -63,6 +63,8 @@ public class RisultatiTest {
 
         Assert.assertTrue("Inserendo voti",rr4.setRef(1053834, 90102, 3902));
         Assert.assertFalse("Inserendo voti (Errati)",rr4.setRef(1053834, -90102, -3902));
+
+        Assert.assertFalse("Inserendo voti in Classica (Errato)", rc1.setRef(1,1,1));
     }
 
     /**
@@ -85,6 +87,9 @@ public class RisultatiTest {
             else
                 Assert.assertTrue("Inserendo voti per gruppi", rc2.setVoti(g, i));
         });
+
+        Assert.assertFalse("Inserendo voti in referendum (Errato)", rr3.setVoti(new Gruppo(1, "PD"), 100));
+
     }
 
     /**
@@ -101,6 +106,10 @@ public class RisultatiTest {
             else
                 Assert.assertFalse("Inserendo voti per persone", rc1.setVoti(p, i));
         });
+
+        Assert.assertFalse("Inserendo voti in referendum (Errato)",
+                rr3.setVoti(new Persona(1, "PD", 1), 100));
+
     }
 
 } 
