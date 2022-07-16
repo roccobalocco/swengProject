@@ -13,7 +13,7 @@ import java.time.LocalDate;
 /** 
 * Referendum Tester. 
 * 
-* @author <Authors name> 
+* @author Piemme
 * @since <pre>lug 10, 2022</pre> 
 * @version 1.0 
 */ 

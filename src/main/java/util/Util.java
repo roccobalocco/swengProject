@@ -20,16 +20,31 @@ import java.util.Map;
  */
 public class Util {
 
+    /**
+     * Bonifica le stringhe contro SQLInjection
+     * @param s != null
+     * @return stringa senza ' ne "
+     */
     public static String bonify(String s) {
         return s.replaceAll("['\"]", "`");
     }
 
+    /**
+     * Bonifica le stringhe da SQLInjection e per la scrittura in PDF
+     * @param s != null
+     * @return stringa senza accenti e senza ? ! - ' ` ", inoltre sostituisce  gli spazi e la punteggiatura con _
+     */
     public static String bonify2(String s){
-        return s.replaceAll("[-`'\"? ]", "_").replaceAll("[óò]", "o")
+        return s.replaceAll("[-`'\"?! ]", "_").replaceAll("[óò]", "o")
                 .replaceAll("[éè]", "e").replaceAll("[úù]", "u")
                 .replaceAll("[áà]", "a").replaceAll("[íì]", "i");
     }
 
+    /**
+     * Controlla la validitá del codice fiscale/codice admin
+     * @param cf != null
+     * @return true se cf ha lunghezza 16
+     */
     public static boolean check(String cf) {
         if (cf == null)
             return false;
@@ -40,6 +55,11 @@ public class Util {
         return true;
     }
 
+    /**
+     *
+     * @param date
+     * @return date convertito il LocalDate
+     */
     public static LocalDate toDateTime(Date date) {
         return date.toLocalDate();
     }
@@ -62,6 +82,10 @@ public class Util {
         ReferendumDAOImpl.getInstance().subscribe(o);
     }
 
+    /**
+     *
+     * @return stringa di benvenuto in base all'orario attuale
+     */
     public static String welcome() {
         int ora = LocalDateTime.now().getHour();
         if (ora > 19 && ora < 23)
@@ -73,6 +97,11 @@ public class Util {
         return "Buon pomeriggio";
     }
 
+    /**
+     *
+     * @param lg != null
+     * @return una mappa con i voti corrispondenti ad una votazione ordinale
+     */
     public static Map<Gruppo, Integer> getVotiOrdinale(List<Gruppo> lg) {
         int n = lg.size();
         Map<Gruppo, Integer> mg = new HashMap<>();
@@ -81,6 +110,11 @@ public class Util {
         return mg;
     }
 
+    /**
+     *
+     * @param lp != null
+     * @return una mappa con i voti corrispondenti ad una votazione categorica preferenziale, per i candidati dei partiti
+     */
     public static Map<Persona, Integer> getVotiPreferenziale(List<Persona> lp) {
         int n = lp.size();
         Map<Persona, Integer> mp = new HashMap<>();

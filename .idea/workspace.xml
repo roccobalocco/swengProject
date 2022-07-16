@@ -9,12 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Si vede la luce pt2">
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Finished testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/models/ReferendumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/models/ReferendumTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/models/RisultatiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/models/RisultatiTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +88,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -122,7 +122,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainBMAX">
+  <component name="RunManager" selected="JUnit.UtilTest">
     <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="swengProject" />
@@ -139,79 +139,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClassicaTest.testWhichType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UtilTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swengProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.models.*" />
+          <option name="PATTERN" value="test.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.models" />
-      <option name="MAIN_CLASS_NAME" value="test.models.ClassicaTest" />
-      <option name="METHOD_NAME" value="testWhichType" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RisultatiTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="swengProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.models" />
-      <option name="MAIN_CLASS_NAME" value="test.models.RisultatiTest" />
+      <option name="PACKAGE_NAME" value="test.util" />
+      <option name="MAIN_CLASS_NAME" value="test.util.UtilTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RisultatiTest.testSetVotiForGVoti" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UtilTest.testBonify2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swengProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.models.*" />
+          <option name="PATTERN" value="test.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.models" />
-      <option name="MAIN_CLASS_NAME" value="test.models.RisultatiTest" />
-      <option name="METHOD_NAME" value="testSetVotiForGVoti" />
+      <option name="PACKAGE_NAME" value="test.util" />
+      <option name="MAIN_CLASS_NAME" value="test.util.UtilTest" />
+      <option name="METHOD_NAME" value="testBonify2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RisultatiTest.testSetVotiForPVoti" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UtilTest.testCheck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swengProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.models.*" />
+          <option name="PATTERN" value="test.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.models" />
-      <option name="MAIN_CLASS_NAME" value="test.models.RisultatiTest" />
-      <option name="METHOD_NAME" value="testSetVotiForPVoti" />
+      <option name="PACKAGE_NAME" value="test.util" />
+      <option name="MAIN_CLASS_NAME" value="test.util.UtilTest" />
+      <option name="METHOD_NAME" value="testCheck" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test.models in swengProject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UtilTest.testGetVotiOrdinale" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swengProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.models.*" />
+          <option name="PATTERN" value="test.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.models" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="test.util" />
+      <option name="MAIN_CLASS_NAME" value="test.util.UtilTest" />
+      <option name="METHOD_NAME" value="testGetVotiOrdinale" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UtilTest.testGetVotiPreferenziale" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swengProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.util" />
+      <option name="MAIN_CLASS_NAME" value="test.util.UtilTest" />
+      <option name="METHOD_NAME" value="testGetVotiPreferenziale" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -244,20 +246,20 @@
     <list>
       <item itemvalue="Application.MainBMAX" />
       <item itemvalue="Application.MainASUS" />
-      <item itemvalue="JUnit.ClassicaTest.testWhichType" />
-      <item itemvalue="JUnit.RisultatiTest" />
-      <item itemvalue="JUnit.RisultatiTest.testSetVotiForGVoti" />
-      <item itemvalue="JUnit.RisultatiTest.testSetVotiForPVoti" />
-      <item itemvalue="JUnit.test.models in swengProject" />
+      <item itemvalue="JUnit.UtilTest" />
+      <item itemvalue="JUnit.UtilTest.testBonify2" />
+      <item itemvalue="JUnit.UtilTest.testCheck" />
+      <item itemvalue="JUnit.UtilTest.testGetVotiOrdinale" />
+      <item itemvalue="JUnit.UtilTest.testGetVotiPreferenziale" />
       <item itemvalue="Maven.swengProject [compile]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.test.models in swengProject" />
-        <item itemvalue="JUnit.RisultatiTest.testSetVotiForPVoti" />
-        <item itemvalue="JUnit.RisultatiTest" />
-        <item itemvalue="JUnit.RisultatiTest.testSetVotiForGVoti" />
-        <item itemvalue="JUnit.ClassicaTest.testWhichType" />
+        <item itemvalue="JUnit.UtilTest" />
+        <item itemvalue="JUnit.UtilTest.testBonify2" />
+        <item itemvalue="JUnit.UtilTest.testGetVotiOrdinale" />
+        <item itemvalue="JUnit.UtilTest.testCheck" />
+        <item itemvalue="JUnit.UtilTest.testGetVotiPreferenziale" />
       </list>
     </recent_temporary>
   </component>
@@ -320,7 +322,9 @@
       <workItem from="1657875839759" duration="1222000" />
       <workItem from="1657886956970" duration="201000" />
       <workItem from="1657892333075" duration="1455000" />
-      <workItem from="1657914256216" duration="668000" />
+      <workItem from="1657914256216" duration="712000" />
+      <workItem from="1657968877731" duration="362000" />
+      <workItem from="1657969303305" duration="2865000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -546,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657654160274</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Finished testing">
+      <created>1657914952787</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1657914952787</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented some DAO methods, but without testing it, REMEMBER to do it later!" />
     <MESSAGE value="Dump of db." />
     <MESSAGE value="Created two fondamental GUI fxml file and started their controllers." />
     <MESSAGE value="first steps to insert Candidati in the mySQL db and a new DB dump" />
@@ -590,7 +600,8 @@
     <MESSAGE value="Finished pdf" />
     <MESSAGE value="Si vede la luce" />
     <MESSAGE value="Si vede la luce pt2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Si vede la luce pt2" />
+    <MESSAGE value="Finished testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -606,7 +617,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java</url>
           <line>104</line>
-          <properties class="data.ClassicaDAOImpl" method="getAllCategorico">
+          <properties class="data.ClassicaDAOImpl">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -625,28 +636,43 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/swengProject$UtilTest_testGetVotiOrdinale.ic" NAME="UtilTest.testGetVotiOrdinale Coverage Results" MODIFIED="1657971216860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$test_models_in_swengProject.ic" NAME="test.models in swengProject Coverage Results" MODIFIED="1657547647435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$UtilTest_testCheck.ic" NAME="UtilTest.testCheck Coverage Results" MODIFIED="1657971195313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$ClassicaTest.ic" NAME="ClassicaTest Coverage Results" MODIFIED="1657478945871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$RisultatiTest.ic" NAME="RisultatiTest Coverage Results" MODIFIED="1657968989172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$UtilTest.ic" NAME="UtilTest Coverage Results" MODIFIED="1657972052284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.util.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$MainBMAX.ic" NAME="MainBMAX Coverage Results" MODIFIED="1657139151147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/swengProject$ClassicaTest_testWhichType.ic" NAME="ClassicaTest.testWhichType Coverage Results" MODIFIED="1657544598584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.models.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$MainASUS.ic" NAME="MainASUS Coverage Results" MODIFIED="1657476538672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/swengProject$test_models_in_swengProject.ic" NAME="test.models in swengProject Coverage Results" MODIFIED="1657547647435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.models.*</FILTER>
+    <SUITE FILE_PATH="coverage/swengProject$UtilTest_testGetVotiPreferenziale.ic" NAME="UtilTest.testGetVotiPreferenziale Coverage Results" MODIFIED="1657971129112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.util.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$ReferendumTest_testHasQuorum.ic" NAME="ReferendumTest.testHasQuorum Coverage Results" MODIFIED="1657544074890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$UtilTest_testBonify2.ic" NAME="UtilTest.testBonify2 Coverage Results" MODIFIED="1657971889377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.util.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$Main.ic" NAME="Main Coverage Results" MODIFIED="1655979769855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/swengProject$RisultatiTest_testSetVotiForGVoti.ic" NAME="RisultatiTest.testSetVotiForGVoti Coverage Results" MODIFIED="1657546655997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.models.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$RisultatiTest_testSetVotiForPVoti.ic" NAME="RisultatiTest.testSetVotiForPVoti Coverage Results" MODIFIED="1657547549990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.models.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$ClassicaTest.ic" NAME="ClassicaTest Coverage Results" MODIFIED="1657478945871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.models.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$RisultatiTest.ic" NAME="RisultatiTest Coverage Results" MODIFIED="1657546716743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.models.*</FILTER>
     </SUITE>
   </component>
