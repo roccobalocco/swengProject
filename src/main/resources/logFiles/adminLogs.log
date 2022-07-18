@@ -1457,3 +1457,429 @@ Votazione categorica non preferenziale -/- 2022-07-14 ]
 2022-07-15T16:03:10.495281600 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
 2022-07-15T16:03:10.510183 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
 2022-07-15T16:03:10.518128800 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:01:12.027500600 - Codice fiscale: MSLPTR00S07C623T - [Login effettuato]
+2022-07-18T10:01:45.744296500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per Votazione]
+2022-07-18T10:01:45.750298 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per Votazione]
+2022-07-18T10:01:46.813295200 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazione con id: 1]
+2022-07-18T10:01:46.825295100 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazione con id: 1]
+2022-07-18T10:01:46.860297600 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:01:46.868295800 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:01:50.163195200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:01:50.176195100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:01:50.207195700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 1]
+2022-07-18T10:01:50.221194900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 1]
+2022-07-18T10:01:50.250197100 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PDL
+]
+2022-07-18T10:01:50.275192800 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PDL
+]
+2022-07-18T10:01:50.305197600 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PDL
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:01:50.313194 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PDL
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:01:50.410195500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:01:50.418193500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:01:53.252486 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:01:53.259487700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:01:53.279487400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 2]
+2022-07-18T10:01:53.289486100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 2]
+2022-07-18T10:01:53.315486400 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PD
+]
+2022-07-18T10:01:53.324485700 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PD
+]
+2022-07-18T10:01:53.351487 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PD
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:01:53.362487300 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PD
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:01:53.461500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:01:53.542486900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:02:04.716826100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:04.722826900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:04.736825500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 3]
+2022-07-18T10:02:04.742823200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 3]
+2022-07-18T10:02:04.760824800 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica M5S
+]
+2022-07-18T10:02:04.766845400 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica M5S
+]
+2022-07-18T10:02:04.783823400 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica M5S
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:02:04.789823900 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica M5S
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:02:04.847826 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:02:04.857825100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:02:16.032565100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:16.037541800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:16.051544500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 4]
+2022-07-18T10:02:16.057564200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 4]
+2022-07-18T10:02:16.073546200 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica Lega Nord
+]
+2022-07-18T10:02:16.079564100 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica Lega Nord
+]
+2022-07-18T10:02:16.094542100 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica Lega Nord
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:02:16.100541900 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica Lega Nord
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:02:16.163546800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:02:16.216546500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:02:21.494931100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:21.500942 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:21.512931600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 5]
+2022-07-18T10:02:21.518927800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 5]
+2022-07-18T10:02:21.534928300 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PSI
+]
+2022-07-18T10:02:21.539929600 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PSI
+]
+2022-07-18T10:02:21.555928900 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PSI
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:02:21.561929400 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PSI
+ a Votazione: Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18]
+2022-07-18T10:02:21.617931600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:02:21.627951500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Chiavenna
+Votazione ordinale -/- 2022-07-18 ]
+2022-07-18T10:02:41.361965200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per Votazione]
+2022-07-18T10:02:41.366940100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per Votazione]
+2022-07-18T10:02:42.203941600 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazione con id: 2]
+2022-07-18T10:02:42.210962800 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazione con id: 2]
+2022-07-18T10:02:42.227940900 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:02:42.232952700 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:02:45.849939500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:45.868940400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:45.887940100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 6]
+2022-07-18T10:02:45.896939600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 6]
+2022-07-18T10:02:45.920938500 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PDL
+]
+2022-07-18T10:02:45.928939800 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PDL
+]
+2022-07-18T10:02:45.951939200 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PDL
+ a Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:02:45.959937700 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PDL
+ a Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:02:46.046939900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18 ]
+2022-07-18T10:02:46.066939400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18 ]
+2022-07-18T10:02:55.143548700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:55.148562400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:02:55.161548500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 7]
+2022-07-18T10:02:55.167547400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 7]
+2022-07-18T10:02:55.183569700 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica Lista Civica - Mario Rossi
+]
+2022-07-18T10:02:55.189570300 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica Lista Civica - Mario Rossi
+]
+2022-07-18T10:02:55.207549100 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica Lista Civica - Mario Rossi
+ a Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:02:55.212570400 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica Lista Civica - Mario Rossi
+ a Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:02:55.266550900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18 ]
+2022-07-18T10:02:55.276548100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18 ]
+2022-07-18T10:03:10.773753100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:03:10.779753600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:03:10.791752 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 8]
+2022-07-18T10:03:10.797752500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 8]
+2022-07-18T10:03:10.813752500 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PD - Pino Balatti
+]
+2022-07-18T10:03:10.819750700 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PD - Pino Balatti
+]
+2022-07-18T10:03:10.835754400 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PD - Pino Balatti
+ a Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:03:10.840752600 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PD - Pino Balatti
+ a Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:03:10.899753800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18 ]
+2022-07-18T10:03:10.909751100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:14.178694 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:04:14.184694900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:04:14.198721700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 9]
+2022-07-18T10:04:14.203720400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 9]
+2022-07-18T10:04:14.218692800 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica Partito dei Pensionati - Carlo Tavasci
+]
+2022-07-18T10:04:14.224694200 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica Partito dei Pensionati - Carlo Tavasci
+]
+2022-07-18T10:04:14.240693900 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica Partito dei Pensionati - Carlo Tavasci
+ a Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:04:14.245692800 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica Partito dei Pensionati - Carlo Tavasci
+ a Votazione: Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18]
+2022-07-18T10:04:14.296695300 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:14.304695300 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amministrative Gordona
+Votazione categorica non preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:32.704737200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per Votazione]
+2022-07-18T10:04:32.710756700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per Votazione]
+2022-07-18T10:04:33.966227300 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazione con id: 3]
+2022-07-18T10:04:33.972229300 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazione con id: 3]
+2022-07-18T10:04:33.989250500 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:33.995247800 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:34.008250800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:34.014228600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:37.434225400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:04:37.443225600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:04:37.461226900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 10]
+2022-07-18T10:04:37.469227200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 10]
+2022-07-18T10:04:37.490226400 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PD
+]
+2022-07-18T10:04:37.498225300 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica PD
+]
+2022-07-18T10:04:37.518225900 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PD
+ a Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:37.526226500 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica PD
+ a Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:37.602227600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:37.627225300 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:42.956752300 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:04:42.962749500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:04:42.974753400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 11]
+2022-07-18T10:04:42.980773100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 11]
+2022-07-18T10:04:42.996772 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica M5S
+]
+2022-07-18T10:04:43.002749700 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica M5S
+]
+2022-07-18T10:04:43.019752200 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica M5S
+ a Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:43.025749600 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica M5S
+ a Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:43.077753 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:43.088750900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:49.207911200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:04:49.213909 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per gruppo]
+2022-07-18T10:04:49.225909800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 12]
+2022-07-18T10:04:49.230908200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Gruppo con id: 12]
+2022-07-18T10:04:49.247910600 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica Forza Italia
+]
+2022-07-18T10:04:49.253908400 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Gruppo: Unione Politica Forza Italia
+]
+2022-07-18T10:04:49.269908900 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica Forza Italia
+ a Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:49.275908600 - Codice fiscale: MSLPTR00S07C623T - [Aggiunta Gruppo: Unione Politica Forza Italia
+ a Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:49.325913200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:49.340935700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:59.675848800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:04:59.681860 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:04:59.695847600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 1]
+2022-07-18T10:04:59.700848600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 1]
+2022-07-18T10:04:59.723848200 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Renzetti 
+ , di Gruppo: Unione Politica M5S
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:59.729846900 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Renzetti 
+ , di Gruppo: Unione Politica M5S
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:04:59.796848700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:04:59.808847600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:08.642906500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:08.654939500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:08.674901500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 2]
+2022-07-18T10:05:08.680910900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 2]
+2022-07-18T10:05:08.696902500 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Monzetti 
+ , di Gruppo: Unione Politica M5S
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:08.702902 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Monzetti 
+ , di Gruppo: Unione Politica M5S
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:08.753903500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:08.761901 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:14.580056 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:14.586034600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:14.599036800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 3]
+2022-07-18T10:05:14.605034900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 3]
+2022-07-18T10:05:14.621055700 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Perletti 
+ , di Gruppo: Unione Politica M5S
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:14.627035700 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Perletti 
+ , di Gruppo: Unione Politica M5S
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:14.676037700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:14.683036900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:25.355269100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:25.366300900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:25.388270400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 4]
+2022-07-18T10:05:25.399269100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 4]
+2022-07-18T10:05:25.426268500 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Lettini 
+ , di Gruppo: Unione Politica PD
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:25.437270300 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Lettini 
+ , di Gruppo: Unione Politica PD
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:25.521415600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:25.528413400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:30.186819 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:30.192817200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:30.204839300 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 5]
+2022-07-18T10:05:30.210817500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 5]
+2022-07-18T10:05:30.226817300 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Bettini 
+ , di Gruppo: Unione Politica PD
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:30.232817800 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Bettini 
+ , di Gruppo: Unione Politica PD
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:30.281820700 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:30.289817900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:38.370772 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:38.376794 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:38.389771600 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 6]
+2022-07-18T10:05:38.394771500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 6]
+2022-07-18T10:05:38.410773400 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Bellettini 
+ , di Gruppo: Unione Politica PD
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:38.416770400 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Bellettini 
+ , di Gruppo: Unione Politica PD
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:38.464774200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:38.473772800 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:47.311457200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:47.317455300 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:47.330455300 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 7]
+2022-07-18T10:05:47.335476100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 7]
+2022-07-18T10:05:47.351455800 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Silvio 
+ , di Gruppo: Unione Politica Forza Italia
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:47.357456500 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Silvio 
+ , di Gruppo: Unione Politica Forza Italia
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:47.407460200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:47.415456400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:53.901758500 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:53.907759 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:05:53.920759300 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 8]
+2022-07-18T10:05:53.926758200 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 8]
+2022-07-18T10:05:53.943760100 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Marco 
+ , di Gruppo: Unione Politica Forza Italia
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:53.949758700 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Marco 
+ , di Gruppo: Unione Politica Forza Italia
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:05:54.010763 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:05:54.017759100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:06:00.088915400 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:06:00.094927100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta prossimo id per persona]
+2022-07-18T10:06:00.107914 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 9]
+2022-07-18T10:06:00.113914 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta Persona con id: 9]
+2022-07-18T10:06:00.130918600 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Cardinali 
+ , di Gruppo: Unione Politica Forza Italia
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:06:00.136916 - Codice fiscale: MSLPTR00S07C623T -  [Aggiunta Persona: Candidato politico Cardinali 
+ , di Gruppo: Unione Politica Forza Italia
+ per Votazione: Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18]
+2022-07-18T10:06:00.185915900 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:06:00.194915100 - Codice fiscale: MSLPTR00S07C623T -  [Richiesta gruppi per votazione Votazione per Amminsitrative Milano
+Votazione categorica preferenziale -/- 2022-07-18 ]
+2022-07-18T10:06:07.928769800 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:06:07.934767800 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:06:07.948082900 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:06:07.953659600 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:06:11.406119700 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:06:11.431119300 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:06:11.551119600 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:06:11.573118700 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:06:14.462276 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:06:14.514272700 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:06:14.571276300 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:06:14.603272900 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:06:20.596727300 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:06:20.608727200 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:06:20.620728100 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:06:20.626749500 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:09.729993800 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:09.735992200 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:09.749994800 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:09.756994900 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:30.727440800 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:30.733441200 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:30.746441200 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:30.751462900 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:40.438369900 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:40.445366200 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:40.458368900 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:40.464388100 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:47.274782300 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:47.280781100 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:47.293782200 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:47.299782 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:50.484021600 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:50.495020500 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni categoriche]
+2022-07-18T10:07:50.535022800 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:07:50.541022300 - Codice fiscale: MSLPTR00S07C623T - [Richiesta Votazioni Ordinali]
+2022-07-18T10:17:52.747198300 - Codice fiscale: MSLPTR00S07C623T - [Login effettuato]

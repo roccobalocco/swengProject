@@ -1,5 +1,3 @@
-# noinspection SyntaxErrorForFile
-
 CREATE DATABASE  IF NOT EXISTS `swengdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `swengdb`;
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
@@ -39,6 +37,7 @@ CREATE TABLE `gruppi` (
 
 LOCK TABLES `gruppi` WRITE;
 /*!40000 ALTER TABLE `gruppi` DISABLE KEYS */;
+INSERT INTO `gruppi` VALUES (1,'PDL'),(2,'PD'),(3,'M5S'),(4,'Lega Nord'),(5,'PSI'),(6,'PDL'),(7,'Lista Civica - Mario Rossi'),(8,'PD - Pino Balatti'),(9,'Partito dei Pensionati - Carlo Tavasci'),(10,'PD'),(11,'M5S'),(12,'Forza Italia');
 /*!40000 ALTER TABLE `gruppi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,6 +68,7 @@ CREATE TABLE `persone` (
 
 LOCK TABLES `persone` WRITE;
 /*!40000 ALTER TABLE `persone` DISABLE KEYS */;
+INSERT INTO `persone` VALUES (4,'Lettini',2,3,10),(5,'Bettini',1,3,10),(6,'Bellettini',3,3,10),(1,'Renzetti',0,3,11),(2,'Monzetti',0,3,11),(3,'Perletti',0,3,11),(7,'Silvio',0,3,12),(8,'Marco',0,3,12),(9,'Cardinali',0,3,12);
 /*!40000 ALTER TABLE `persone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,8 +87,9 @@ CREATE TABLE `referendum` (
   `bianca` int NOT NULL DEFAULT '0',
   `quorum` tinyint NOT NULL DEFAULT '0',
   `scadenza` datetime NOT NULL,
+  `tot` int DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +98,7 @@ CREATE TABLE `referendum` (
 
 LOCK TABLES `referendum` WRITE;
 /*!40000 ALTER TABLE `referendum` DISABLE KEYS */;
-INSERT INTO `referendum` VALUES (1,'Eutanasia Legale',0,0,0,1,'2022-10-10 00:00:00'),(2,'Cannabis Legale',0,0,0,1,'2023-01-01 00:00:00');
+INSERT INTO `referendum` VALUES (1,'Cannabis Legale',0,0,0,0,'2022-07-15 00:00:00',0),(6,'Eutanasia Legale',0,0,0,1,'2022-07-16 00:00:00',0),(7,'Abrogazione Patti Lateranensi',1,0,0,1,'2022-07-19 00:00:00',0);
 /*!40000 ALTER TABLE `referendum` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +141,8 @@ DROP TABLE IF EXISTS `v_c`;
 CREATE TABLE `v_c` (
   `cf_fk` varchar(16) NOT NULL,
   `votazione_fk` int NOT NULL,
-  PRIMARY KEY (`cf_fk`,`votazione_fk`),
+  KEY `cf_fk_idx` (`cf_fk`),
+  KEY `cf_fk2_idx` (`cf_fk`),
   KEY `votazione_fk_idx` (`votazione_fk`),
   CONSTRAINT `cf_fk2` FOREIGN KEY (`cf_fk`) REFERENCES `utenti` (`cf`),
   CONSTRAINT `votazione_fk` FOREIGN KEY (`votazione_fk`) REFERENCES `votazione` (`id`)
@@ -153,6 +155,7 @@ CREATE TABLE `v_c` (
 
 LOCK TABLES `v_c` WRITE;
 /*!40000 ALTER TABLE `v_c` DISABLE KEYS */;
+INSERT INTO `v_c` VALUES ('MSLPTR00S07C623T',2),('MSLPTR00S07C623T',3),('MSLPTR00S07C623T',1);
 /*!40000 ALTER TABLE `v_c` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +169,7 @@ DROP TABLE IF EXISTS `v_r`;
 CREATE TABLE `v_r` (
   `cf_fk` varchar(16) NOT NULL,
   `referendum_fk` int NOT NULL,
-  PRIMARY KEY (`cf_fk`,`referendum_fk`),
+  KEY `cf_fk_idx` (`cf_fk`),
   KEY `referendum_fk_idx` (`referendum_fk`),
   CONSTRAINT `cf_fk` FOREIGN KEY (`cf_fk`) REFERENCES `utenti` (`cf`),
   CONSTRAINT `referendum_fk` FOREIGN KEY (`referendum_fk`) REFERENCES `referendum` (`id`)
@@ -179,6 +182,7 @@ CREATE TABLE `v_r` (
 
 LOCK TABLES `v_r` WRITE;
 /*!40000 ALTER TABLE `v_r` DISABLE KEYS */;
+INSERT INTO `v_r` VALUES ('MSLPTR00S07C623T',7);
 /*!40000 ALTER TABLE `v_r` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,8 +201,9 @@ CREATE TABLE `votazione` (
   `descrizione` varchar(450) DEFAULT NULL,
   `ordinale` tinyint NOT NULL DEFAULT '0',
   `preferenza` tinyint NOT NULL DEFAULT '0',
+  `tot` int DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,7 +212,7 @@ CREATE TABLE `votazione` (
 
 LOCK TABLES `votazione` WRITE;
 /*!40000 ALTER TABLE `votazione` DISABLE KEYS */;
-INSERT INTO `votazione` VALUES (1,0,1,'2024-11-04 00:00:00','Scelta Europarlamentari',0,0);
+INSERT INTO `votazione` VALUES (1,3,1,'2022-07-18 00:00:00','Amministrative Chiavenna',1,0,0),(2,3,0,'2022-07-18 00:00:00','Amministrative Gordona',0,0,0),(3,3,1,'2022-07-18 00:00:00','Amminsitrative Milano',0,1,0);
 /*!40000 ALTER TABLE `votazione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,6 +240,7 @@ CREATE TABLE `voti_gruppi` (
 
 LOCK TABLES `voti_gruppi` WRITE;
 /*!40000 ALTER TABLE `voti_gruppi` DISABLE KEYS */;
+INSERT INTO `voti_gruppi` VALUES (1,1,2),(1,2,4),(1,3,3),(1,4,1),(1,5,5),(2,6,0),(2,7,0),(2,8,0),(2,9,1),(3,10,1),(3,11,0),(3,12,0);
 /*!40000 ALTER TABLE `voti_gruppi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-28  9:41:01
+-- Dump completed on 2022-07-18 10:26:11
