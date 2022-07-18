@@ -9,15 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Last commit??">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Fixed some final stuff" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +118,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainBMAX">
+  <component name="RunManager" selected="Maven.swengProject [compile]">
     <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="swengProject" />
@@ -331,7 +323,7 @@
       <workItem from="1657969303305" duration="3195000" />
       <workItem from="1657976371861" duration="417000" />
       <workItem from="1658130657540" duration="1594000" />
-      <workItem from="1658133290301" duration="817000" />
+      <workItem from="1658133290301" duration="1189000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -585,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658133507014</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Fixed some final stuff">
+      <created>1658134368190</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1658134368190</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,7 +603,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="first steps to insert Candidati in the mySQL db and a new DB dump" />
     <MESSAGE value="Now the insertion of Votazione subclass Classica is supported" />
     <MESSAGE value="Observable things" />
     <MESSAGE value="Observable things and logFiles with SQLInjection protection inserted (finally)" />
@@ -629,7 +627,8 @@
     <MESSAGE value="Finished testing" />
     <MESSAGE value="Finished testing pt2" />
     <MESSAGE value="Last commit??" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last commit??" />
+    <MESSAGE value="Fixed some final stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some final stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
