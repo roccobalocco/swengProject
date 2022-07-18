@@ -50,7 +50,6 @@ public class ReferendumTest {
     */
     @Test
     public void testHasQuorum() {
-    //TODO: Test goes here...
         System.out.println("Risultato corretto r1 --> true");
         Assert.assertTrue("r1 ha il quorum", r1.hasQuorum());
 
