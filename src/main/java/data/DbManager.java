@@ -55,18 +55,6 @@ public class DbManager implements Observable{
         getInstance().notifyObservers("[Cancellazione di tutte le votazioni]");
     }
 
-    public boolean resetVotazione(Classica c) throws IOException {
-        //TODO
-        getInstance().notifyObservers("[Cancellazione Votazione Classica: " + c + "]");
-        return true;
-    }
-
-    public boolean resetVotazione(Referendum r) throws IOException {
-        //TODO
-        getInstance().notifyObservers("[Cancellazione Referendum: " + r + "]");
-        return false;
-    }
-
     @Override
     public void subscribe(Observer o) {
         this.obs.add(o);

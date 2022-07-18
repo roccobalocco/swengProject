@@ -45,7 +45,6 @@ public class ClassicaTest {
     */
     @Test
     public void testIsAssoluta() {
-    //TODO: Test goes here...
         System.out.println("Risultato corretto c1 --> true");
         Assert.assertTrue("c1 é assoluta", c1.isAssoluta());
 
@@ -63,7 +62,6 @@ public class ClassicaTest {
     */
     @Test
     public void testWhichType() {
-    //TODO: Test goes here...
         System.out.println("Risultato corretto c1 --> 1");
         Assert.assertEquals("c1 é di tipo categorico non preferenziale", 1, c1.whichType());
 

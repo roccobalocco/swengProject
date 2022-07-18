@@ -231,7 +231,8 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "DELETE FROM votazione WHERE `id` = " + id;
+            String query = "DELETE FROM v_c WHERE votazione_fk = " + id +
+                    " DELETE FROM votazione WHERE `id` = " + id;
             //System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);

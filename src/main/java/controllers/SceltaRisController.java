@@ -137,7 +137,22 @@ public class SceltaRisController implements Initializable {
             }
             infos.showAndWait();
             Util.showResult(path);
+            deleteVotation(infos);
         }
+    }
+
+    private void deleteVotation(Alert infos) throws IOException {
+        int ix = votazioniListView.getSelectionModel().getSelectedIndex();
+        infos.setAlertType(Alert.AlertType.CONFIRMATION);
+        infos.setContentText("Cancellare la votazione dal sistema?");
+        Optional<ButtonType> o = infos.showAndWait();
+        if(o.isPresent() && o.get() == ButtonType.OK)
+            if (ix >= lc.size()) //referendum
+                ReferendumDAOImpl.getInstance().deleteVotazione(ReferendumDAOImpl.getInstance().getAppoggio().getId());
+            else //Classica
+                ClassicaDAOImpl.getInstance().deleteVotazione(ClassicaDAOImpl.getInstance().getAppoggio().getId());
+        else
+            System.out.println("Votazione non eliminata");
     }
 
 }

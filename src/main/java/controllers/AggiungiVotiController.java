@@ -206,6 +206,7 @@ public class AggiungiVotiController{
     }
 
     private void deleteVotation(Alert infos) throws IOException {
+        //noinspection DuplicateExpressions
         infos.setAlertType(Alert.AlertType.CONFIRMATION);
         infos.setContentText("Cancellare la votazione dal sistema?");
         Optional<ButtonType> o = infos.showAndWait();

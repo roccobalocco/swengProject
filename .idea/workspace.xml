@@ -9,13 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Finished testing pt2">
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Last commit??">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDFResult/DioMaledetto2022_07_06.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDFResult/Passero_statistica_2022_06_12.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDFResult/_assero_statistica___________.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/elettoreLogs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AggiungiVotiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/DbManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/models/ClassicaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -94,6 +94,9 @@
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mysql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/Change SQL Dialect": [
+      "MySQL"
     ]
   }
 }]]></component>
@@ -328,6 +331,7 @@
       <workItem from="1657969303305" duration="3195000" />
       <workItem from="1657976371861" duration="417000" />
       <workItem from="1658130657540" duration="1594000" />
+      <workItem from="1658133290301" duration="817000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1655457534063</created>
@@ -567,7 +571,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657972455291</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Last commit??">
+      <created>1658133416119</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1658133416119</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Last commit??">
+      <created>1658133507014</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1658133507014</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +604,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Created two fondamental GUI fxml file and started their controllers." />
     <MESSAGE value="first steps to insert Candidati in the mySQL db and a new DB dump" />
     <MESSAGE value="Now the insertion of Votazione subclass Classica is supported" />
     <MESSAGE value="Observable things" />
@@ -611,7 +628,8 @@
     <MESSAGE value="Si vede la luce pt2" />
     <MESSAGE value="Finished testing" />
     <MESSAGE value="Finished testing pt2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished testing pt2" />
+    <MESSAGE value="Last commit??" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last commit??" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
