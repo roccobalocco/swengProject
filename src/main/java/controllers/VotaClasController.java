@@ -206,7 +206,7 @@ public class VotaClasController implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Inserisci Votazione/Referendum");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         ((Stage) candidatiLabel.getScene().getWindow()).close();
         primaryStage.show();
     }

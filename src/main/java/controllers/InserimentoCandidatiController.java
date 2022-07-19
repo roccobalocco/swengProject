@@ -125,7 +125,7 @@ public class InserimentoCandidatiController implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Admin menu");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         ((Stage) nomeTextField.getScene().getWindow()).close();
         primaryStage.show();
     }

@@ -86,7 +86,7 @@ public class InserimentoVotazioniController implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Elettore menu");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
         ((Stage) descrizioneTextArea.getScene().getWindow()).close();
     }
@@ -130,7 +130,7 @@ public class InserimentoVotazioniController implements Initializable {
 
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Inserimento Candidati Votazione");
-                    primaryStage.setResizable(true);
+                    primaryStage.setResizable(false);
                     ((Stage) scadenzaDatePicker.getScene().getWindow()).close();
                     primaryStage.show();
                 }

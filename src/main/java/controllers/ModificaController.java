@@ -106,7 +106,7 @@ public class ModificaController {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Inserisci Votazione/Referendum");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         ((Stage) infoLabel.getScene().getWindow()).close();
         primaryStage.show();
     }

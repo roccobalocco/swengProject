@@ -108,7 +108,7 @@ public class ModDelController implements Initializable {
                     primaryStage.setTitle("Modifica Referendum");
                     ReferendumDAOImpl.getInstance().setAppoggio(lr.get(ix - lc.size()));
                 }
-                primaryStage.setResizable(true);
+                primaryStage.setResizable(false);
                 primaryStage.show();
                 ((Stage)  benvenutoText.getScene().getWindow()).close();
             }
@@ -127,7 +127,7 @@ public class ModDelController implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Inserisci Votazione/Referendum");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         ((Stage) goButton.getScene().getWindow()).close();
         primaryStage.show();
     }

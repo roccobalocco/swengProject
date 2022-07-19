@@ -28,7 +28,7 @@ public class SetupController implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Admin menu");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
         ((Stage) benvenutoText.getScene().getWindow()).close();
     }
@@ -41,7 +41,7 @@ public class SetupController implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Admin menu");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
         ((Stage) benvenutoText.getScene().getWindow()).close();
     }
@@ -59,7 +59,7 @@ public class SetupController implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Scelta votazione per risultati");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
         ((Stage) benvenutoText.getScene().getWindow()).close();
     }
