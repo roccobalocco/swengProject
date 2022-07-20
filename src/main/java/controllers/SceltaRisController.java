@@ -62,7 +62,7 @@ public class SceltaRisController implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Scelta risultati Votazione");
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         ((Stage) votazioniListView.getScene().getWindow()).close();
         primaryStage.show();
     }
@@ -89,7 +89,7 @@ public class SceltaRisController implements Initializable {
                 ReferendumDAOImpl.getInstance().setAppoggio(r);
                 primaryStage.setTitle("Aggiungi voti a Referendum");
             }
-            primaryStage.setResizable(true);
+            primaryStage.setResizable(false);
             ((Stage) votazioniListView.getScene().getWindow()).close();
             primaryStage.show();
         }

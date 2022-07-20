@@ -107,7 +107,7 @@ public class ElettoreController implements Initializable {
 
                 primaryStage.setScene(scene);
                 primaryStage.setTitle(ReferendumDAOImpl.getInstance().getAppoggio().descrizione);
-                primaryStage.setResizable(true);
+                primaryStage.setResizable(false);
                 primaryStage.show();
             }
             case 1 ->{ //Classica
@@ -117,7 +117,7 @@ public class ElettoreController implements Initializable {
 
                 primaryStage.setScene(scene);
                 primaryStage.setTitle(ClassicaDAOImpl.getInstance().getAppoggio().descrizione);
-                primaryStage.setResizable(true);
+                primaryStage.setResizable(false);
                 primaryStage.show();
             }
             default -> throw new IllegalArgumentException("Non ci sono corrisponendeze per goTo -> " + where);
