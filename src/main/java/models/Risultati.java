@@ -126,17 +126,17 @@ public class Risultati {
             PDPageContentStream contents = new PDPageContentStream(document, document.getPage(0), PDPageContentStream.AppendMode.APPEND, true);
             contents.beginText();
             PDFont font = PDType1Font.TIMES_ROMAN;
-            contents.setFont(font, 15);
+            contents.setFont(font, 12);
             contents.newLineAtOffset(50, 700);
             contents.showText(c.descrizione); contents.newLine();
-            contents.newLineAtOffset(0, -50);
+            contents.newLineAtOffset(0, -25);
             contents.showText("Scadenza: " + c.getScadenza());
-            contents.newLineAtOffset(0, -50);
-            contents.showText(gpString().replace("\n", " -/- "));
-            contents.newLineAtOffset(0, -50);
-            contents.showText(vinceCla().replace("\n", " -/- "));
+            contents.newLineAtOffset(0, -25);
             contents.endText();
             contents.close();
+
+            gpString(document);
+
             document.save(path);
 
         }else{
@@ -148,18 +148,18 @@ public class Risultati {
             PDPageContentStream contents = new PDPageContentStream(document, document.getPage(0), PDPageContentStream.AppendMode.APPEND, true);
             contents.beginText();
             PDFont font = PDType1Font.TIMES_ROMAN;
-            contents.setFont(font, 15);
+            contents.setFont(font, 12);
             contents.newLineAtOffset(50, 700);
             contents.showText(r.descrizione);
-            contents.newLineAtOffset(0, -50);
+            contents.newLineAtOffset(0, -25);
             contents.showText("Scadenza: " + r.getScadenza());
-            contents.newLineAtOffset(0, -50);
+            contents.newLineAtOffset(0, -25);
             contents.showText("Si: " + si);
-            contents.newLineAtOffset(0, -50);
+            contents.newLineAtOffset(0, -25);
             contents.showText("No: " + no);
-            contents.newLineAtOffset(0, -50);
+            contents.newLineAtOffset(0, -25);
             contents.showText("Bianca: " + bianca);
-            contents.newLineAtOffset(0, -50);
+            contents.newLineAtOffset(0, -25);
             contents.showText(vinceRef().replace("\n", " -/- "));
             contents.endText();
             contents.close();
@@ -169,9 +169,53 @@ public class Risultati {
         return true;
     }
 
-    private String gpString(PDPageContentStream contents){
-       //TODO
-        return "";
+    private void gpString(PDDocument document) throws IOException {
+        PDPage page = new PDPage();
+        PDPageContentStream contents = new PDPageContentStream(document, document.getPage(0), PDPageContentStream.AppendMode.APPEND, true);
+        contents.beginText();
+        PDFont font = PDType1Font.TIMES_ROMAN;
+        contents.setFont(font, 12);
+
+        contents.newLineAtOffset(50, 625);
+
+        if(c.whichType() == 0 || c.whichType() == 2) {
+            contents.showText("I voti espressi tramite ordine sono corrisposti in base al numero di candidati, se n é il numero di candidati, ");
+            contents.newLineAtOffset(0, -25);
+            contents.showText("andranno n voti al primo, n-1 al secondo, e cosí via fino all'ultimo con un solo voto, a preferenza");
+            contents.newLineAtOffset(0, -25);
+        }
+
+        contents.showText("Bianca: " + bianca);
+        contents.newLineAtOffset(0, -25);
+
+        if(votiGruppi != null)
+            votiGruppi.forEach((g, i) -> {
+                try {
+                    System.out.println(g.toString());
+                    contents.showText(g.toString().replace("\n", "").replace("\r", "") + " -- Voti: " + i );
+                    contents.newLineAtOffset(0, -25);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if(c.whichType() == 2) {
+                    if(votiPersone != null)
+                        votiPersone.forEach((p, ii) -> {
+                            if (p.getGruppo() == g.getId()){
+                                try {
+                                    contents.showText(p.toString().replace("\n", "").replace("\r", "") + " -- Preferenze secondo il calcolo del sistema: " + String.valueOf(ii));
+                                    contents.newLineAtOffset(0, -25);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        });
+                }
+            });
+        contents.newLineAtOffset(0, -25);
+        contents.showText(vinceCla().replace("\n", " -/- "));
+
+        contents.endText();
+        contents.close();
     }
 
     private String gpString() {
@@ -248,7 +292,7 @@ public class Risultati {
                     if(votiPersone != null)
                         votiPersone.forEach((p, i) -> {
                             if(p.getGruppo() == finalW.getId())
-                                ss.set("Il vincitore é: " + finalW + "\nPer il candidato: " + p + "\nCon " + finalMax + " voti\n\n");
+                                ss.set("Il vincitore é: " + finalW + p + "Con " + finalMax + " voti\n");
                         });
                     return ss.toString();
                 }

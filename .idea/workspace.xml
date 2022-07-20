@@ -9,9 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Fixed some final stuff">
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Fixed deletion bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDFResult/Abrogazione_Patti_Lateranensi2022_07_19.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/PDFResult/Abrogazione_Patti_Lateranensi2022_07_19.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDFResult/Amministrative_Chiavenna2022_07_18.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/PDFResult/Amministrative_Chiavenna2022_07_18.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDFResult/Amministrative_Gordona2022_07_18.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/PDFResult/Amministrative_Gordona2022_07_18.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDFResult/Eutanasia_Legale2022_07_16.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/PDFResult/Eutanasia_Legale2022_07_16.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Risultati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Risultati.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -597,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658135408050</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Fixed deletion bug">
+      <created>1658348297997</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1658348297997</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +627,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Now the insertion of Votazione subclass Classica is supported" />
     <MESSAGE value="Observable things" />
     <MESSAGE value="Observable things and logFiles with SQLInjection protection inserted (finally)" />
     <MESSAGE value="finally finished Classica insertion without errors (AT A FIRST SIGHT), next thing //TODO is the votation for Referendum" />
@@ -641,7 +651,8 @@
     <MESSAGE value="Finished testing pt2" />
     <MESSAGE value="Last commit??" />
     <MESSAGE value="Fixed some final stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some final stuff" />
+    <MESSAGE value="Fixed deletion bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed deletion bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
