@@ -169,6 +169,11 @@ public class Risultati {
         return true;
     }
 
+    private String gpString(PDPageContentStream contents){
+       //TODO
+        return "";
+    }
+
     private String gpString() {
         StringBuilder s = new StringBuilder();
         if(c.whichType() == 0 || c.whichType() == 2)
