@@ -231,13 +231,29 @@ public class ClassicaDAOImpl implements VotazioneDAO, Observable{
             //apro connessione
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swengdb?useSSL=false", "root", "root");
             //scrivo query
-            String query = "DELETE FROM v_c WHERE votazione_fk = " + id +
-                    " DELETE FROM votazione WHERE `id` = " + id;
-            //System.out.println("Query che sta per essere eseguita:\n" + query);
+            String query = "DELETE FROM v_c WHERE votazione_fk = " + id;
+            System.out.println("Query che sta per essere eseguita:\n" + query);
             //creo oggetto statement per esecuzione query
             PreparedStatement statement = conn.prepareStatement(query);
             //eseguo la query
             statement.executeUpdate();
+
+            query = "DELETE persone FROM persone JOIN gruppi ON gruppi.id = persone.gruppoFK" +
+                    " JOIN voti_gruppi ON voti_gruppiFK = voti_gruppi.votazione_fk2\n" +
+                    " WHERE voti_gruppi.votazione_fk2 = " + id;
+            statement = conn.prepareStatement(query);
+            statement.executeUpdate();
+
+            query = "DELETE gruppi, voti_gruppi FROM gruppi" +
+                    " JOIN voti_gruppi ON gruppi.id  = voti_gruppi.gruppi_fk\n" +
+                    " WHERE voti_gruppi.votazione_fk2 = " + id;
+            statement = conn.prepareStatement(query);
+            statement.executeUpdate();
+
+            query = " DELETE FROM votazione WHERE id = " + id;
+            statement = conn.prepareStatement(query);
+            statement.executeUpdate();
+
             //chiudo connessione
             conn.close();
         }catch(SQLException e){

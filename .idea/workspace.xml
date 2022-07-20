@@ -9,22 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="normalize path">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0062d34b-efef-41e1-9898-48c1602391d8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_07_2022_18_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_07_2022_18_37__Changes_.xml" afterDir="false" />
+    <list default="true" id="10063e4c-8e0c-4c57-b3b3-8d0a0b658077" name="Changes" comment="Fixed some final stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ElettoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoCandidatiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InserimentoVotazioniController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ModDelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ModDelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ModificaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ModificaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceltaRisController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SetupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SetupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/VotaClasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/VotaClasController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/VotaRefController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/VotaRefController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ClassicaDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logFiles/adminLogs.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +122,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainASUS">
+  <component name="RunManager" selected="Application.MainBMAX">
     <configuration name="MainASUS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="swengProject" />
@@ -688,43 +676,43 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/swengProject$ReferendumTest_testHasQuorum.ic" NAME="ReferendumTest.testHasQuorum Coverage Results" MODIFIED="1657544074890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.models.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$UtilTest_testGetVotiOrdinale.ic" NAME="UtilTest.testGetVotiOrdinale Coverage Results" MODIFIED="1657971216860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.util.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$UtilTest.ic" NAME="UtilTest Coverage Results" MODIFIED="1657972491548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.util.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$MainBMAX.ic" NAME="MainBMAX Coverage Results" MODIFIED="1657139151147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/swengProject$UtilTest_testGetVotiPreferenziale.ic" NAME="UtilTest.testGetVotiPreferenziale Coverage Results" MODIFIED="1657971129112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.util.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$UtilTest_testBonify2.ic" NAME="UtilTest.testBonify2 Coverage Results" MODIFIED="1657971889377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.util.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$test_models_in_swengProject.ic" NAME="test.models in swengProject Coverage Results" MODIFIED="1657547647435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.models.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$ClassicaTest_testWhichType.ic" NAME="ClassicaTest.testWhichType Coverage Results" MODIFIED="1657544598584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.models.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$RisultatiTest_testSetVotiForGVoti.ic" NAME="RisultatiTest.testSetVotiForGVoti Coverage Results" MODIFIED="1657546655997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.models.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$MainASUS.ic" NAME="MainASUS Coverage Results" MODIFIED="1657476538672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/swengProject$UtilTest_testCheck.ic" NAME="UtilTest.testCheck Coverage Results" MODIFIED="1657971195313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.util.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$RisultatiTest.ic" NAME="RisultatiTest Coverage Results" MODIFIED="1657546716743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/swengProject$ClassicaTest.ic" NAME="ClassicaTest Coverage Results" MODIFIED="1657478945871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$RisultatiTest.ic" NAME="RisultatiTest Coverage Results" MODIFIED="1657968989172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$UtilTest.ic" NAME="UtilTest Coverage Results" MODIFIED="1657972491548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$MainBMAX.ic" NAME="MainBMAX Coverage Results" MODIFIED="1658132084820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/swengProject$ClassicaTest_testWhichType.ic" NAME="ClassicaTest.testWhichType Coverage Results" MODIFIED="1657544598584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$MainASUS.ic" NAME="MainASUS Coverage Results" MODIFIED="1657476538672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/swengProject$UtilTest_testGetVotiPreferenziale.ic" NAME="UtilTest.testGetVotiPreferenziale Coverage Results" MODIFIED="1657971129112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$ReferendumTest_testHasQuorum.ic" NAME="ReferendumTest.testHasQuorum Coverage Results" MODIFIED="1657544074890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.models.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$UtilTest_testBonify2.ic" NAME="UtilTest.testBonify2 Coverage Results" MODIFIED="1657971889377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/swengProject$Main.ic" NAME="Main Coverage Results" MODIFIED="1655979769855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/swengProject$RisultatiTest_testSetVotiForGVoti.ic" NAME="RisultatiTest.testSetVotiForGVoti Coverage Results" MODIFIED="1657546655997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.models.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/swengProject$RisultatiTest_testSetVotiForPVoti.ic" NAME="RisultatiTest.testSetVotiForPVoti Coverage Results" MODIFIED="1657547549990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.models.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/swengProject$Main.ic" NAME="Main Coverage Results" MODIFIED="1655979769855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/swengProject$ClassicaTest.ic" NAME="ClassicaTest Coverage Results" MODIFIED="1657478945871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.models.*</FILTER>
     </SUITE>
   </component>
