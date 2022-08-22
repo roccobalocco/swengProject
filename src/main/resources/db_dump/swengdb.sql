@@ -127,7 +127,7 @@ CREATE TABLE `utenti` (
 
 LOCK TABLES `utenti` WRITE;
 /*!40000 ALTER TABLE `utenti` DISABLE KEYS */;
-INSERT INTO `utenti` VALUES ('MSLPTR00S07C623M','Pietro','Masolini','2010-11-07',0,'9675e7a7ad9d1c09d08e60b1ca898085faaeaa59c795cdd635b6f47ec1ed7ab9'),('MSLPTR00S07C623T','Pietro','Masolini','2000-11-07',1,'9675e7a7ad9d1c09d08e60b1ca898085faaeaa59c795cdd635b6f47ec1ed7ab9'),('SCRPLA71C71C623T','Paola','Scaramellini','1971-03-31',0,'9675e7a7ad9d1c09d08e60b1ca898085faaeaa59c795cdd635b6f47ec1ed7ab9');
+INSERT INTO `utenti` VALUES ('MSLPTR00S07C623M','Pietro','Masolini','2010-11-07',0,'toInsert'),('MSLPTR00S07C623T','Pietro','Masolini','2000-11-07',1,'toInsert'),('SCRPLA71C71C623T','Paola','Scaramellini','1971-03-31',0,'toInsert');
 /*!40000 ALTER TABLE `utenti` ENABLE KEYS */;
 UNLOCK TABLES;
 
